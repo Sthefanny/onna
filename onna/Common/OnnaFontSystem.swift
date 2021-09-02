@@ -8,15 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Font: String {
-    case brunoRegular = "MADEBruno"
-    case chivoRegular = "chivo-regular"
-    case chivoBold = "chivo-bold"
 
-    var name: String {
-        return self.rawValue
-    }
-}
 
 struct OnnaFontSystem: ViewModifier {
     

@@ -16,6 +16,8 @@
 		E5E5AA1226E1543F003BFBED /* bruno-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1126E1541E003BFBED /* bruno-regular.otf */; };
 		E5E5AA1526E16868003BFBED /* chivo-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */; };
 		E5E5AA1626E1686B003BFBED /* chivo-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */; };
+		E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */; };
+		E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F62CB926E1899900EEA4D6 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		E5E5AA1126E1541E003BFBED /* bruno-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bruno-regular.otf"; sourceTree = "<group>"; };
 		E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-bold.ttf"; sourceTree = "<group>"; };
 		E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-regular.ttf"; sourceTree = "<group>"; };
+		E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEnum.swift; sourceTree = "<group>"; };
+		E5F62CB926E1899900EEA4D6 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		E5E5AA0D26E1452D003BFBED /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E5F62CBB26E18DE100EEA4D6 /* Extensions */,
+				E5F62CB626E1898000EEA4D6 /* Enums */,
 				E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */,
 			);
 			path = Common;
@@ -109,6 +115,22 @@
 				E5E5AA1126E1541E003BFBED /* bruno-regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E5F62CB626E1898000EEA4D6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		E5F62CBB26E18DE100EEA4D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5F62CB926E1899900EEA4D6 /* ColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,8 +206,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */,
+				E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */,
 				E54DFEA426DFF808004DAC6D /* ContentView.swift in Sources */,
 				E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */,
+				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

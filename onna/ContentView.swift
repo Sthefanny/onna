@@ -11,6 +11,7 @@ struct ContentView: View {
     var body: some View {
         Text("Timeline")
             .onnaFont(.subheadline)
+            .foregroundColor(.onnaYellow)
             .padding()
     }
 }
