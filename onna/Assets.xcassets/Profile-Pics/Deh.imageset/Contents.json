@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Onboarding-Background-2.png",
+      "filename" : "Deh.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Onboarding-Background-3.png",
+      "filename" : "Deh-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Onboarding-Background-4.png",
+      "filename" : "Deh-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
