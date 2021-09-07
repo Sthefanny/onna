@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4146A40926E721360013A8A9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40826E721360013A8A9 /* Home.swift */; };
+		4146A40C26E722920013A8A9 /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40B26E722920013A8A9 /* StoryCellView.swift */; };
 		E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA126DFF808004DAC6D /* onnaApp.swift */; };
 		E54DFEA426DFF808004DAC6D /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */; };
 		E54DFEA626DFF80A004DAC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54DFEA526DFF80A004DAC6D /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4146A40826E721360013A8A9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		4146A40B26E722920013A8A9 /* StoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
 		E54DFE9E26DFF808004DAC6D /* onna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54DFEA126DFF808004DAC6D /* onnaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onnaApp.swift; sourceTree = "<group>"; };
 		E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4146A40A26E7213E0013A8A9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4146A40826E721360013A8A9 /* Home.swift */,
+				4146A40B26E722920013A8A9 /* StoryCellView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		E54DFE9526DFF808004DAC6D = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E5F62CBE26E191FF00EEA4D6 /* OnBoarding */,
+				4146A40A26E7213E0013A8A9 /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +239,8 @@
 				E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */,
 				E54DFEA426DFF808004DAC6D /* OnBoardingView.swift in Sources */,
 				E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */,
+				4146A40926E721360013A8A9 /* Home.swift in Sources */,
+				4146A40C26E722920013A8A9 /* StoryCellView.swift in Sources */,
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
