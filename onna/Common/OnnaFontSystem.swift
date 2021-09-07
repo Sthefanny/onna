@@ -24,9 +24,10 @@ struct OnnaFontSystem: ViewModifier {
     }
     
     var textStyle: TextStyle
+    var textSize: CGFloat?
 
     func body(content: Content) -> some View {
-       let scaledSize = UIFontMetrics.default.scaledValue(for: size)
+       let scaledSize = UIFontMetrics.default.scaledValue(for: textSize ?? size)
        return content.font(.custom(fontName, size: scaledSize))
     }
     
@@ -57,7 +58,7 @@ struct OnnaFontSystem: ViewModifier {
 
 extension View {
     
-    func onnaFont(_ textStyle: OnnaFontSystem.TextStyle) -> some View {
-        self.modifier(onna.OnnaFontSystem(textStyle: textStyle))
+    func onnaFont(_ textStyle: OnnaFontSystem.TextStyle, textSize: CGFloat? = nil) -> some View {
+        self.modifier(onna.OnnaFontSystem(textStyle: textStyle, textSize: textSize))
     }
 }

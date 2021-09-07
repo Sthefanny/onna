@@ -30,23 +30,23 @@ struct AppleLoginButtonView : View {
 
                     switch authResults.credential {
                         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-                            let userID = appleIDCredential.user
+                            let userId = appleIDCredential.user
                             if let firstName = appleIDCredential.fullName?.givenName,
                                 let lastName = appleIDCredential.fullName?.familyName,
                                 let email = appleIDCredential.email{
                                 // For New user to signup, and
                                 // save the 3 records to CloudKit
-                                let record = CKRecord(recordType: "UsersData", recordID: CKRecord.ID(recordName: userID))
-                                record["email"] = email
-                                record["firstName"] = firstName
-                                record["lastName"] = lastName
+                                let record = CKRecord(recordType: "UsersData", recordID: CKRecord.ID(recordName: userId))
+                                record[UserDefaultsKeys.email.name] = email
+                                record[UserDefaultsKeys.firstName.name] = firstName
+                                record[UserDefaultsKeys.lastName.name] = lastName
                                 // Save to local
-                                UserDefaults.standard.set(email, forKey: "email")
-                                UserDefaults.standard.set(firstName, forKey: "firstName")
+                                UserDefaults.standard.set(email, forKey: UserDefaultsKeys.email.name)
+                                UserDefaults.standard.set(firstName, forKey: UserDefaultsKeys.firstName.name)
                                 UserDefaults.standard.set(lastName, forKey: "lastName")
                                 let publicDatabase = CKContainer.default().publicCloudDatabase
                                 publicDatabase.save(record) { (_, _) in
-                                    UserDefaults.standard.set(record.recordID.recordName, forKey: "userID")
+                                    UserDefaults.standard.set(record.recordID.recordName, forKey: UserDefaultsKeys.userId.name)
                                 }
                                 // Change login state
                                 self.login = true
@@ -54,16 +54,16 @@ struct AppleLoginButtonView : View {
                                 // For returning user to signin,
                                 // fetch the saved records from Cloudkit
                                 let publicDatabase = CKContainer.default().publicCloudDatabase
-                                publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userID)) { (record, error) in
+                                publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userId)) { (record, error) in
                                     if let fetchedInfo = record {
-                                        let email = fetchedInfo["email"] as? String
-                                        let firstName = fetchedInfo["firstName"] as? String
-                                        let lastName = fetchedInfo["lastName"] as? String
+                                        let email = fetchedInfo[UserDefaultsKeys.email.name] as? String
+                                        let firstName = fetchedInfo[UserDefaultsKeys.firstName.name] as? String
+                                        let lastName = fetchedInfo[UserDefaultsKeys.lastName.name] as? String
                                         // Save to local
-                                        UserDefaults.standard.set(userID, forKey: "userID")
-                                        UserDefaults.standard.set(email, forKey: "email")
-                                        UserDefaults.standard.set(firstName, forKey: "firstName")
-                                        UserDefaults.standard.set(lastName, forKey: "lastName")
+                                        UserDefaults.standard.set(userId, forKey: UserDefaultsKeys.userId.name)
+                                        UserDefaults.standard.set(email, forKey: UserDefaultsKeys.email.name)
+                                        UserDefaults.standard.set(firstName, forKey: UserDefaultsKeys.firstName.name)
+                                        UserDefaults.standard.set(lastName, forKey: UserDefaultsKeys.lastName.name)
                                         // Change login state
                                         self.login = true
                                     }

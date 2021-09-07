@@ -18,7 +18,7 @@ struct OnBoarding01View: View {
             VStack(alignment: .leading) {
                 SquaresAndLogoView(actualSquare: 0)
                 _buildTitleAndDescription
-                NextRoundedButtonView(action: {})
+                NextRoundedButtonView(action: {}).padding(.trailing, 15)
                 Spacer()
                 _buildImage
             }

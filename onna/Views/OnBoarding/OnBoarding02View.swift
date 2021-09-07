@@ -75,7 +75,6 @@ struct OnBoarding02View: View {
                 .aspectRatio(contentMode: .fit)
         }
         .ignoresSafeArea()
-        .padding(.trailing, 5)
     }
 }
 
