@@ -15,6 +15,8 @@ struct Home: View {
         InstaStoryInfo(image: "Sthe", text: "Corpo", content: "")
     ]
     
+    @State var textInput = ""
+    
     var body: some View {
         ZStack {
             Color("backgroundBlack")
@@ -36,9 +38,11 @@ struct Home: View {
                         Image("Baloon-With-Star")
                             .resizable()
                             .frame(width: 25, height: 25)
+                            .padding(.leading, 30)
                         TextField("O que te aflinge", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                             .foregroundColor(.white)
-                    }.padding(55)
+                    }.padding(20)
+                    
                 }
                 
                 ZStack {
@@ -52,25 +56,25 @@ struct Home: View {
                             .foregroundColor(.yellow)
                             .cornerRadius(8)
                             .padding()
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("Jornada de Hoje")
                                 .foregroundColor(.white)
-                                .font(.title)
+                                .font(.title2)
                             Text("Lorem ipsum sit dor nao \nlembro o resto")
                                 .foregroundColor(.white)
-                                .font(.body)
+                                .font(.caption2)
                         }
-                        
                     }
                 }
                 HStack {
                     Image("GirlPower-Home")
                         .resizable()
-                        .frame(width: 130, height: 130)
-                        .padding()
+                        .frame(width: 150, height: 140)
+                        .padding(5)
                     Image("BodyPositive-Home")
                         .resizable()
-                        .frame(width: 130, height: 130)
+                        .frame(width: 150, height: 140)
+                        .padding(5)
                 }
                 
                 ZStack {
@@ -87,23 +91,23 @@ struct Home: View {
                         VStack(alignment: .leading) {
                             Text("Juliana Gomez")
                                 .foregroundColor(.white)
-                                .font(.title)
+                                .font(.title2)
                             Text("Essa menstruação veio \nacabando com a minha vida 😭")
                                 .foregroundColor(.white)
-                                .font(.body)
+                                .font(.caption)
                         }
                     }
-                    
                 }
                 
                 HStack {
                     Image("Feminism-Home")
                         .resizable()
-                        .frame(width: 130, height: 130)
-                        .padding()
+                        .frame(width: 150, height: 130)
+                        .padding(8)
                     Image("Period-Home")
                         .resizable()
-                        .frame(width: 130, height: 130)
+                        .frame(width: 150, height: 130)
+                        .padding(8)
                 }
             }
         }
