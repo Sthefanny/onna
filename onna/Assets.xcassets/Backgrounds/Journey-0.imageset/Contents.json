@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "White-Lines.png",
+      "filename" : "Journey-0.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "White-Lines-1.png",
+      "filename" : "Journey-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "White-Lines-2.png",
+      "filename" : "Journey-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
