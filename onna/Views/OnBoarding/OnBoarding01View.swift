@@ -37,7 +37,7 @@ struct OnBoarding01View: View {
             _buildTitle
             _buildDescription
         }
-        .padding(.leading, 30)
+        .padding(.leading, 50)
     }
     
     var _buildTitle: some View {

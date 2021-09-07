@@ -14,93 +14,68 @@ struct OnBoarding02View: View {
             Color.onnaPink.edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading) {
-                _buildProgressionSquares
-                _buildLogoAndName
+                SquaresAndLogoView(actualSquare: 1)
                 _buildTitleAndDescription
-                NextRoundedButtonView(action: {})
+                _buildNameTextField
+                Spacer()
                 _buildImage
             }
+            .ignoresSafeArea()
+            .padding(.top, 5)
         }
-    }
-    
-    var _buildLogoAndName: some View {
-        HStack(alignment: .center) {
-            Circle()
-                .frame(width: 50, height: 50, alignment: .center)
-            Text("Onna")
-                .onnaFont(.title2)
-                .foregroundColor(.onnaWhite)
-        }
-        .padding(.top, -10)
-        .padding(.leading, 20)
-    }
-    
-    var _buildProgressionSquares: some View {
-        HStack(alignment: .center, spacing: 15) {
-            Spacer()
-            _buildProgressionSquare(isActual: true)
-            _buildProgressionSquare(isActual: false)
-            _buildProgressionSquare(isActual: false)
-            _buildProgressionSquare(isActual: false)
-            _buildProgressionSquare(isActual: false)
-            Spacer()
-        }
-        .padding(.top, 10)
-    }
-    
-    func _buildProgressionSquare(isActual: Bool) -> some View {
-        HStack {
-            Rectangle()
-                .fill(isActual ? Color.onnaBackgroundBlack : .clear)
-                .border(Color.onnaBackgroundBlack, width: 1)
-                .frame(width: 52, height: 6, alignment: .center)
-                .padding(.top, -20)
-        }
-        .padding(.top, 10)
     }
     
     var _buildTitleAndDescription: some View {
-        VStack (alignment: .leading) {
-            _buildTitle
-            _buildDescription
+        HStack {
+            Rectangle()
+                .fill(Color.onnaBackgroundBlack)
+                .frame(width: 4, height: 137, alignment: .center)
+                .padding(.top, -20)
+            
+            VStack (alignment: .leading) {
+                _buildTitle
+                _buildDescription
+            }
         }
-        .padding(.leading, 30)
+        .padding(.leading, 70)
     }
     
     var _buildTitle: some View {
-        VStack {
-            Text("OI,\nPRAZER")
+        VStack (alignment: .leading) {
+            Text("Então".uppercased())
                 .onnaFont(.largeTitle)
                 .foregroundColor(.onnaBackgroundBlack)
-                .padding()
-            Rectangle()
-                .fill(Color.onnaBackgroundBlack)
-                .frame(width: 165, height: 3, alignment: .center)
-                .padding(.top, -20)
+            Text("primeiramente".uppercased())
+                .onnaFont(.title1)
+                .foregroundColor(.onnaBackgroundBlack)
+                .padding(.top, -10)
         }
         .padding(.top, 20)
     }
     
     var _buildDescription: some View {
         VStack {
-            Text("Somos o grupo ONNA, aqui você terá uma jornada de descoberta como mulher, mostrando que você não está sozinha no mundo.")
+            Text("Gostariamos de saber como gostaria que referiamos a você.")
                 .onnaFont(.body)
                 .foregroundColor(.onnaBackgroundBlack)
-                .padding()
-                .frame(width: 250, height: 140, alignment: .center)
+                .frame(width: 220, height: 140, alignment: .leading)
         }
         .padding(.top, -35)
     }
     
+    var _buildNameTextField: some View {
+        TextFieldWithButtonView(text: "")
+            .padding(.horizontal, 20)
+    }
+    
     var _buildImage: some View {
         HStack {
-            Spacer()
-            Image("Bru")
+            Image("Deh")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
         .ignoresSafeArea()
-        .padding(.leading, 5)
+        .padding(.trailing, 5)
     }
 }
 

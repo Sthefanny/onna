@@ -11,21 +11,18 @@ struct NextRoundedButtonView: View {
     @State var action: () -> Void
     
     var body: some View {
-        HStack {
-            Spacer()
-            Button(action: self.action, label: {
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.onnaBackgroundBlack)
-                    .frame(width: 14, height: 14, alignment: .center)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.white)
-                            .shadow(color: .gray, radius: 4, x: 0, y: 4)
-                    )
-            })
-                .padding(.trailing, 15)
-        }
+        Button(action: self.action, label: {
+            Image(systemName: "chevron.right")
+                .font(.system(size: 22))
+                .foregroundColor(.onnaBackgroundBlack)
+                .frame(width: 12, height: 12, alignment: .center)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.white)
+                        .shadow(color: .gray, radius: 4, x: 0, y: 4)
+                )
+        })
     }
 }
 

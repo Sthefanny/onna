@@ -30,14 +30,16 @@ struct SquaresAndLogoView: View {
     
     var _buildLogoAndName: some View {
         HStack(alignment: .center) {
-            Circle()
+            Image("Onna-Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50, alignment: .center)
             Text("Onna")
                 .onnaFont(.title2)
                 .foregroundColor(.onnaWhite)
         }
         .padding(.top, -10)
-        .padding(.leading, 20)
+        .padding(.leading, 40)
     }
 }
 
