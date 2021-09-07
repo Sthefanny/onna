@@ -24,6 +24,7 @@
 		E552EA8F26E8011600035C4B /* UserDefaultsKeysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA8E26E8011600035C4B /* UserDefaultsKeysEnum.swift */; };
 		E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9026E808C200035C4B /* OnBoarding04View.swift */; };
 		E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9226E80AF000035C4B /* OnBoarding05View.swift */; };
+		E552EA9626E8190000035C4B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9526E8190000035C4B /* LoginView.swift */; };
 		E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */; };
 		E5E5AA1226E1543F003BFBED /* bruno-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1126E1541E003BFBED /* bruno-regular.otf */; };
 		E5E5AA1526E16868003BFBED /* chivo-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */; };
@@ -53,6 +54,7 @@
 		E552EA8E26E8011600035C4B /* UserDefaultsKeysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeysEnum.swift; sourceTree = "<group>"; };
 		E552EA9026E808C200035C4B /* OnBoarding04View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding04View.swift; sourceTree = "<group>"; };
 		E552EA9226E80AF000035C4B /* OnBoarding05View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding05View.swift; sourceTree = "<group>"; };
+		E552EA9526E8190000035C4B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnnaFontSystem.swift; sourceTree = "<group>"; };
 		E5E5AA1126E1541E003BFBED /* bruno-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bruno-regular.otf"; sourceTree = "<group>"; };
 		E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-bold.ttf"; sourceTree = "<group>"; };
@@ -148,6 +150,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E552EA9426E818E800035C4B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E552EA9726E8190D00035C4B /* Components */,
+				E552EA9526E8190000035C4B /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E552EA9726E8190D00035C4B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E5E5AA0D26E1452D003BFBED /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				E5F62CBE26E191FF00EEA4D6 /* OnBoarding */,
+				E552EA9426E818E800035C4B /* Login */,
 				4146A40A26E7213E0013A8A9 /* Home */,
 			);
 			path = Views;
@@ -204,7 +224,6 @@
 				E552EA8C26E7F32100035C4B /* OnBoarding03View.swift */,
 				E552EA9026E808C200035C4B /* OnBoarding04View.swift */,
 				E552EA9226E80AF000035C4B /* OnBoarding05View.swift */,
-				E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -293,6 +312,7 @@
 				4146A40926E721360013A8A9 /* Home.swift in Sources */,
 				4146A40C26E722920013A8A9 /* StoryCellView.swift in Sources */,
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
+				E552EA9626E8190000035C4B /* LoginView.swift in Sources */,
 				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
 				E552EA8B26E7E2BC00035C4B /* TextFieldWithButtonView.swift in Sources */,
 				E552EA8D26E7F32100035C4B /* OnBoarding03View.swift in Sources */,

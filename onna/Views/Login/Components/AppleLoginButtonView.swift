@@ -80,7 +80,9 @@ struct AppleLoginButtonView : View {
             }
         )
         .signInWithAppleButtonStyle(.black) // Button Style
-        .frame(width:350,height:50)
+        .frame(width:243, height:36)
+        .cornerRadius(30)
+        .shadow(radius: 4, x: 0, y: 4)
         
     }
 }

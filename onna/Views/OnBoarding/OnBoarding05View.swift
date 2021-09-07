@@ -60,7 +60,7 @@ struct OnBoarding05View: View {
                     .aspectRatio(contentMode: .fit)
                 .ignoresSafeArea()
             
-            NextRoundedButtonView(action: {}).padding(.trailing, 15).padding(.top, -70)
+            NextRoundedButtonView(action: {}).padding(.trailing, 15).padding(.top, -100)
         }
     }
 }
