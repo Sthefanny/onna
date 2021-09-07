@@ -39,7 +39,7 @@ struct Home: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.leading, 30)
-                        TextField("O que te aflinge", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        TextField("O que te aflinge", text: $textInput)
                             .foregroundColor(.white)
                     }.padding(20)
                     
@@ -52,10 +52,10 @@ struct Home: View {
                         .foregroundColor(Color("greyBoxes"))
                     HStack {
                         Rectangle()
-                            .frame(width: 50, height: 50, alignment: .leading)
+                            .frame(width: 50, height: 50)
                             .foregroundColor(.yellow)
                             .cornerRadius(8)
-                            .padding()
+                            .padding(.trailing, 40)
                         VStack(alignment: .leading) {
                             Text("Jornada de Hoje")
                                 .foregroundColor(.white)
@@ -70,11 +70,11 @@ struct Home: View {
                     Image("GirlPower-Home")
                         .resizable()
                         .frame(width: 150, height: 140)
-                        .padding(5)
+                        .padding(8)
                     Image("BodyPositive-Home")
                         .resizable()
                         .frame(width: 150, height: 140)
-                        .padding(5)
+                        .padding(8)
                 }
                 
                 ZStack {
@@ -87,7 +87,7 @@ struct Home: View {
                             .resizable()
                             .frame(width: 60, height: 75)
                             .clipShape(Circle(), style: FillStyle())
-                            .padding()
+                            .padding(.trailing, 40)
                         VStack(alignment: .leading) {
                             Text("Juliana Gomez")
                                 .foregroundColor(.white)
