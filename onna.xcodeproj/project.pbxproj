@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */; };
+		E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */; };
+		E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */; };
+		E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */; };
+		E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */; };
 		E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA126DFF808004DAC6D /* onnaApp.swift */; };
-		E54DFEA426DFF808004DAC6D /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */; };
+		E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */; };
 		E54DFEA626DFF80A004DAC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54DFEA526DFF80A004DAC6D /* Assets.xcassets */; };
 		E54DFEA926DFF80A004DAC6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54DFEA826DFF80A004DAC6D /* Preview Assets.xcassets */; };
 		E54DFEB326DFF838004DAC6D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E54DFEB226DFF838004DAC6D /* CloudKit.framework */; };
@@ -21,9 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
+		E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding02View.swift; sourceTree = "<group>"; };
+		E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonView.swift; sourceTree = "<group>"; };
+		E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresAndLogoView.swift; sourceTree = "<group>"; };
+		E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionSquareView.swift; sourceTree = "<group>"; };
 		E54DFE9E26DFF808004DAC6D /* onna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54DFEA126DFF808004DAC6D /* onnaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onnaApp.swift; sourceTree = "<group>"; };
-		E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding01View.swift; sourceTree = "<group>"; };
 		E54DFEA526DFF80A004DAC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E54DFEA826DFF80A004DAC6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E54DFEAA26DFF80A004DAC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +59,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E52F850226E7D16300F7C8A7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */,
+				E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E52F850526E7D51700F7C8A7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E54DFE9526DFF808004DAC6D = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +127,7 @@
 		E5E5AA0D26E1452D003BFBED /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E52F850226E7D16300F7C8A7 /* Components */,
 				E5F62CBB26E18DE100EEA4D6 /* Extensions */,
 				E5F62CB626E1898000EEA4D6 /* Enums */,
 				E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */,
@@ -144,7 +172,10 @@
 		E5F62CBE26E191FF00EEA4D6 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */,
+				E52F850526E7D51700F7C8A7 /* Components */,
+				E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */,
+				E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */,
+				E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -223,9 +254,14 @@
 			files = (
 				E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */,
 				E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */,
-				E54DFEA426DFF808004DAC6D /* OnBoardingView.swift in Sources */,
+				E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */,
+				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
+				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
+				E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */,
 				E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */,
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
+				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
+				E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

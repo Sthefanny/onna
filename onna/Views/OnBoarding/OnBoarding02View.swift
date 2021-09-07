@@ -1,21 +1,23 @@
 //
-//  ContentView.swift
+//  OnBoarding02View.swift
 //  onna
 //
-//  Created by Sthefanny Gonzaga on 01/09/21.
+//  Created by Sthefanny Gonzaga on 07/09/21.
 //
 
 import SwiftUI
 
-struct OnBoardingView: View {
+struct OnBoarding02View: View {
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
-            Color.onnaGreen.edgesIgnoringSafeArea(.all)
+            Color.onnaPink.edgesIgnoringSafeArea(.all)
+            
             VStack(alignment: .leading) {
                 _buildProgressionSquares
                 _buildLogoAndName
-                _buildTitle
-                _buildDescription
+                _buildTitleAndDescription
+                NextRoundedButtonView(action: {})
                 _buildImage
             }
         }
@@ -57,6 +59,14 @@ struct OnBoardingView: View {
         .padding(.top, 10)
     }
     
+    var _buildTitleAndDescription: some View {
+        VStack (alignment: .leading) {
+            _buildTitle
+            _buildDescription
+        }
+        .padding(.leading, 30)
+    }
+    
     var _buildTitle: some View {
         VStack {
             Text("OI,\nPRAZER")
@@ -68,7 +78,6 @@ struct OnBoardingView: View {
                 .frame(width: 165, height: 3, alignment: .center)
                 .padding(.top, -20)
         }
-        .padding(.leading, 50)
         .padding(.top, 20)
     }
     
@@ -81,25 +90,22 @@ struct OnBoardingView: View {
                 .frame(width: 250, height: 140, alignment: .center)
         }
         .padding(.top, -35)
-        .padding(.leading, 50)
     }
     
     var _buildImage: some View {
-        VStack(alignment: .trailing) {
+        HStack {
             Spacer()
             Image("Bru")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
-        .frame(width: .infinity, height: .infinity, alignment: .bottomTrailing)
         .ignoresSafeArea()
-        .padding(.bottom, 0)
+        .padding(.leading, 5)
     }
 }
 
-struct OnBoardingView_Previews: PreviewProvider {
+struct OnBoarding02View_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
-            .previewDevice("iPhone 12")
+        OnBoarding02View()
     }
 }

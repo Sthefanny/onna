@@ -11,7 +11,7 @@ import SwiftUI
 struct onnaApp: App {
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            OnBoarding01View()
         }
     }
 }
