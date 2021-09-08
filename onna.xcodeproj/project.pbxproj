@@ -28,6 +28,8 @@
 		E552EA9926E82B0D00035C4B /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9826E82B0D00035C4B /* ViewRouter.swift */; };
 		E552EA9B26E82B3500035C4B /* PageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9A26E82B3500035C4B /* PageEnum.swift */; };
 		E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9D26E82BAA00035C4B /* NavigationView.swift */; };
+		E5A2604D26E8E388003BADB4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2604C26E8E388003BADB4 /* ProfileView.swift */; };
+		E5A2604F26E8E45E003BADB4 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2604E26E8E45E003BADB4 /* TimelineView.swift */; };
 		E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */; };
 		E5E5AA1226E1543F003BFBED /* bruno-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1126E1541E003BFBED /* bruno-regular.otf */; };
 		E5E5AA1526E16868003BFBED /* chivo-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */; };
@@ -61,6 +63,8 @@
 		E552EA9826E82B0D00035C4B /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		E552EA9A26E82B3500035C4B /* PageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageEnum.swift; sourceTree = "<group>"; };
 		E552EA9D26E82BAA00035C4B /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		E5A2604C26E8E388003BADB4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E5A2604E26E8E45E003BADB4 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnnaFontSystem.swift; sourceTree = "<group>"; };
 		E5E5AA1126E1541E003BFBED /* bruno-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bruno-regular.otf"; sourceTree = "<group>"; };
 		E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-bold.ttf"; sourceTree = "<group>"; };
@@ -84,8 +88,8 @@
 		4146A40A26E7213E0013A8A9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E5A2605026E8E4CA003BADB4 /* Components */,
 				4146A40826E721360013A8A9 /* HomeView.swift */,
-				4146A40B26E722920013A8A9 /* StoryCellView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -181,6 +185,30 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		E5A2604A26E8E36F003BADB4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E5A2604C26E8E388003BADB4 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E5A2604B26E8E376003BADB4 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				E5A2604E26E8E45E003BADB4 /* TimelineView.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		E5A2605026E8E4CA003BADB4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4146A40B26E722920013A8A9 /* StoryCellView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E5E5AA0D26E1452D003BFBED /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +255,9 @@
 				E552EA9C26E82B9D00035C4B /* Navigation */,
 				E5F62CBE26E191FF00EEA4D6 /* OnBoarding */,
 				E552EA9426E818E800035C4B /* Login */,
+				E5A2604B26E8E376003BADB4 /* Timeline */,
 				4146A40A26E7213E0013A8A9 /* Home */,
+				E5A2604A26E8E36F003BADB4 /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,9 +364,11 @@
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
 				E552EA9626E8190000035C4B /* LoginView.swift in Sources */,
 				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
+				E5A2604F26E8E45E003BADB4 /* TimelineView.swift in Sources */,
 				E552EA8B26E7E2BC00035C4B /* TextFieldWithButtonView.swift in Sources */,
 				E552EA8D26E7F32100035C4B /* OnBoarding03View.swift in Sources */,
 				E552EA8F26E8011600035C4B /* UserDefaultsKeysEnum.swift in Sources */,
+				E5A2604D26E8E388003BADB4 /* ProfileView.swift in Sources */,
 				E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,7 +26,22 @@ struct NavigationView: View {
             case .loginView:
                 LoginView()
             case .homeView:
-                HomeView()
+                switch viewRouter.previousPage {
+                case .profileView:
+                    HomeView()
+                        .transition(.move(edge: .leading))
+                case .timelineView:
+                    HomeView()
+                        .transition(.move(edge: .trailing))
+                default:
+                    HomeView()
+                }
+            case .profileView:
+                ProfileView()
+                    .transition(.move(edge: .trailing))
+            case .timelineView:
+                TimelineView()
+                    .transition(.move(edge: .leading))
             }
         }
 }
