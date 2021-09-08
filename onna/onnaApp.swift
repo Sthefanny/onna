@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct onnaApp: App {
+    @StateObject var viewRouter = ViewRouter()
+        
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            NavigationView().environmentObject(viewRouter)
         }
     }
 }

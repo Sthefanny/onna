@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4146A40926E721360013A8A9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40826E721360013A8A9 /* Home.swift */; };
+		4146A40926E721360013A8A9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40826E721360013A8A9 /* HomeView.swift */; };
 		4146A40C26E722920013A8A9 /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40B26E722920013A8A9 /* StoryCellView.swift */; };
+		E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */; };
+		E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */; };
+		E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */; };
+		E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */; };
+		E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */; };
 		E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA126DFF808004DAC6D /* onnaApp.swift */; };
-		E54DFEA426DFF808004DAC6D /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */; };
+		E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */; };
 		E54DFEA626DFF80A004DAC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54DFEA526DFF80A004DAC6D /* Assets.xcassets */; };
 		E54DFEA926DFF80A004DAC6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54DFEA826DFF80A004DAC6D /* Preview Assets.xcassets */; };
 		E54DFEB326DFF838004DAC6D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E54DFEB226DFF838004DAC6D /* CloudKit.framework */; };
+		E552EA8B26E7E2BC00035C4B /* TextFieldWithButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA8A26E7E2BC00035C4B /* TextFieldWithButtonView.swift */; };
+		E552EA8D26E7F32100035C4B /* OnBoarding03View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA8C26E7F32100035C4B /* OnBoarding03View.swift */; };
+		E552EA8F26E8011600035C4B /* UserDefaultsKeysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA8E26E8011600035C4B /* UserDefaultsKeysEnum.swift */; };
+		E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9026E808C200035C4B /* OnBoarding04View.swift */; };
+		E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9226E80AF000035C4B /* OnBoarding05View.swift */; };
+		E552EA9626E8190000035C4B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9526E8190000035C4B /* LoginView.swift */; };
+		E552EA9926E82B0D00035C4B /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9826E82B0D00035C4B /* ViewRouter.swift */; };
+		E552EA9B26E82B3500035C4B /* PageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9A26E82B3500035C4B /* PageEnum.swift */; };
+		E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9D26E82BAA00035C4B /* NavigationView.swift */; };
 		E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */; };
 		E5E5AA1226E1543F003BFBED /* bruno-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1126E1541E003BFBED /* bruno-regular.otf */; };
 		E5E5AA1526E16868003BFBED /* chivo-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */; };
@@ -23,16 +37,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4146A40826E721360013A8A9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		4146A40826E721360013A8A9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4146A40B26E722920013A8A9 /* StoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
+		E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
+		E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding02View.swift; sourceTree = "<group>"; };
+		E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonView.swift; sourceTree = "<group>"; };
+		E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresAndLogoView.swift; sourceTree = "<group>"; };
+		E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionSquareView.swift; sourceTree = "<group>"; };
 		E54DFE9E26DFF808004DAC6D /* onna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54DFEA126DFF808004DAC6D /* onnaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onnaApp.swift; sourceTree = "<group>"; };
-		E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding01View.swift; sourceTree = "<group>"; };
 		E54DFEA526DFF80A004DAC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E54DFEA826DFF80A004DAC6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E54DFEAA26DFF80A004DAC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E54DFEB026DFF834004DAC6D /* onna.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onna.entitlements; sourceTree = "<group>"; };
 		E54DFEB226DFF838004DAC6D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E552EA8A26E7E2BC00035C4B /* TextFieldWithButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithButtonView.swift; sourceTree = "<group>"; };
+		E552EA8C26E7F32100035C4B /* OnBoarding03View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding03View.swift; sourceTree = "<group>"; };
+		E552EA8E26E8011600035C4B /* UserDefaultsKeysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeysEnum.swift; sourceTree = "<group>"; };
+		E552EA9026E808C200035C4B /* OnBoarding04View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding04View.swift; sourceTree = "<group>"; };
+		E552EA9226E80AF000035C4B /* OnBoarding05View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding05View.swift; sourceTree = "<group>"; };
+		E552EA9526E8190000035C4B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E552EA9826E82B0D00035C4B /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		E552EA9A26E82B3500035C4B /* PageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageEnum.swift; sourceTree = "<group>"; };
+		E552EA9D26E82BAA00035C4B /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnnaFontSystem.swift; sourceTree = "<group>"; };
 		E5E5AA1126E1541E003BFBED /* bruno-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bruno-regular.otf"; sourceTree = "<group>"; };
 		E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-bold.ttf"; sourceTree = "<group>"; };
@@ -56,10 +84,28 @@
 		4146A40A26E7213E0013A8A9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				4146A40826E721360013A8A9 /* Home.swift */,
+				4146A40826E721360013A8A9 /* HomeView.swift */,
 				4146A40B26E722920013A8A9 /* StoryCellView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		E52F850226E7D16300F7C8A7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */,
+				E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */,
+				E552EA8A26E7E2BC00035C4B /* TextFieldWithButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E52F850526E7D51700F7C8A7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		E54DFE9526DFF808004DAC6D = {
@@ -110,12 +156,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E552EA9426E818E800035C4B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E552EA9726E8190D00035C4B /* Components */,
+				E552EA9526E8190000035C4B /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E552EA9726E8190D00035C4B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E552EA9C26E82B9D00035C4B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E552EA9D26E82BAA00035C4B /* NavigationView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		E5E5AA0D26E1452D003BFBED /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E52F850226E7D16300F7C8A7 /* Components */,
 				E5F62CBB26E18DE100EEA4D6 /* Extensions */,
 				E5F62CB626E1898000EEA4D6 /* Enums */,
 				E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */,
+				E552EA9826E82B0D00035C4B /* ViewRouter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -134,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */,
+				E552EA8E26E8011600035C4B /* UserDefaultsKeysEnum.swift */,
+				E552EA9A26E82B3500035C4B /* PageEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -149,7 +224,9 @@
 		E5F62CBD26E191F700EEA4D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E552EA9C26E82B9D00035C4B /* Navigation */,
 				E5F62CBE26E191FF00EEA4D6 /* OnBoarding */,
+				E552EA9426E818E800035C4B /* Login */,
 				4146A40A26E7213E0013A8A9 /* Home */,
 			);
 			path = Views;
@@ -158,7 +235,12 @@
 		E5F62CBE26E191FF00EEA4D6 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				E54DFEA326DFF808004DAC6D /* OnBoardingView.swift */,
+				E52F850526E7D51700F7C8A7 /* Components */,
+				E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */,
+				E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */,
+				E552EA8C26E7F32100035C4B /* OnBoarding03View.swift */,
+				E552EA9026E808C200035C4B /* OnBoarding04View.swift */,
+				E552EA9226E80AF000035C4B /* OnBoarding05View.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -235,13 +317,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */,
 				E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */,
 				E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */,
-				E54DFEA426DFF808004DAC6D /* OnBoardingView.swift in Sources */,
+				E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */,
+				E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */,
+				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
+				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
+				E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */,
+				E552EA9B26E82B3500035C4B /* PageEnum.swift in Sources */,
+				E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */,
 				E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */,
-				4146A40926E721360013A8A9 /* Home.swift in Sources */,
+				4146A40926E721360013A8A9 /* HomeView.swift in Sources */,
 				4146A40C26E722920013A8A9 /* StoryCellView.swift in Sources */,
+				E552EA9926E82B0D00035C4B /* ViewRouter.swift in Sources */,
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
+				E552EA9626E8190000035C4B /* LoginView.swift in Sources */,
+				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
+				E552EA8B26E7E2BC00035C4B /* TextFieldWithButtonView.swift in Sources */,
+				E552EA8D26E7F32100035C4B /* OnBoarding03View.swift in Sources */,
+				E552EA8F26E8011600035C4B /* UserDefaultsKeysEnum.swift in Sources */,
+				E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
