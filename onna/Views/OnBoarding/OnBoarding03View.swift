@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnBoarding03View: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @State var userName: String = "Stel" //ToDo: Remover default
+    @State var userName: String = ""
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {

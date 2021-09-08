@@ -28,7 +28,7 @@ struct OnBoarding01View: View {
             .padding(.top, 5)
         }
         .onAppear() {
-            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
+//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
             let isLogged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogged.name)
             print("isLogged = \(isLogged)")
             if isLogged {
