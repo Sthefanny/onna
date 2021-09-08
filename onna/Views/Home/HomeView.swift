@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct HomeView: View {
     var instaStoryCells: [InstaStoryInfo] = [
         InstaStoryInfo(image: "Bru", text: "Menstruar", content: ""),
         InstaStoryInfo(image: "Deh", text: "Filtros", content: ""),
@@ -116,6 +116,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        HomeView()
     }
 }

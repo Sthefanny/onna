@@ -10,8 +10,10 @@ import Foundation
 enum UserDefaultsKeys: String {
     case userId = "userId"
     case email = "email"
+    case nickName = "nickName"
     case firstName = "firstName"
     case lastName = "lastName"
+    case isLogged = "isLogged"
 
     var name: String {
         return self.rawValue

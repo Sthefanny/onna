@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnBoarding03View: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @State var userName: String = "Stel" //ToDo: Remover default
     
     var body: some View {
@@ -24,11 +25,11 @@ struct OnBoarding03View: View {
                 .ignoresSafeArea()
                 .padding(.top, 5)
                 
-                NextRoundedButtonView(action: {}).padding(.trailing, 15)
+                NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .onBoarding04View}, hasError: .constant(false)).padding(.trailing, 15)
             }
         }
         .onAppear() {
-            if let data = UserDefaults.standard.string(forKey: UserDefaultsKeys.firstName.name) {
+            if let data = UserDefaults.standard.string(forKey: UserDefaultsKeys.nickName.name) {
                 userName = data
             }
         }

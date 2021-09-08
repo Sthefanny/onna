@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnBoarding02View: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -64,7 +65,7 @@ struct OnBoarding02View: View {
     }
     
     var _buildNameTextField: some View {
-        TextFieldWithButtonView(text: "")
+        TextFieldWithButtonView(fieldName: "Nome", action: {viewRouter.currentPage = .onBoarding03View})
             .padding(.horizontal, 20)
     }
     

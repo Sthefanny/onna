@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             Image("Onboarding-Background-Gradient")
@@ -33,7 +35,11 @@ struct LoginView: View {
     }
     
     var _buildAppleButton: some View {
-        AppleLoginButtonView(login: true)
+        AppleLoginButtonView(action: {
+            DispatchQueue.main.async {
+                viewRouter.currentPage = .homeView
+            }
+        })
     }
     
     var _buildTerms: some View {

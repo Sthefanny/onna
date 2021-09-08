@@ -10,6 +10,7 @@ import SwiftUI
 struct OnBoarding01View: View {
     @AppStorage("login") private var login = false
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -18,17 +19,22 @@ struct OnBoarding01View: View {
             VStack(alignment: .leading) {
                 SquaresAndLogoView(actualSquare: 0)
                 _buildTitleAndDescription
-                NextRoundedButtonView(action: {}).padding(.trailing, 15)
+                NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .onBoarding02View}, hasError: .constant(false))
+                    .padding(.trailing, 15)
                 Spacer()
                 _buildImage
             }
             .ignoresSafeArea()
             .padding(.top, 5)
-//            if (!login && (userID == nil)) {
-//                AppleLoginButtonView(login: login)
-//            } else{
-//                Text("LOGADO!!!!!!")
-//            }
+        }
+        .onAppear() {
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
+            let isLogged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogged.name)
+            print("isLogged = \(isLogged)")
+            if isLogged {
+                viewRouter.currentPage = .homeView
+            }
+            
         }
     }
     

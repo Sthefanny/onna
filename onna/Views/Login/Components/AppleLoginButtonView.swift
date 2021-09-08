@@ -11,7 +11,7 @@ import AuthenticationServices
 
 struct AppleLoginButtonView : View {
     
-    @State var login: Bool
+    @State var action: () -> Void
     
     var body: some View {
         
@@ -43,13 +43,14 @@ struct AppleLoginButtonView : View {
                                 // Save to local
                                 UserDefaults.standard.set(email, forKey: UserDefaultsKeys.email.name)
                                 UserDefaults.standard.set(firstName, forKey: UserDefaultsKeys.firstName.name)
-                                UserDefaults.standard.set(lastName, forKey: "lastName")
+                                UserDefaults.standard.set(lastName, forKey: UserDefaultsKeys.lastName.name)
+                                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogged.name)
                                 let publicDatabase = CKContainer.default().publicCloudDatabase
                                 publicDatabase.save(record) { (_, _) in
                                     UserDefaults.standard.set(record.recordID.recordName, forKey: UserDefaultsKeys.userId.name)
                                 }
                                 // Change login state
-                                self.login = true
+                                self.action()
                             } else {
                                 // For returning user to signin,
                                 // fetch the saved records from Cloudkit
@@ -64,8 +65,9 @@ struct AppleLoginButtonView : View {
                                         UserDefaults.standard.set(email, forKey: UserDefaultsKeys.email.name)
                                         UserDefaults.standard.set(firstName, forKey: UserDefaultsKeys.firstName.name)
                                         UserDefaults.standard.set(lastName, forKey: UserDefaultsKeys.lastName.name)
+                                        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogged.name)
                                         // Change login state
-                                        self.login = true
+                                        self.action()
                                     }
                                 }
                             }

@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct TextFieldWithButtonView: View {
-    @State var text: String
+    @State var fieldName: String
+    @State private var text: String = ""
+    @State var action: () -> Void
     
     var body: some View {
         TextField("" , text: $text)
             .placeholder(when: text.isEmpty) {
                     Text("Escreva seu nome ou apelido aqui").foregroundColor(.onnaWhite.opacity(0.8))
             }
+            .onChange(of: text) { _ in
+                UserDefaults.standard.set(text, forKey: UserDefaultsKeys.nickName.name)
+            }
             .foregroundColor(.white)
-            .modifier(ClearButton(text: $text))
+            .modifier(GoButton(fieldName: $fieldName, text: $text, action: $action))
             .padding(.vertical, 8)
             .padding(.leading, 20)
             .padding(.trailing, 8)
@@ -39,17 +44,19 @@ extension View {
     }
 }
 
-struct ClearButton: ViewModifier
-{
+struct GoButton: ViewModifier {
+    @Binding var fieldName: String
     @Binding var text: String
+    @Binding var action: () -> Void
+    @State private var showErrorAlert: Bool = false
 
     public func body(content: Content) -> some View
     {
         ZStack(alignment: .trailing)
         {
             content
-
-            NextRoundedButtonView(action: {})
+            
+            NextRoundedButtonView(fieldName: self.fieldName, action: self.action, hasError: .constant(text.isEmpty))
         }
     }
 }
@@ -58,7 +65,7 @@ struct TextFieldWithButtonView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaPink.edgesIgnoringSafeArea(.all)
-            TextFieldWithButtonView(text: "")
+            TextFieldWithButtonView(fieldName: "", action: {})
         }
     }
 }

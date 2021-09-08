@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnBoarding04View: View {
+    @EnvironmentObject var viewRouter: ViewRouter
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaYellow.edgesIgnoringSafeArea(.all)
@@ -21,7 +23,8 @@ struct OnBoarding04View: View {
                 .ignoresSafeArea()
                 .padding(.top, 5)
                 
-                NextRoundedButtonView(action: {}).padding(.trailing, 15).padding(.top, 50)
+                NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .onBoarding05View}, hasError: .constant(false))
+                    .padding(.trailing, 15).padding(.top, 50)
             }
         }
     }
