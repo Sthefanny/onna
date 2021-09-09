@@ -14,6 +14,9 @@
 		E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */; };
 		E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */; };
 		E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */; };
+		E543657F26E95663005339A7 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543657E26E95663005339A7 /* JourneyViewModel.swift */; };
+		E543658126E956D1005339A7 /* UrlConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543658026E956D1005339A7 /* UrlConfigEnum.swift */; };
+		E543658326E957D5005339A7 /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543658226E957D5005339A7 /* JourneyModel.swift */; };
 		E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA126DFF808004DAC6D /* onnaApp.swift */; };
 		E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */; };
 		E54DFEA626DFF80A004DAC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54DFEA526DFF80A004DAC6D /* Assets.xcassets */; };
@@ -46,6 +49,9 @@
 		E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonView.swift; sourceTree = "<group>"; };
 		E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresAndLogoView.swift; sourceTree = "<group>"; };
 		E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionSquareView.swift; sourceTree = "<group>"; };
+		E543657E26E95663005339A7 /* JourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewModel.swift; sourceTree = "<group>"; };
+		E543658026E956D1005339A7 /* UrlConfigEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlConfigEnum.swift; sourceTree = "<group>"; };
+		E543658226E957D5005339A7 /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		E54DFE9E26DFF808004DAC6D /* onna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54DFEA126DFF808004DAC6D /* onnaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onnaApp.swift; sourceTree = "<group>"; };
 		E54DFEA326DFF808004DAC6D /* OnBoarding01View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding01View.swift; sourceTree = "<group>"; };
@@ -112,6 +118,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E543657C26E94FF4005339A7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E543657E26E95663005339A7 /* JourneyViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E543657D26E94FFC005339A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E543658226E957D5005339A7 /* JourneyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E54DFE9526DFF808004DAC6D = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +154,8 @@
 		E54DFEA026DFF808004DAC6D /* onna */ = {
 			isa = PBXGroup;
 			children = (
+				E543657D26E94FFC005339A7 /* Models */,
+				E543657C26E94FF4005339A7 /* ViewModels */,
 				E5F62CBD26E191F700EEA4D6 /* Views */,
 				E5E5AA1026E1535C003BFBED /* Fonts */,
 				E5E5AA0D26E1452D003BFBED /* Common */,
@@ -234,6 +258,7 @@
 		E5F62CB626E1898000EEA4D6 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				E543658026E956D1005339A7 /* UrlConfigEnum.swift */,
 				E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */,
 				E552EA8E26E8011600035C4B /* UserDefaultsKeysEnum.swift */,
 				E552EA9A26E82B3500035C4B /* PageEnum.swift */,
@@ -348,11 +373,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */,
+				E543657F26E95663005339A7 /* JourneyViewModel.swift in Sources */,
 				E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */,
 				E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */,
 				E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */,
 				E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */,
 				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
+				E543658126E956D1005339A7 /* UrlConfigEnum.swift in Sources */,
+				E543658326E957D5005339A7 /* JourneyModel.swift in Sources */,
 				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
 				E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */,
 				E552EA9B26E82B3500035C4B /* PageEnum.swift in Sources */,

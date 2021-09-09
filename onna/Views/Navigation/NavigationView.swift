@@ -16,7 +16,6 @@ struct NavigationView: View {
                 OnBoarding01View()
             case .onBoarding02View:
                 OnBoarding02View()
-                    .transition(.scale)
             case .onBoarding03View:
                 OnBoarding03View()
             case .onBoarding04View:

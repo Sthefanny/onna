@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
+    @ObservedObject var viewModel = JourneyViewModel()
     
     var instaStoryCells: [InstaStoryInfo] = [
         InstaStoryInfo(image: "Bru", text: "Menstruar", content: ""),
@@ -35,6 +36,10 @@ struct HomeView: View {
                 _buildSecondContentLine
                 
             }
+        }
+        .onAppear {
+            print("TESTES")
+            viewModel.fetchJourney()
         }
         .gesture(
             DragGesture()
@@ -89,27 +94,27 @@ struct HomeView: View {
     }
     
     var _buildTodayJourney: some View {
-        ZStack {
+        HStack {
+            let jorney = viewModel.journey.first
             Rectangle()
-                .frame(width: 335, height: 120, alignment: .center)
-                .cornerRadius(20)
-                .foregroundColor(Color("greyBoxes"))
-            HStack {
-                Rectangle()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(.yellow)
-                    .cornerRadius(8)
-                    .padding(.trailing, 40)
-                VStack(alignment: .leading) {
-                    Text("Jornada de Hoje")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                    Text("Lorem ipsum sit dor nao \nlembro o resto")
-                        .foregroundColor(.white)
-                        .font(.caption2)
-                }
+                .frame(width: 50, height: 50)
+                .foregroundColor(.yellow)
+                .cornerRadius(8)
+            Spacer()
+            VStack(alignment: .leading) {
+                Text(jorney?.title ?? "")
+                    .foregroundColor(.white)
+                    .font(.title2)
+                Text(jorney?.description ?? "")
+                    .foregroundColor(.white)
+                    .font(.caption2)
             }
+            Spacer()
         }
+        .padding()
+        .frame(width: 335, height: 120, alignment: .center)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(.onnaGreyBoxes.opacity(0.4))
     }
     
     var _buildFirstContentLine: some View {
