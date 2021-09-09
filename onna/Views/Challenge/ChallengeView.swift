@@ -60,7 +60,15 @@ struct ChallengeView: View {
                             .onnaFont(.body)
                             .foregroundColor(.onnaBlue)
                             .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 0))
+                        
                     }
+                    //Botao
+                    Text("Bora escrever!").font(.custom("Chivo Regular", size: 18))
+                        .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
+                        .frame(width: 163, height: 41, alignment: .center)
+                        .background(RoundedRectangle(cornerRadius: 50))
+                        .foregroundColor(.onnaBackgroundBlack)
+                        .padding(.top, 32)
                 }
             }
         }
