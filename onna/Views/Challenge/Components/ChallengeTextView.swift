@@ -9,7 +9,45 @@ import SwiftUI
 
 struct ChallengeTextView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack (alignment: .leading){
+            
+            HStack (alignment: .center, spacing: 8){
+                //Challenge Superior
+                Image("StarPreto")
+                    .scaledToFit()
+                    .frame(width: 13, height: 12, alignment: .center)
+                
+                //Challenge
+                Text("Challenge")
+                    .onnaFont(.callout)
+                    .foregroundColor(.onnaBackgroundBlack)
+                
+                Image("StarPreto")
+                    .scaledToFit()
+                    .frame(width: 13, height: 12, alignment: .center)
+
+            }
+            .padding(.leading, 20)
+            
+            //Title
+            Text("Amor Próprio")
+                .onnaFont(.largeTitle)
+                .foregroundColor(.onnaBackgroundBlack).multilineTextAlignment(.leading)
+                .padding(.init(top: 0, leading: 20, bottom: 19, trailing: 0))
+            
+            //description
+            Text("Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.")
+                .onnaFont(.body)
+                .foregroundColor(.onnaBackgroundBlack)
+                .padding(.init(top: 0, leading: 20, bottom: 8, trailing: 20))
+            
+            //Tip
+            Text("Pense com carinho :)")
+                .onnaFont(.body)
+                .foregroundColor(.onnaBlue)
+                .padding(.leading, 20)
+            
+        }
     }
 }
 

@@ -9,12 +9,33 @@ import SwiftUI
 
 struct ConteudoVoltarView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack (alignment: .center, spacing: 108) {
+            
+            Label("Voltar", systemImage: "chevron.backward")
+                .onnaFont(.body)
+                .foregroundColor(.onnaWhite)
+                .padding(.top, 35)
+            
+            Text("BLOG")
+                .onnaFont(.body)
+                .foregroundColor(.onnaWhite)
+                .padding(.top, 35)
+            
+            Image(systemName: "heart")
+                .imageScale(.large)
+                .foregroundColor(.onnaWhite)
+                .padding(.top, 35)
+            
+        }
+        .padding()
     }
 }
 
 struct ConteudoVoltarView_Previews: PreviewProvider {
     static var previews: some View {
-        ConteudoVoltarView()
+        ZStack {
+            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
+            ConteudoVoltarView()
+        }
     }
 }

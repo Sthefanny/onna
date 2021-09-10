@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ChallengeButtonView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Bora escrever!")
+            .onnaFont(.body)
+            .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
+            .frame(width: 163, height: 41, alignment: .center)
+            .background(RoundedRectangle(cornerRadius: 50))
+            .foregroundColor(.onnaBackgroundBlack)
+            .padding(.top, 32)
     }
 }
 

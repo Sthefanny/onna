@@ -22,25 +22,7 @@ struct ChallengeView: View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            HStack (alignment: .center, spacing: 108) {
-                
-                Label("Voltar", systemImage: "chevron.backward")
-                    .onnaFont(.body)
-                    .foregroundColor(.onnaWhite)
-                    .padding(.top, 35)
-                
-                Text("BLOG")
-                    .onnaFont(.body)
-                    .foregroundColor(.onnaWhite)
-                    .padding(.top, 35)
-                
-                Image(systemName: "heart")
-                    .imageScale(.large)
-                    .foregroundColor(.onnaWhite)
-                    .padding(.top, 35)
-                
-            }
-            .padding()
+            ConteudoVoltarView()
             
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
@@ -54,53 +36,8 @@ struct ChallengeView: View {
                         .frame(width: 180, height: 250)
                         .padding(.top, 19)
                     
-                    
-                    VStack (alignment: .leading){
-                        
-                        HStack (alignment: .center, spacing: 8){
-                            Image("StarPreto")
-                                .scaledToFit()
-                                .frame(width: 13, height: 12, alignment: .center)
-                            
-                            //Challenge
-                            Text("Challenge")
-                                .onnaFont(.callout)
-                                .foregroundColor(.onnaBackgroundBlack)
-                            
-                            Image("StarPreto")
-                                .scaledToFit()
-                                .frame(width: 13, height: 12, alignment: .center)
-
-                        }
-                        .padding(.leading, 20)
-                        
-                        //Title
-                        Text("Amor Próprio")
-                            .onnaFont(.largeTitle)
-                            .foregroundColor(.onnaBackgroundBlack).multilineTextAlignment(.leading)
-                            .padding(.init(top: 0, leading: 20, bottom: 19, trailing: 0))
-                        
-                        //description
-                        Text("Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.")
-                            .onnaFont(.body)
-                            .foregroundColor(.onnaBackgroundBlack)
-                            .padding(.init(top: 0, leading: 20, bottom: 8, trailing: 20))
-                        
-                        //Tip
-                        Text("Pense com carinho :)")
-                            .onnaFont(.body)
-                            .foregroundColor(.onnaBlue)
-                            .padding(.leading, 20)
-                        
-                    }
-                    //Botao
-                    Text("Bora escrever!")
-                        .onnaFont(.body)
-                        .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
-                        .frame(width: 163, height: 41, alignment: .center)
-                        .background(RoundedRectangle(cornerRadius: 50))
-                        .foregroundColor(.onnaBackgroundBlack)
-                        .padding(.top, 32)
+                    ChallengeTextView()
+                    ChallengeButtonView()
                 }
             }
         }
