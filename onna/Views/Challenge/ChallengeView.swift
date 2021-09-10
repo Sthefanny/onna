@@ -22,6 +22,26 @@ struct ChallengeView: View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
+            HStack (alignment: .center, spacing: 108) {
+                
+                Label("Voltar", systemImage: "chevron.backward")
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaWhite)
+                    .padding(.top, 35)
+                
+                Text("BLOG")
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaWhite)
+                    .padding(.top, 35)
+                
+                Image(systemName: "heart")
+                    .imageScale(.large)
+                    .foregroundColor(.onnaWhite)
+                    .padding(.top, 35)
+                
+            }
+            .padding()
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.onnaWhite)
@@ -40,7 +60,6 @@ struct ChallengeView: View {
                     Text("Challenge")
                         .onnaFont(.callout)
                         .foregroundColor(.onnaBackgroundBlack)
-                        .multilineTextAlignment(.leading)
                         .padding(.init(top: 10, leading: 20, bottom: 8, trailing: 0))
                     
                     //Title
@@ -59,11 +78,12 @@ struct ChallengeView: View {
                         Text("Pense com carinho :)")
                             .onnaFont(.body)
                             .foregroundColor(.onnaBlue)
-                            .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 0))
+                            .padding(.leading, 20)
                         
                     }
                     //Botao
-                    Text("Bora escrever!").font(.custom("Chivo Regular", size: 18))
+                    Text("Bora escrever!")
+                        .onnaFont(.body)
                         .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
                         .frame(width: 163, height: 41, alignment: .center)
                         .background(RoundedRectangle(cornerRadius: 50))
