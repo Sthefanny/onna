@@ -49,24 +49,36 @@ struct ChallengeView: View {
                     .padding(.top, 100)
                 
                 VStack (alignment: .center){
-                Image("Illustration-5")
-                    .resizable()
-                    .frame(width: 180, height: 250)
-                    .padding(.top, 19)
+                    Image("Illustration-5")
+                        .resizable()
+                        .frame(width: 180, height: 250)
+                        .padding(.top, 19)
+                    
                     
                     VStack (alignment: .leading){
                         
-                    //Challenge
-                    Text("Challenge")
-                        .onnaFont(.callout)
-                        .foregroundColor(.onnaBackgroundBlack)
-                        .padding(.init(top: 10, leading: 20, bottom: 8, trailing: 0))
-                    
-                    //Title
-                    Text("Amor Próprio")
-                        .onnaFont(.largeTitle)
-                        .foregroundColor(.onnaBackgroundBlack).multilineTextAlignment(.leading)
-                        .padding(.init(top: 0, leading: 20, bottom: 19, trailing: 0))
+                        HStack (alignment: .center, spacing: 8){
+                            Image("StarPreto")
+                                .scaledToFit()
+                                .frame(width: 13, height: 12, alignment: .center)
+                            
+                            //Challenge
+                            Text("Challenge")
+                                .onnaFont(.callout)
+                                .foregroundColor(.onnaBackgroundBlack)
+                            
+                            Image("StarPreto")
+                                .scaledToFit()
+                                .frame(width: 13, height: 12, alignment: .center)
+
+                        }
+                        .padding(.leading, 20)
+                        
+                        //Title
+                        Text("Amor Próprio")
+                            .onnaFont(.largeTitle)
+                            .foregroundColor(.onnaBackgroundBlack).multilineTextAlignment(.leading)
+                            .padding(.init(top: 0, leading: 20, bottom: 19, trailing: 0))
                         
                         //description
                         Text("Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.")
