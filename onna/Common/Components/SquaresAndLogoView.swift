@@ -9,7 +9,11 @@ import SwiftUI
 
 struct SquaresAndLogoView: View {
     @State var actualSquare: Int
-    
+    @State var image: String
+    @State var text: String
+    @State var color: Color = .onnaWhite
+
+
     var body: some View {
         VStack(alignment: .leading) {
             _buildProgressionSquares
@@ -27,16 +31,15 @@ struct SquaresAndLogoView: View {
         }
         .padding(.top, 10)
     }
-    
     var _buildLogoAndName: some View {
         HStack(alignment: .center) {
-            Image("Onna-Logo")
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50, alignment: .center)
-            Text("Onna")
+            Text(text)
                 .onnaFont(.title2)
-                .foregroundColor(.onnaWhite)
+                .foregroundColor(color)
         }
         .padding(.top, -10)
         .padding(.leading, 40)
@@ -45,6 +48,6 @@ struct SquaresAndLogoView: View {
 
 struct SquaresAndLogoView_Previews: PreviewProvider {
     static var previews: some View {
-        SquaresAndLogoView(actualSquare: 1)
+        SquaresAndLogoView(actualSquare: 1, image : "onna-logo", text : "onna")
     }
 }

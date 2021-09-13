@@ -12,10 +12,10 @@ struct HomeView: View {
     @ObservedObject var viewModel = JourneyViewModel()
     
     var instaStoryCells: [InstaStoryInfo] = [
-        InstaStoryInfo(image: "Bru", text: "Menstruar", content: ""),
-        InstaStoryInfo(image: "Deh", text: "Filtros", content: ""),
-        InstaStoryInfo(image: "Jess", text: "Gravidez", content: ""),
-        InstaStoryInfo(image: "Sthe", text: "Corpo", content: "")
+        InstaStoryInfo(image: "Story01Icon", text: "Filtros", content: ""),
+        InstaStoryInfo(image: "Story02Icon", text: "Corpo", content: ""),
+        InstaStoryInfo(image: "Story03Icon", text: "Mestruação", content: ""),
+        InstaStoryInfo(image: "Story04Icon", text: "Sexualidade", content: "")
     ]
     
     @State private var offset = CGSize.zero
@@ -114,7 +114,7 @@ struct HomeView: View {
         .padding()
         .frame(width: 335, height: 120, alignment: .center)
         .background(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.onnaGreyBoxes.opacity(0.4))
+        .foregroundColor(.onnaGreyBoxes)
     }
     
     var _buildFirstContentLine: some View {
