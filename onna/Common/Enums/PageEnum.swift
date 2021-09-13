@@ -18,4 +18,6 @@ enum Page {
     case homeView
     case profileView
     case timelineView
+    case challengeView
+    case challengeSendTextView
 }

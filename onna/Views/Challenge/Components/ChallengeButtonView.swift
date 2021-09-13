@@ -8,20 +8,27 @@
 import SwiftUI
 
 struct ChallengeButtonView: View {
+    
+    @State var action: () -> Void
     let buttonText: String
+    
     var body: some View {
-        Text(buttonText)
-            .onnaFont(.body)
-            .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
-            .frame(width: 163, height: 41, alignment: .center)
-            .background(RoundedRectangle(cornerRadius: 50))
-            .foregroundColor(.onnaBackgroundBlack)
-            .padding(.top, 32)
+        Button(action: {
+            self.action()
+        }, label: {
+                    Text(buttonText)
+                        .onnaFont(.body)
+                        .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
+                        .frame(width: 163, height: 41, alignment: .center)
+                        .background(RoundedRectangle(cornerRadius: 50))
+                        .foregroundColor(.onnaBackgroundBlack)
+                        .padding(.top, 32)
+        })
     }
 }
 
 struct ChallengeButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeButtonView(buttonText: "Bora escrever!")
+        ChallengeButtonView(action: {}, buttonText: "Bora escrever!")
     }
 }

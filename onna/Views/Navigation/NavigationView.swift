@@ -41,6 +41,10 @@ struct NavigationView: View {
             case .timelineView:
                 TimelineView()
                     .transition(.move(edge: .leading))
+            case .challengeView:
+                ChallengeView()
+            case .challengeSendTextView:
+                ChallengeSendTextView()
             }
         }
 }

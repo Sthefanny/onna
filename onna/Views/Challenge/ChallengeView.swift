@@ -16,6 +16,7 @@ import SwiftUI
 //}
 
 struct ChallengeView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         
@@ -38,7 +39,8 @@ struct ChallengeView: View {
                     
                     ChallengeTextView(challenge: "Challenge", title: "Amor Próprio", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.", tip: "Pense com carinho :)")
                     
-                    ChallengeButtonView(buttonText: "Bora Escrever")
+                    ChallengeButtonView(action: {viewRouter.currentPage = .challengeSendTextView}, buttonText: "Bora escrever!")
+                    
                 }
             }
         }

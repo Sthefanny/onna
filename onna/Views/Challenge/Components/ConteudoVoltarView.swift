@@ -21,9 +21,9 @@ struct ConteudoVoltarView: View {
                 .foregroundColor(.onnaWhite)
                 .padding(.top, 35)
             
-            Image(systemName: "heart")
-                .imageScale(.large)
-                .foregroundColor(.onnaWhite)
+            Image("Icon-Star-White")
+                .resizable()
+                .frame(width: 24, height: 32)
                 .padding(.top, 35)
             
         }
