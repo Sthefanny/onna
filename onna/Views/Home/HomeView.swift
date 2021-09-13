@@ -114,7 +114,7 @@ struct HomeView: View {
         .padding()
         .frame(width: 335, height: 120, alignment: .center)
         .background(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.onnaGreyBoxes.opacity(0.4))
+        .foregroundColor(.onnaGreyBoxes)
     }
     
     var _buildFirstContentLine: some View {
