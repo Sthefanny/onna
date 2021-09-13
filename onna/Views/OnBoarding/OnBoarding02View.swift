@@ -15,7 +15,7 @@ struct OnBoarding02View: View {
             Color.onnaPink.edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading) {
-                SquaresAndLogoView(actualSquare: 1)
+                SquaresAndLogoView(actualSquare: 1, image : "Onna-Logo", text : "onna")
                 _buildTitleAndDescription
                 _buildNameTextField
                 Spacer()
