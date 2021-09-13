@@ -1,22 +1,13 @@
 //
-//  ChallengeView.swift
+//  ChallengeSendTextView.swift
 //  onna
 //
-//  Created by Jessica Akemi Meguro on 09/09/21.
+//  Created by Jessica Akemi Meguro on 13/09/21.
 //
 
 import SwiftUI
 
-//struct Challenges: Decodable {
-//    let id: Int
-//    let journeyId: Int
-//    let title: String
-//    let description: String
-//    let tip: String
-//}
-
-struct ChallengeView: View {
-    
+struct ChallengeSendTextView: View {
     var body: some View {
         
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -30,7 +21,9 @@ struct ChallengeView: View {
                     .frame(width: 390, height: 730, alignment: .bottom)
                     .padding(.top, 100)
                 
-                VStack (alignment: .center){
+                VStack {
+                    Spacer()
+                    
                     Image("Illustration-1")
                         .resizable()
                         .frame(width: 200, height: 200)
@@ -38,16 +31,16 @@ struct ChallengeView: View {
                     
                     ChallengeTextView(challenge: "Challenge", title: "Amor Próprio", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.", tip: "Pense com carinho :)")
                     
-                    ChallengeButtonView(buttonText: "Bora Escrever")
+                    TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "")
                 }
+                
             }
         }
     }
-}
-
-
-struct ChallengeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengeView()
+    
+    struct ChallengeSendTextView_Previews: PreviewProvider {
+        static var previews: some View {
+            ChallengeSendTextView()
+        }
     }
 }

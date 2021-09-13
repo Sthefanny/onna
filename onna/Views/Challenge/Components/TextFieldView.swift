@@ -17,15 +17,12 @@ struct TextFieldView: View {
         VStack (alignment: .center, spacing: 32){
             
             ZStack (alignment: .topLeading){
-            TextEditor(text: $message)
-                .frame(width: 300, height: 120, alignment: .topLeading)
-                .cornerRadius(13.0)
-                .colorMultiply(.onnaGreyStories)
-                .onnaFont(.callout)
-                .padding(internalPadding)
-            //                        .frame(width: 300, height: 120, alignment: .topLeading)
-            //                        .background(RoundedRectangle(cornerRadius: 13))
-            //                            .foregroundColor(.onnaGreyStories)
+                TextEditor(text: $message)
+                    .frame(width: 330, height: 120, alignment: .topLeading)
+                    .cornerRadius(13.0)
+                    .colorMultiply(.onnaGreyStories)
+                    .onnaFont(.callout)
+                    .padding(internalPadding)
                 
                 if message.isEmpty {
                     Text(placeholder)
@@ -41,23 +38,8 @@ struct TextFieldView: View {
                 .frame(width: 163, height: 41, alignment: .center)
                 .background(RoundedRectangle(cornerRadius: 50))
                 .foregroundColor(.onnaBackgroundBlack)
+                .padding(.bottom, 32)
         }
-        
-        
-        //        VStack {
-        //           TextEditor(text: $message)
-        //             .frame(height:300 / 3, alignment: .center)
-        //             .lineSpacing(10)
-        //             .autocapitalization(.words)
-        //             .disableAutocorrection(true)
-        //             .padding()
-        //
-        //        }.overlay(
-        //                 RoundedRectangle(cornerRadius: 25)
-        //                   .stroke(Color.yellow, lineWidth: 5)
-        //                 )
-        //        .padding()
-        
         
         
         

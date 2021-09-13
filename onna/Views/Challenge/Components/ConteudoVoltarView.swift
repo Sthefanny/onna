@@ -15,7 +15,7 @@ struct ConteudoVoltarView: View {
                 .onnaFont(.body)
                 .foregroundColor(.onnaWhite)
                 .padding(.top, 35)
-            
+
             Text("BLOG")
                 .onnaFont(.body)
                 .foregroundColor(.onnaWhite)

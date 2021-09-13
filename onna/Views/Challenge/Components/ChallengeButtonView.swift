@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ChallengeButtonView: View {
+    let buttonText: String
     var body: some View {
-        Text("Bora escrever!")
+        Text(buttonText)
             .onnaFont(.body)
             .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
             .frame(width: 163, height: 41, alignment: .center)
@@ -21,6 +22,6 @@ struct ChallengeButtonView: View {
 
 struct ChallengeButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeButtonView()
+        ChallengeButtonView(buttonText: "Bora escrever!")
     }
 }
