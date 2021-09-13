@@ -9,20 +9,32 @@ import SwiftUI
 
 struct TextFieldView: View {
     
-    @State var message: String = "Fale com o seu eu do futuro..."
+    let placeholder: String
+    @State var message: String
+    let internalPadding: CGFloat = 5
     
     var body: some View {
         VStack (alignment: .center, spacing: 32){
             
+            ZStack (alignment: .topLeading){
             TextEditor(text: $message)
                 .frame(width: 300, height: 120, alignment: .topLeading)
                 .cornerRadius(13.0)
                 .colorMultiply(.onnaGreyStories)
                 .onnaFont(.callout)
+                .padding(internalPadding)
             //                        .frame(width: 300, height: 120, alignment: .topLeading)
             //                        .background(RoundedRectangle(cornerRadius: 13))
             //                            .foregroundColor(.onnaGreyStories)
-            
+                
+                if message.isEmpty {
+                    Text(placeholder)
+                        .foregroundColor(Color.onnaGreyBoxes.opacity(0.4))
+                        .onnaFont(.callout)
+                        .padding(EdgeInsets(top:7, leading: 4, bottom: 0, trailing: 0))
+                        .padding(internalPadding)
+                }
+            }
             Text("Yas!")
                 .onnaFont(.body)
                 .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
@@ -54,6 +66,6 @@ struct TextFieldView: View {
 
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        TextFieldView()
+        TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "")
     }
 }
