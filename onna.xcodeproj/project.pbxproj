@@ -120,6 +120,14 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		0B93583726EFDB1F00E41246 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				0B93583826EFDB3700E41246 /* ContentView.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		0B9F5BC626EBCEAF0098E43B /* Components Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +338,7 @@
 		E5F62CBD26E191F700EEA4D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B93583726EFDB1F00E41246 /* Content */,
 				56E9234626EA8ED50043C0CC /* Stories */,
 				0B3CCBE926EA92BB0066BB44 /* Chat */,
 				E552EA9C26E82B9D00035C4B /* Navigation */,
@@ -439,6 +448,7 @@
 				E598B86526EFDBF4002C6976 /* NextRoundedButtonChat.swift in Sources */,
 				E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */,
 				56E9234826EA8F5E0043C0CC /* Story01View.swift in Sources */,
+				0B93583926EFDB3700E41246 /* ContentView.swift in Sources */,
 				0B3CCBF126EA933D0066BB44 /* ChatView.swift in Sources */,
 				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
 				E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */,
