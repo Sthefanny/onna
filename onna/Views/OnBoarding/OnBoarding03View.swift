@@ -17,7 +17,7 @@ struct OnBoarding03View: View {
             
             ZStack {
                 VStack(alignment: .leading) {
-                    SquaresAndLogoView(actualSquare: 2)
+                    SquaresAndLogoView(actualSquare: 2, image : "Onna-Logo", text : "onna")
                     _buildTitleAndDescription
                     Spacer()
                     _buildImage
