@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B3CCBF126EA933D0066BB44 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3CCBF026EA933D0066BB44 /* ChatView.swift */; };
-		0B9F5BC126EB903A0098E43B /* TextFieldButtonChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F5BC026EB903A0098E43B /* TextFieldButtonChat.swift */; };
-		0B9F5BC426EBAB5A0098E43B /* NextRoundedButtonChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F5BC326EBAB5A0098E43B /* NextRoundedButtonChat.swift */; };
 		0B9F5BC826EBCF1F0098E43B /* ChatAwnsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F5BC726EBCF1F0098E43B /* ChatAwnsersView.swift */; };
 		0B9F5BCD26EBE4220098E43B /* ChatQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F5BCC26EBE4220098E43B /* ChatQuestionView.swift */; };
 		0BDE7C7926EFCAAA0023A4B5 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDE7C7826EFCAAA0023A4B5 /* ForwardButtonView.swift */; };
@@ -41,6 +39,8 @@
 		E552EA9926E82B0D00035C4B /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9826E82B0D00035C4B /* ViewRouter.swift */; };
 		E552EA9B26E82B3500035C4B /* PageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9A26E82B3500035C4B /* PageEnum.swift */; };
 		E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552EA9D26E82BAA00035C4B /* NavigationView.swift */; };
+		E598B86526EFDBF4002C6976 /* NextRoundedButtonChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598B86326EFDBF4002C6976 /* NextRoundedButtonChat.swift */; };
+		E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598B86426EFDBF4002C6976 /* TextFieldButtonChat.swift */; };
 		E5A2604D26E8E388003BADB4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2604C26E8E388003BADB4 /* ProfileView.swift */; };
 		E5A2604F26E8E45E003BADB4 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2604E26E8E45E003BADB4 /* TimelineView.swift */; };
 		E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */; };
@@ -53,8 +53,6 @@
 
 /* Begin PBXFileReference section */
 		0B3CCBF026EA933D0066BB44 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		0B9F5BC026EB903A0098E43B /* TextFieldButtonChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldButtonChat.swift; sourceTree = "<group>"; };
-		0B9F5BC326EBAB5A0098E43B /* NextRoundedButtonChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonChat.swift; sourceTree = "<group>"; };
 		0B9F5BC726EBCF1F0098E43B /* ChatAwnsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAwnsersView.swift; sourceTree = "<group>"; };
 		0B9F5BCC26EBE4220098E43B /* ChatQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatQuestionView.swift; sourceTree = "<group>"; };
 		0BDE7C7826EFCAAA0023A4B5 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
@@ -89,6 +87,8 @@
 		E552EA9826E82B0D00035C4B /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		E552EA9A26E82B3500035C4B /* PageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageEnum.swift; sourceTree = "<group>"; };
 		E552EA9D26E82BAA00035C4B /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		E598B86326EFDBF4002C6976 /* NextRoundedButtonChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonChat.swift; sourceTree = "<group>"; };
+		E598B86426EFDBF4002C6976 /* TextFieldButtonChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldButtonChat.swift; sourceTree = "<group>"; };
 		E5A2604C26E8E388003BADB4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E5A2604E26E8E45E003BADB4 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnnaFontSystem.swift; sourceTree = "<group>"; };
@@ -143,11 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				56E9234926EA90480043C0CC /* Story01 */,
-				E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */,
-				E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */,
-				E552EA8A26E7E2BC00035C4B /* TextFieldWithButtonView.swift */,
-				0B9F5BC026EB903A0098E43B /* TextFieldButtonChat.swift */,
-				0B9F5BC326EBAB5A0098E43B /* NextRoundedButtonChat.swift */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -165,6 +160,8 @@
 		E52F850226E7D16300F7C8A7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E598B86326EFDBF4002C6976 /* NextRoundedButtonChat.swift */,
+				E598B86426EFDBF4002C6976 /* TextFieldButtonChat.swift */,
 				E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */,
 				E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */,
 				E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */,
@@ -439,6 +436,8 @@
 				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
 				E543658126E956D1005339A7 /* UrlConfigEnum.swift in Sources */,
 				E543658326E957D5005339A7 /* JourneyModel.swift in Sources */,
+				E598B86526EFDBF4002C6976 /* NextRoundedButtonChat.swift in Sources */,
+				E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */,
 				56E9234826EA8F5E0043C0CC /* Story01View.swift in Sources */,
 				0B3CCBF126EA933D0066BB44 /* ChatView.swift in Sources */,
 				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
@@ -460,11 +459,9 @@
 				56E9235126EFBF7B0043C0CC /* ExitButtonView.swift in Sources */,
 				E552EA8D26E7F32100035C4B /* OnBoarding03View.swift in Sources */,
 				E552EA8F26E8011600035C4B /* UserDefaultsKeysEnum.swift in Sources */,
-				0B9F5BC126EB903A0098E43B /* TextFieldButtonChat.swift in Sources */,
 				E5A2604D26E8E388003BADB4 /* ProfileView.swift in Sources */,
 				E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */,
 				0BDE7C7926EFCAAA0023A4B5 /* ForwardButtonView.swift in Sources */,
-				0B9F5BC426EBAB5A0098E43B /* NextRoundedButtonChat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
