@@ -14,7 +14,7 @@ struct Story01_3View: View {
                 _buildTextandTtle
                 Spacer()
             }
-            .padding(.top, 4)
+            .padding(.top, 100)
             
             NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .homeView}, hasError: .constant(false))
                 .padding(.vertical, 400)
@@ -29,8 +29,9 @@ struct Story01_3View: View {
                 .aspectRatio(contentMode: .fit)
                 .padding(.leading, -200)
                 .padding(.horizontal, -20)
-                .padding(.vertical, 50)
-            
+                .padding(.vertical, 80)
+            //                .frame(width: 600, height: 600, alignment: .leading)
+            //
         }
         .padding(.top, 5)
         
@@ -74,12 +75,17 @@ var _buildTitle: some View {
         }
         Rectangle()
             .fill(Color.onnaBackgroundBlack)
-            .frame(width: 4, height: 637, alignment: .trailing)
+            .frame(width: 4, height: 400, alignment: .trailing)
             .padding(.top)
         
+        
     }
-    .padding(.horizontal, 10)
+    
+    
+    .padding(.horizontal)
     .padding(.trailing)
+    
+    
 }
 
 var _buildDescription: some View {
@@ -92,7 +98,7 @@ var _buildDescription: some View {
         
     }
     .padding(.horizontal)
-    //    .padding(. trailing)
+    .padding(. trailing)
 }
 struct Story01_3View_Previews: PreviewProvider {
     static var previews: some View {

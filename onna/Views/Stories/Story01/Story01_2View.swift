@@ -8,13 +8,16 @@ struct Story01_2View: View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             Color.onnaGreyStories.edgesIgnoringSafeArea(.all)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 SquaresAndLogoView(actualSquare: 1, image : "Story01Icon", text : "Filtros", color: .onnaBackgroundBlack)
+                
                 _buildTitleAndDescription
                 _buildImage
                 _buildText2
+                    
             }
-            .padding(.top, 5)
+            .padding(.top, 50)
+            
             
             NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .story01View}, hasError: .constant(false))
                 .padding(.vertical, 400)
@@ -22,7 +25,9 @@ struct Story01_2View: View {
             
             
             ExitButtonView(fieldName: "", action: { viewRouter.currentPage = .homeView}, hasError: .constant(false))
-                .padding(.leading, -50)        }
+                .padding(.vertical, 70)
+                .padding(.horizontal, 50)
+        }
     }
     
     var _buildTitleAndDescription: some View {
@@ -54,8 +59,10 @@ struct Story01_2View: View {
             Text("Na era dos filtros, blur e efeito “Paris” nos stories, fica cada vez mais difícil gostar do nossos poros e manchinhas, mas confia na gente, você realmente não iria querer viver sem eles. Sua pele e corpo não aguentariam de calor e de substâncias pressas. E suas marchinhas que te fazem únicas, sem elas não existiriam mais ninguém capaz de servir um close assim. ")
                 .onnaFont(.body)
                 .foregroundColor(.onnaBackgroundBlack)
-                .frame(width: 320, height: 240, alignment: .leading)
+                .frame(width: 300, height: 260, alignment: .leading)
                 .multilineTextAlignment(.trailing)
+               
+
             
         }
         .padding(.horizontal)
@@ -69,6 +76,7 @@ struct Story01_2View: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.horizontal)
+                .padding( .vertical, 10)
         }
     }
     var _buildText2: some View {
@@ -77,7 +85,7 @@ struct Story01_2View: View {
                 .onnaFont(.body)
                 .multilineTextAlignment(.trailing)
                 .foregroundColor(.onnaBackgroundBlack)
-                .frame(width: 380, height: 100, alignment: .center)
+                .frame(width: 340, height: 100, alignment: .center)
         }
         .padding(.top, -35)
     
