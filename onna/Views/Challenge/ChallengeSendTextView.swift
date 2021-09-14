@@ -33,7 +33,7 @@ struct ChallengeSendTextView: View {
                     
                     ChallengeTextView(challenge: "Challenge", title: "Amor Próprio", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.", tip: "Pense com carinho :)")
                 
-                    TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "")
+                    TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
                 }
                 
             }
