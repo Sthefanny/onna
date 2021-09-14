@@ -16,6 +16,7 @@ import SwiftUI
 //}
 
 struct ChallengeView: View {
+    
     @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
@@ -23,7 +24,13 @@ struct ChallengeView: View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView()
+            ConteudoVoltarView(action: {})
+            
+            if viewRouter.previousPage == .homeView {
+                ConteudoVoltarView(action: {viewRouter.currentPage = .homeView})
+            } else {
+                ConteudoVoltarView(action: {viewRouter.currentPage = .timelineView})
+            }
             
             ZStack {
                 RoundedRectangle(cornerRadius: 20)

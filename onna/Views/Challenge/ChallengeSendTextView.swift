@@ -15,7 +15,7 @@ struct ChallengeSendTextView: View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView()
+            ConteudoVoltarView(action: {})
             
             ZStack {
                 RoundedRectangle(cornerRadius: 20)

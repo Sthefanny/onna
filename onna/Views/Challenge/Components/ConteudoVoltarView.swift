@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct ConteudoVoltarView: View {
+    
+    @State var action: () -> Void
+    
     var body: some View {
-        HStack (alignment: .center, spacing: 108) {
+        HStack (alignment: .center, spacing: 100) {
             
-            Label("Voltar", systemImage: "chevron.backward")
-                .onnaFont(.body)
-                .foregroundColor(.onnaWhite)
-                .padding(.top, 35)
+
+            
+            Button(action: {
+                self.action()
+            }, label: {
+                Label("Voltar", systemImage: "chevron.backward")
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaWhite)
+                    .frame(width: 75)
+                    .padding(.top, 35)
+            })
+            
+            //criar uma variavel informando pra qual página quero voltar (passar a função)
 
             Text("BLOG")
                 .onnaFont(.body)
@@ -35,7 +47,7 @@ struct ConteudoVoltarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            ConteudoVoltarView()
+            ConteudoVoltarView(action: {})
         }
     }
 }
