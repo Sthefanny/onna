@@ -10,11 +10,10 @@ import SwiftUI
 struct ConteudoVoltarView: View {
     
     @State var action: () -> Void
+    @State var didTap : Bool = false
     
     var body: some View {
         HStack (alignment: .center, spacing: 100) {
-            
-
             
             Button(action: {
                 self.action()
@@ -23,23 +22,26 @@ struct ConteudoVoltarView: View {
                     .onnaFont(.body)
                     .foregroundColor(.onnaWhite)
                     .frame(width: 75)
-                    .padding(.top, 35)
+                    .padding(EdgeInsets(top:35, leading: 14, bottom: 0, trailing: 0))
             })
             
             //criar uma variavel informando pra qual página quero voltar (passar a função)
-
+            
             Text("BLOG")
                 .onnaFont(.body)
                 .foregroundColor(.onnaWhite)
                 .padding(.top, 35)
             
-            Image("Icon-Star-White")
-                .resizable()
-                .frame(width: 24, height: 32)
-                .padding(.top, 35)
-            
+            Button(action: {
+                self.didTap.toggle()
+            }) {
+                Image(systemName: self.didTap == false ? "heart" : "heart.fill")
+                    .imageScale(.large)
+                    .padding(.top, 35)
+                    .foregroundColor(Color.onnaPink)
+            }
+            .padding()
         }
-        .padding()
     }
 }
 

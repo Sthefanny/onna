@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Icon-Star-All-White.png",
+      "filename" : "Icon-Star-Black-Fill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Icon-Star-All-White-1.png",
+      "filename" : "Icon-Star-Black-Fill-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Icon-Star-All-White-2.png",
+      "filename" : "Icon-Star-Black-Fill-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
