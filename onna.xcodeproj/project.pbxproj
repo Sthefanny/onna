@@ -172,7 +172,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		E52F850226E7D16300F7C8A7 /* Components */ = {
 		56E9234626EA8ED50043C0CC /* Stories */ = {
 			isa = PBXGroup;
 			children = (
