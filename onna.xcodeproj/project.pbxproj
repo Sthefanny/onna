@@ -18,6 +18,8 @@
 		56E9234D26EBCF660043C0CC /* Story01_3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E9234C26EBCF660043C0CC /* Story01_3View.swift */; };
 		56E9235126EFBF7B0043C0CC /* ExitButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E9235026EFBF7B0043C0CC /* ExitButtonView.swift */; };
 		9310511F26F1270300AD89E0 /* Favoritos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310511E26F1270300AD89E0 /* Favoritos.swift */; };
+		9310512126F12E5100AD89E0 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310512026F12E5100AD89E0 /* FavoriteView.swift */; };
+		9310512526F137F100AD89E0 /* YaysConteudoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310512426F137F100AD89E0 /* YaysConteudoView.swift */; };
 		932D3B7A26EA8B1A00C851BC /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D3B7926EA8B1A00C851BC /* ChallengeView.swift */; };
 		9396ABB326EBCC0100075635 /* ConteudoVoltarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396ABB226EBCC0100075635 /* ConteudoVoltarView.swift */; };
 		9396ABB926EBCE1400075635 /* ChallengeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396ABB826EBCE1400075635 /* ChallengeTextView.swift */; };
@@ -70,6 +72,8 @@
 		56E9234C26EBCF660043C0CC /* Story01_3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story01_3View.swift; sourceTree = "<group>"; };
 		56E9235026EFBF7B0043C0CC /* ExitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButtonView.swift; sourceTree = "<group>"; };
 		9310511E26F1270300AD89E0 /* Favoritos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favoritos.swift; sourceTree = "<group>"; };
+		9310512026F12E5100AD89E0 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		9310512426F137F100AD89E0 /* YaysConteudoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaysConteudoView.swift; sourceTree = "<group>"; };
 		932D3B7926EA8B1A00C851BC /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		9396ABB226EBCC0100075635 /* ConteudoVoltarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteudoVoltarView.swift; sourceTree = "<group>"; };
 		9396ABB826EBCE1400075635 /* ChallengeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTextView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				9310511E26F1270300AD89E0 /* Favoritos.swift */,
+				9310512026F12E5100AD89E0 /* FavoriteView.swift */,
+				9310512426F137F100AD89E0 /* YaysConteudoView.swift */,
 			);
 			path = Favoritos;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */,
+				9310512526F137F100AD89E0 /* YaysConteudoView.swift in Sources */,
 				E543657F26E95663005339A7 /* JourneyViewModel.swift in Sources */,
 				E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */,
 				93F0033B26EFC5FF00E5553B /* ChallengeSendTextView.swift in Sources */,
@@ -487,6 +494,7 @@
 				E543658126E956D1005339A7 /* UrlConfigEnum.swift in Sources */,
 				E543658326E957D5005339A7 /* JourneyModel.swift in Sources */,
 				E598B86526EFDBF4002C6976 /* NextRoundedButtonChat.swift in Sources */,
+				9310512126F12E5100AD89E0 /* FavoriteView.swift in Sources */,
 				E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */,
 				56E9234826EA8F5E0043C0CC /* Story01View.swift in Sources */,
 				0B3CCBF126EA933D0066BB44 /* ChatView.swift in Sources */,
