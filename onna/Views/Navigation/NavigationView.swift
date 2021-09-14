@@ -32,15 +32,12 @@ struct NavigationView: View {
             case .timelineView:
                 HomeView()
                     .transition(.move(edge: .trailing))
-            default:
-                HomeView()
-            case .timelineView:
-                TimelineView()
-                    .transition(.move(edge: .leading))
             case .challengeView:
                 ChallengeView()
             case .challengeSendTextView:
                 ChallengeSendTextView()
+            default:
+                HomeView()
             }
         case .profileView:
             ProfileView()
@@ -54,6 +51,10 @@ struct NavigationView: View {
             Story01_3View()
         case .story01View:
             Story01View()
+        case .challengeView:
+            ChallengeView()
+        case .challengeSendTextView:
+            ChallengeSendTextView()
         }
     }
 }
