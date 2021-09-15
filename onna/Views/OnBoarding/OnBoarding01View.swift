@@ -28,15 +28,16 @@ struct OnBoarding01View: View {
             .padding(.top, 5)
         }
         .onAppear() {
-//                        UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
-            let domain = Bundle.main.bundleIdentifier!
-            UserDefaults.standard.removePersistentDomain(forName: domain)
-            UserDefaults.standard.synchronize()
-            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+            // Início - Limpar tudo
+//            let domain = Bundle.main.bundleIdentifier!
+//            UserDefaults.standard.removePersistentDomain(forName: domain)
+//            UserDefaults.standard.synchronize()
+//            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+            // Fim - Limpar tudo
             
-            let isLogged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogged.name)
-            print("isLogged = \(isLogged)")
-            if isLogged {
+            let isLogged = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)
+            print("isLogged = \(String(describing: isLogged))")
+            if isLogged != nil {
                 viewRouter.currentPage = .homeView
             }
             

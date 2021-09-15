@@ -11,16 +11,17 @@ struct TextFieldWithButtonView: View {
     @State var fieldName: String
     @State private var text: String = ""
     @State var action: () -> Void
+    @State var textColor: Color?
     
     var body: some View {
         TextField("" , text: $text)
             .placeholder(when: text.isEmpty) {
-                Text("Escreva seu nome ou apelido aqui").foregroundColor(.onnaWhite)
+                Text("Escreva seu nome ou apelido aqui").foregroundColor(textColor == nil ? .onnaWhite : textColor)
             }
             .onChange(of: text) { _ in
                 UserDefaults.standard.set(text, forKey: UserDefaultsKeys.nickName.name)
             }
-            .foregroundColor(.white)
+            .foregroundColor(textColor == nil ? .white : textColor)
             .modifier(GoButton(fieldName: $fieldName, text: $text, action: $action))
             .padding(.vertical, 8)
             .padding(.leading, 20)
