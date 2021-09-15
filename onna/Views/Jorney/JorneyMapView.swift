@@ -23,7 +23,7 @@ struct JorneyMapView: View {
             _buildButtom1
             _buildButtom2
             _buildButtom3
-            
+    
         }
     }
     var _buildTitleAndDescription: some View {
