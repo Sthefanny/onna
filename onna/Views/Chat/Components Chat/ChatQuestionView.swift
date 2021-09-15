@@ -21,8 +21,10 @@ struct ChatQuestionView: View {
                .frame (width: 317, height: 164, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                .padding()
                .overlay(
-                       RoundedRectangle(cornerRadius: 16)
-                           .stroke(Color.onnaWhite, lineWidth: 1))
+                
+                
+            RoundedRectangle(cornerRadius: 16)
+               .stroke(Color.onnaWhite, lineWidth: 1))
                .padding(30)
         
         HStack{
