@@ -14,6 +14,7 @@ enum UserDefaultsKeys: String {
     case firstName = "firstName"
     case lastName = "lastName"
     case isLogged = "isLogged"
+    case accessToken = "accessToken"
 
     var name: String {
         return self.rawValue

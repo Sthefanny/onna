@@ -10,6 +10,7 @@ import Foundation
 enum UrlConfig: String {
     case baseUrl = "https://onna-api.herokuapp.com"
     case authUrl = "/auth"
+    case loginUrl = "/auth/login"
     case journeyUrl = "/journey"
     case journeyIdUrl = "/journey/{id}"
 

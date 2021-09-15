@@ -28,7 +28,12 @@ struct OnBoarding01View: View {
             .padding(.top, 5)
         }
         .onAppear() {
-//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
+//                        UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
+            let domain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
+            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+            
             let isLogged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogged.name)
             print("isLogged = \(isLogged)")
             if isLogged {
