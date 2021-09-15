@@ -12,10 +12,10 @@ struct HomeView: View {
     @ObservedObject var viewModel = JourneyViewModel()
     
     var instaStoryCells: [InstaStoryInfo] = [
-        InstaStoryInfo(image: "Bru", text: "Menstruar", content: ""),
-        InstaStoryInfo(image: "Deh", text: "Filtros", content: ""),
-        InstaStoryInfo(image: "Jess", text: "Gravidez", content: ""),
-        InstaStoryInfo(image: "Sthe", text: "Corpo", content: "")
+        InstaStoryInfo(image: "Story01Icon", text: "Filtros", content: ""),
+        InstaStoryInfo(image: "Story02Icon", text: "Corpo", content: ""),
+        InstaStoryInfo(image: "Story03Icon", text: "Mestruação", content: ""),
+        InstaStoryInfo(image: "Story04Icon", text: "Sexualidade", content: "")
     ]
     
     @State private var offset = CGSize.zero
@@ -70,7 +70,7 @@ struct HomeView: View {
         HStack {
             ForEach(instaStoryCells, id: \.id) { story in
                 StoryCellView(instaStoryInfo:story)
-                    .padding(10)
+                    .padding(EdgeInsets(top: 35, leading: 10, bottom: 0, trailing: 10))
             }
         }
     }
@@ -86,9 +86,9 @@ struct HomeView: View {
                     .resizable()
                     .frame(width: 25, height: 25)
                     .padding(.leading, 30)
-                TextField("O que te aflinge", text: $textInput)
-                    .foregroundColor(.white)
-            }.padding(20)
+                TextField("O que te aflinge...?", text: $textInput)
+                    .foregroundColor(.onnaWhite)
+            }.padding(19)
             
         }
     }
@@ -100,6 +100,7 @@ struct HomeView: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.yellow)
                 .cornerRadius(8)
+                .padding(.leading, 12)
             Spacer()
             VStack(alignment: .leading) {
                 Text(jorney?.title ?? "")
@@ -114,19 +115,19 @@ struct HomeView: View {
         .padding()
         .frame(width: 335, height: 120, alignment: .center)
         .background(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.onnaGreyBoxes.opacity(0.4))
+        .foregroundColor(.onnaGreyBoxes)
     }
     
     var _buildFirstContentLine: some View {
         HStack {
-            Image("GirlPower-Home")
+            Image("GirlPowerIcon")
                 .resizable()
-                .frame(width: 150, height: 140)
-                .padding(8)
-            Image("BodyPositive-Home")
+                .frame(width: 150, height: 150)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+            Image("FeminismoIcon")
                 .resizable()
-                .frame(width: 150, height: 140)
-                .padding(8)
+                .frame(width: 150, height: 150)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 0))
         }
     }
     
@@ -137,33 +138,34 @@ struct HomeView: View {
                 .cornerRadius(20)
                 .foregroundColor(Color("greyBoxes"))
             HStack {
-                Image("Dani")
-                    .resizable()
-                    .frame(width: 60, height: 75)
-                    .clipShape(Circle(), style: FillStyle())
-                    .padding(.trailing, 40)
                 VStack(alignment: .leading) {
                     Text("Juliana Gomez")
                         .foregroundColor(.white)
                         .font(.title2)
+                        .padding(.bottom, 5)
                     Text("Essa menstruação veio \nacabando com a minha vida 😭")
                         .foregroundColor(.white)
                         .font(.caption)
                 }
+                Image("Profile-Pic-3")
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .clipShape(Circle(), style: FillStyle())
+                    .padding(.leading, 20)
             }
         }
     }
     
     var _buildSecondContentLine: some View {
         HStack {
-            Image("Feminism-Home")
+            Image("MenstruacaoIcon")
                 .resizable()
-                .frame(width: 150, height: 130)
-                .padding(8)
-            Image("Period-Home")
+                .frame(width: 150, height: 150)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+            Image("BodyPositiveIcon")
                 .resizable()
-                .frame(width: 150, height: 130)
-                .padding(8)
+                .frame(width: 150, height: 150)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 0))
         }
     }
 }

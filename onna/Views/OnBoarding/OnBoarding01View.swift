@@ -17,7 +17,7 @@ struct OnBoarding01View: View {
             Color.onnaGreen.edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading) {
-                SquaresAndLogoView(actualSquare: 0)
+                SquaresAndLogoView(actualSquare: 0, image : "Onna-Logo", text : "onna")
                 _buildTitleAndDescription
                 NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .onBoarding02View}, hasError: .constant(false))
                     .padding(.trailing, 15)

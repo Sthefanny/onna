@@ -15,7 +15,7 @@ struct TextFieldWithButtonView: View {
     var body: some View {
         TextField("" , text: $text)
             .placeholder(when: text.isEmpty) {
-                    Text("Escreva seu nome ou apelido aqui").foregroundColor(.onnaWhite.opacity(0.8))
+                Text("Escreva seu nome ou apelido aqui").foregroundColor(.onnaWhite)
             }
             .onChange(of: text) { _ in
                 UserDefaults.standard.set(text, forKey: UserDefaultsKeys.nickName.name)
@@ -26,7 +26,7 @@ struct TextFieldWithButtonView: View {
             .padding(.leading, 20)
             .padding(.trailing, 8)
             .background(RoundedRectangle(cornerRadius: 30))
-            .foregroundColor(.onnaWhite.opacity(0.4))
+            .foregroundColor(.onnaWhite)
     }
     
 }
