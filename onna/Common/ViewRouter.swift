@@ -9,7 +9,7 @@ import Foundation
 
 class ViewRouter: ObservableObject {
     
-    @Published var previousPage: Page = .onBoarding01View
-    @Published var currentPage: Page = .onBoarding01View
+    @Published var previousPage: Page = .profileView
+    @Published var currentPage: Page = .profileView
     
 }
