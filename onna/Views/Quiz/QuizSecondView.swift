@@ -30,7 +30,8 @@ struct QuizSecondView: View {
                     QuizQuestionView(conteudo: "Quiz", numero: "12.", description: "Qual das alternativas a seguir pode potencialmente atrasar sua menstruação? ")
                         .padding(EdgeInsets(top:32, leading: 0, bottom: 32, trailing: 0))
                     
-                    _buildFirstTypeQuiz
+//                    _buildFirstTypeQuiz
+                    _buildSecondTypeQuiz
                     
                     Spacer()
                 }
@@ -49,6 +50,10 @@ struct QuizSecondView: View {
                 ElipseQuizView(action: {}, respostaNome: "Todas as anteriores")
             }
         }
+    }
+    
+    var _buildSecondTypeQuiz: some View {
+        HalfElipseQuizView(action: {}, respostaNome: "Verdadeiro", segundaRespostaNome: "Falso")
     }
 }
 

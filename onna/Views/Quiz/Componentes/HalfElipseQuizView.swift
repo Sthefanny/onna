@@ -11,6 +11,7 @@ struct HalfElipseQuizView: View {
     
     @State var action: () -> Void
     let respostaNome: String
+    let segundaRespostaNome: String
     
     var body: some View {
         HStack {
@@ -20,7 +21,7 @@ struct HalfElipseQuizView: View {
                 }) {
                     Image("Quiz-Half")
                         .resizable()
-                        .frame(width: 215, height: 215)
+                        .frame(width: 180, height: 180)
                 }
                 Text(respostaNome)
                     .onnaFont(.body)
@@ -28,6 +29,22 @@ struct HalfElipseQuizView: View {
                     .frame(width: 130, height: 100, alignment: .center)
                     .rotationEffect(Angle(degrees: -45))
             }
+            
+            ZStack {
+                Button(action: {
+                    self.action()
+                }) {
+                    Image("Quiz-Half-2")
+                        .resizable()
+                        .frame(width: 180, height: 180)
+                }
+                Text(segundaRespostaNome)
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaWhite)
+                    .frame(width: 130, height: 100, alignment: .center)
+                    .rotationEffect(Angle(degrees: -48))
+            }
+            
         }
         .padding(8)
     }
@@ -35,6 +52,6 @@ struct HalfElipseQuizView: View {
 
 struct HalfElipseQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        HalfElipseQuizView(action: {}, respostaNome: "Verdadeiro")
+        HalfElipseQuizView(action: {}, respostaNome: "Verdadeiro", segundaRespostaNome: "Falso")
     }
 }
