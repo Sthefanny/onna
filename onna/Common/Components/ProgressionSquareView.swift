@@ -9,16 +9,15 @@ import SwiftUI
 
 struct ProgressionSquareView: View {
     @State var isActual: Bool
+    @State var color: Color = .onnaBackgroundBlack
     
     var body: some View {
         HStack {
             Rectangle()
-                .fill(self.isActual ? Color.onnaBackgroundBlack : .clear)
-                .border(Color.onnaBackgroundBlack, width: 1)
+                .fill(self.isActual ? color : .clear)
+                .border(color, width: 1)
                 .frame(width: 52, height: 6, alignment: .center)
-                .padding(.top, -20)
         }
-        .padding(.top, 10)
     }
 }
 

@@ -30,7 +30,7 @@ struct SquaresAndLogoView: View {
             }
             Spacer()
         }
-        .padding(.top, 10)
+        .padding(.top, -10)
     }
     
     var _buildLogoAndName: some View {
@@ -43,13 +43,15 @@ struct SquaresAndLogoView: View {
                 .onnaFont(.title2)
                 .foregroundColor(color)
         }
-        .padding(.top, -10)
         .padding(.leading, 40)
     }
 }
 
 struct SquaresAndLogoView_Previews: PreviewProvider {
     static var previews: some View {
-        SquaresAndLogoView(actualSquare: 1, image : "onna-logo", text : "onna")
+        ZStack {
+            Color.onnaGreen.edgesIgnoringSafeArea(.all)
+            SquaresAndLogoView(actualSquare: 1, image : "onna-logo", text : "onna")
+        }
     }
 }

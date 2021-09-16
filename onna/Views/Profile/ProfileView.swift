@@ -72,6 +72,8 @@ struct ProfileView: View {
                         }
                     }
                 }
+                Spacer()
+                BottomProgressionSquareView(actualSquare: 2, maxSquare: 3)
             }
             .gesture(
                 DragGesture()

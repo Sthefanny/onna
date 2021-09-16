@@ -38,6 +38,8 @@ struct InstaStoryInfo: Identifiable {
 
 struct StoryCellView_Previews: PreviewProvider {
     static var previews: some View {
-        StoryCellView(instaStoryInfo: InstaStoryInfo(image: "", text: "", content: ""))
+        ZStack {
+            StoryCellView(instaStoryInfo: InstaStoryInfo(image: "", text: "", content: ""))
+        }
     }
 }

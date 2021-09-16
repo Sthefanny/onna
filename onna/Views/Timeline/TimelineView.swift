@@ -44,6 +44,8 @@ struct TimelineView: View {
                     SegmentedView(actualView: $actualView)
                     
                 }
+                Spacer()
+                BottomProgressionSquareView(actualSquare: 0, maxSquare: 3)
             }
         }
         .gesture(
