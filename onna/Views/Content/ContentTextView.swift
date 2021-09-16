@@ -72,7 +72,6 @@ struct ContentTextView: View {
                             Text ("Maria é uma mulher negra. Para Joana, no meio da reinvidicações de Maria existe uma visão muito privilegiada das coisas  ")
                                     .onnaFont(.callout)
                                     .multilineTextAlignment(.center)
-                                    .multilineTextAlignment(.center)
                                 .padding(.top, 339.0)
                                 
                             }
