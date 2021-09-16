@@ -11,6 +11,7 @@ struct ConteudoVoltarView: View {
     
     @State var action: () -> Void
     @State var didTap : Bool = false
+    let conteudoName: String
     
     var body: some View {
         HStack (alignment: .center, spacing: 100) {
@@ -27,7 +28,7 @@ struct ConteudoVoltarView: View {
             
             //criar uma variavel informando pra qual página quero voltar (passar a função)
             
-            Text("BLOG")
+            Text(conteudoName)
                 .onnaFont(.body)
                 .foregroundColor(.onnaWhite)
                 .padding(.top, 35)
@@ -49,7 +50,7 @@ struct ConteudoVoltarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            ConteudoVoltarView(action: {})
+            ConteudoVoltarView(action: {}, conteudoName: "BLOG")
         }
     }
 }
