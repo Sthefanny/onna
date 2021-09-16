@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ContentTextBodyPositiveView: View {
     
+    @EnvironmentObject var viewRouter: ViewRouter
     var body: some View{
             
             ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                 Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
                 
-                ConteudoVoltarView()
+                ConteudoVoltarView(action: {
+                    viewRouter.currentPage = .homeView
+                }, conteudoName: "Body Positive")
                     .padding(.top, -31.0)
                 
                 ScrollView{
