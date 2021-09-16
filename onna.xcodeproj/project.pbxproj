@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3CCBF126EA933D0066BB44 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3CCBF026EA933D0066BB44 /* ChatView.swift */; };
+		0B9F5BC826EBCF1F0098E43B /* ChatAwnsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F5BC726EBCF1F0098E43B /* ChatAwnsersView.swift */; };
+		0B9F5BCD26EBE4220098E43B /* ChatQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F5BCC26EBE4220098E43B /* ChatQuestionView.swift */; };
+		0BDE7C7926EFCAAA0023A4B5 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDE7C7826EFCAAA0023A4B5 /* ForwardButtonView.swift */; };
 		41105E6226EA9A970037BACB /* JourneyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41105E6126EA9A970037BACB /* JourneyInputView.swift */; };
 		41105E6426EA9B790037BACB /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41105E6326EA9B790037BACB /* WallView.swift */; };
 		41105E6626EBCE430037BACB /* LeftStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41105E6526EBCE420037BACB /* LeftStickerCell.swift */; };
@@ -44,6 +48,16 @@
 		93CD333826F28F7C00FB86D0 /* HalfElipseQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD333726F28F7C00FB86D0 /* HalfElipseQuizView.swift */; };
 		93F0033B26EFC5FF00E5553B /* ChallengeSendTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0033A26EFC5FF00E5553B /* ChallengeSendTextView.swift */; };
 		93F46C9526F273D400F3D15B /* QuizFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F46C9426F273D400F3D15B /* QuizFirstView.swift */; };
+		E524787B26F3A2B700EBBFB6 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524787A26F3A2B700EBBFB6 /* ChallengeModel.swift */; };
+		E524787D26F3A32600EBBFB6 /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524787C26F3A32600EBBFB6 /* BlogModel.swift */; };
+		E524787F26F3A39000EBBFB6 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524787E26F3A39000EBBFB6 /* QuizModel.swift */; };
+		E524788126F3A3C800EBBFB6 /* DynamicResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788026F3A3C800EBBFB6 /* DynamicResultModel.swift */; };
+		E524788326F3A75700EBBFB6 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788226F3A75700EBBFB6 /* StoryModel.swift */; };
+		E524788526F3A93000EBBFB6 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788426F3A93000EBBFB6 /* ChallengeViewModel.swift */; };
+		E524788726F3A95300EBBFB6 /* BlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788626F3A95300EBBFB6 /* BlogViewModel.swift */; };
+		E524788926F3A95E00EBBFB6 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788826F3A95E00EBBFB6 /* QuizViewModel.swift */; };
+		E524788B26F3A96C00EBBFB6 /* DynamicResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788A26F3A96C00EBBFB6 /* DynamicResultViewModel.swift */; };
+		E524788D26F3A97700EBBFB6 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524788C26F3A97700EBBFB6 /* StoryViewModel.swift */; };
 		E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */; };
 		E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */; };
 		E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */; };
@@ -81,6 +95,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B3CCBF026EA933D0066BB44 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		0B9F5BC726EBCF1F0098E43B /* ChatAwnsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAwnsersView.swift; sourceTree = "<group>"; };
+		0B9F5BCC26EBE4220098E43B /* ChatQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatQuestionView.swift; sourceTree = "<group>"; };
+		0BDE7C7826EFCAAA0023A4B5 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		41105E6126EA9A970037BACB /* JourneyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInputView.swift; sourceTree = "<group>"; };
 		41105E6326EA9B790037BACB /* WallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
 		41105E6526EBCE420037BACB /* LeftStickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftStickerCell.swift; sourceTree = "<group>"; };
@@ -118,6 +136,16 @@
 		93CD333726F28F7C00FB86D0 /* HalfElipseQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfElipseQuizView.swift; sourceTree = "<group>"; };
 		93F0033A26EFC5FF00E5553B /* ChallengeSendTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSendTextView.swift; sourceTree = "<group>"; };
 		93F46C9426F273D400F3D15B /* QuizFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFirstView.swift; sourceTree = "<group>"; };
+		E524787A26F3A2B700EBBFB6 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
+		E524787C26F3A32600EBBFB6 /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
+		E524787E26F3A39000EBBFB6 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		E524788026F3A3C800EBBFB6 /* DynamicResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicResultModel.swift; sourceTree = "<group>"; };
+		E524788226F3A75700EBBFB6 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
+		E524788426F3A93000EBBFB6 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		E524788626F3A95300EBBFB6 /* BlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewModel.swift; sourceTree = "<group>"; };
+		E524788826F3A95E00EBBFB6 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		E524788A26F3A96C00EBBFB6 /* DynamicResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicResultViewModel.swift; sourceTree = "<group>"; };
+		E524788C26F3A97700EBBFB6 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
 		E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding02View.swift; sourceTree = "<group>"; };
 		E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonView.swift; sourceTree = "<group>"; };
@@ -319,6 +347,11 @@
 			children = (
 				E543657E26E95663005339A7 /* JourneyViewModel.swift */,
 				E598B86726EFDCD7002C6976 /* UserViewModel.swift */,
+				E524788426F3A93000EBBFB6 /* ChallengeViewModel.swift */,
+				E524788626F3A95300EBBFB6 /* BlogViewModel.swift */,
+				E524788826F3A95E00EBBFB6 /* QuizViewModel.swift */,
+				E524788A26F3A96C00EBBFB6 /* DynamicResultViewModel.swift */,
+				E524788C26F3A97700EBBFB6 /* StoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -328,6 +361,11 @@
 			children = (
 				E543658226E957D5005339A7 /* JourneyModel.swift */,
 				E598B86926EFE06A002C6976 /* UserModel.swift */,
+				E524787A26F3A2B700EBBFB6 /* ChallengeModel.swift */,
+				E524787C26F3A32600EBBFB6 /* BlogModel.swift */,
+				E524787E26F3A39000EBBFB6 /* QuizModel.swift */,
+				E524788026F3A3C800EBBFB6 /* DynamicResultModel.swift */,
+				E524788226F3A75700EBBFB6 /* StoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -597,18 +635,22 @@
 				932D3B7A26EA8B1A00C851BC /* ChallengeView.swift in Sources */,
 				E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */,
 				418D171E26F125B400276CB6 /* Yays.swift in Sources */,
+				E524787F26F3A39000EBBFB6 /* QuizModel.swift in Sources */,
 				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
 				418D172026F1370700276CB6 /* InputRow.swift in Sources */,
 				418D171C26F1257900276CB6 /* Yours.swift in Sources */,
 				9396ABBD26EBCFB000075635 /* TextFieldView.swift in Sources */,
 				9396ABBB26EBCE5C00075635 /* ChallengeButtonView.swift in Sources */,
 				E543658126E956D1005339A7 /* UrlConfigEnum.swift in Sources */,
+				E524787B26F3A2B700EBBFB6 /* ChallengeModel.swift in Sources */,
 				E543658326E957D5005339A7 /* JourneyModel.swift in Sources */,
 				E598B86526EFDBF4002C6976 /* NextRoundedButtonChat.swift in Sources */,
 				9310512126F12E5100AD89E0 /* FavoriteView.swift in Sources */,
+				E524787D26F3A32600EBBFB6 /* BlogModel.swift in Sources */,
 				E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */,
 				56E9234826EA8F5E0043C0CC /* Story01View.swift in Sources */,
 				0B3CCBF126EA933D0066BB44 /* ChatView.swift in Sources */,
+				E524788D26F3A97700EBBFB6 /* StoryViewModel.swift in Sources */,
 				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
 				E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */,
 				41105E6226EA9A970037BACB /* JourneyInputView.swift in Sources */,
@@ -618,6 +660,7 @@
 				E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */,
 				E54DFEA226DFF808004DAC6D /* onnaApp.swift in Sources */,
 				93CD333826F28F7C00FB86D0 /* HalfElipseQuizView.swift in Sources */,
+				E524788126F3A3C800EBBFB6 /* DynamicResultModel.swift in Sources */,
 				0B9F5BC826EBCF1F0098E43B /* ChatAwnsersView.swift in Sources */,
 				4146A40926E721360013A8A9 /* HomeView.swift in Sources */,
 				418D171A26F11C8F00276CB6 /* Recents.swift in Sources */,
@@ -629,7 +672,9 @@
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
 				93CD333426F285F000FB86D0 /* QuizQuestionView.swift in Sources */,
 				56E9234D26EBCF660043C0CC /* Story01_3View.swift in Sources */,
+				E524788726F3A95300EBBFB6 /* BlogViewModel.swift in Sources */,
 				E552EA9626E8190000035C4B /* LoginView.swift in Sources */,
+				E524788526F3A93000EBBFB6 /* ChallengeViewModel.swift in Sources */,
 				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
 				93CD333626F28CED00FB86D0 /* ElipseQuizView.swift in Sources */,
 				9396ABB926EBCE1400075635 /* ChallengeTextView.swift in Sources */,
@@ -642,8 +687,11 @@
 				E598B86A26EFE06A002C6976 /* UserModel.swift in Sources */,
 				E5A2604D26E8E388003BADB4 /* ProfileView.swift in Sources */,
 				E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */,
+				E524788B26F3A96C00EBBFB6 /* DynamicResultViewModel.swift in Sources */,
+				E524788326F3A75700EBBFB6 /* StoryModel.swift in Sources */,
 				0BDE7C7926EFCAAA0023A4B5 /* ForwardButtonView.swift in Sources */,
 				93F46C9526F273D400F3D15B /* QuizFirstView.swift in Sources */,
+				E524788926F3A95E00EBBFB6 /* QuizViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

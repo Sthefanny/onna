@@ -1,20 +1,20 @@
 //
-//  JourneyViewModel.swift
+//  BlogViewModel.swift
 //  onna
 //
-//  Created by Sthefanny Gonzaga on 08/09/21.
+//  Created by Sthefanny Gonzaga on 16/09/21.
 //
 
 import Foundation
 import SwiftUI
 
-class JourneyViewModel: ObservableObject {
-    @Published var journey = [Journey]()
-    @Published var filteredJourney = [Journey]()
+class BlogViewModel: ObservableObject {
+    @Published var blog = [Blog]()
+    @Published var filteredBlog = [Blog]()
     
-    func fetchJourney() {
+    func fetchBlog() {
         
-        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.journeyUrl.text)"
+        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.blogUrl.text)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
         
@@ -26,11 +26,11 @@ class JourneyViewModel: ObservableObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                guard let journey = try? JSONDecoder().decode([Journey].self, from: data!) else {
+                guard let blog = try? JSONDecoder().decode([Blog].self, from: data!) else {
                     return
                 }
                 DispatchQueue.main.async {
-                    self.journey = journey
+                    self.blog = blog
                 }
             }
         })
@@ -38,7 +38,7 @@ class JourneyViewModel: ObservableObject {
         task.resume()
     }
     
-    func filterJourney(by filter: String) {
-        filteredJourney = journey.filter({ $0.title == filter })
+    func filterBlog(by filter: String) {
+        filteredBlog = blog.filter({ $0.page == filter })
     }
 }

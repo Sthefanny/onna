@@ -13,6 +13,16 @@ enum UrlConfig: String {
     case loginUrl = "/auth/login"
     case journeyUrl = "/journey"
     case journeyIdUrl = "/journey/{id}"
+    case challengeUrl = "/challenge"
+    case challengeIdUrl = "/challenge/{id}"
+    case blogUrl = "/blog"
+    case blogIdUrl = "/blog/{id}"
+    case quizUrl = "/quiz"
+    case quizIdUrl = "/quiz/{id}"
+    case dynamicResultUrl = "/dynamic-results"
+    case dynamicResultIdUrl = "/dynamic-results/{id}"
+    case storyUrl = "/story"
+    case storyIdUrl = "/story/{id}"
 
     var text: String {
         return self.rawValue

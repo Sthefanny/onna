@@ -46,7 +46,7 @@ struct HomeView: View {
                 .onChanged { gesture in
                     self.offset = gesture.translation
                 }
-
+                
                 .onEnded { _ in
                     if self.offset.width < 0 {
                         print("Direita: Entrou no onEnded 1 com \(self.offset.width) e com \(screenWidth)")
@@ -55,7 +55,6 @@ struct HomeView: View {
                             viewRouter.currentPage = .profileView
                         }
                     } else {
-                        self.offset = .zero
                         print("Esquerda: Entrou no onEnded 2 com \(self.offset.width) e com \(screenWidth)")
                         withAnimation {
                             viewRouter.previousPage = .homeView

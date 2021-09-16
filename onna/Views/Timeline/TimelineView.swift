@@ -46,6 +46,22 @@ struct TimelineView: View {
                 }
             }
         }
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    self.offset = gesture.translation
+                }
+                
+                .onEnded { _ in
+                    if self.offset.width < 0 {
+                        print("Direita: Entrou no onEnded 1 com \(self.offset.width) e com \(screenWidth)")
+                        withAnimation {
+                            viewRouter.previousPage = .timelineView
+                            viewRouter.currentPage = .homeView
+                        }
+                    }
+                }
+        )
     }
     var _buildTextField: some View {
         ZStack {

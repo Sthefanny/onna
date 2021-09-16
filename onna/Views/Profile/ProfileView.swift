@@ -73,6 +73,22 @@ struct ProfileView: View {
                     }
                 }
             }
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        self.offset = gesture.translation
+                    }
+                    
+                    .onEnded { _ in
+                        if self.offset.width > 0 {
+                            print("Esquerda: Entrou no onEnded 2 com \(self.offset.width) e com \(screenWidth)")
+                            withAnimation {
+                                viewRouter.previousPage = .profileView
+                                viewRouter.currentPage = .homeView
+                            }
+                        }
+                    }
+            )
         }
     }
 }

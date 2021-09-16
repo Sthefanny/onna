@@ -1,20 +1,20 @@
 //
-//  JourneyViewModel.swift
+//  StoryViewModel.swift
 //  onna
 //
-//  Created by Sthefanny Gonzaga on 08/09/21.
+//  Created by Sthefanny Gonzaga on 16/09/21.
 //
 
 import Foundation
 import SwiftUI
 
-class JourneyViewModel: ObservableObject {
-    @Published var journey = [Journey]()
-    @Published var filteredJourney = [Journey]()
+class StoryViewModel: ObservableObject {
+    @Published var story = [Story]()
+    @Published var filteredStory = [Story]()
     
-    func fetchJourney() {
+    func fetchStory() {
         
-        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.journeyUrl.text)"
+        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.storyUrl.text)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
         
@@ -26,11 +26,11 @@ class JourneyViewModel: ObservableObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                guard let journey = try? JSONDecoder().decode([Journey].self, from: data!) else {
+                guard let story = try? JSONDecoder().decode([Story].self, from: data!) else {
                     return
                 }
                 DispatchQueue.main.async {
-                    self.journey = journey
+                    self.story = story
                 }
             }
         })
@@ -38,7 +38,7 @@ class JourneyViewModel: ObservableObject {
         task.resume()
     }
     
-    func filterJourney(by filter: String) {
-        filteredJourney = journey.filter({ $0.title == filter })
+    func filterStory(by filter: String) {
+        filteredStory = story.filter({ $0.story == filter })
     }
 }

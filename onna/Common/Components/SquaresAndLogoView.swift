@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SquaresAndLogoView: View {
     @State var actualSquare: Int
+    @State var maxSquare: Int = 5
     @State var image: String
     @State var text: String
     @State var color: Color = .onnaWhite
@@ -24,13 +25,14 @@ struct SquaresAndLogoView: View {
     var _buildProgressionSquares: some View {
         HStack(alignment: .center, spacing: 15) {
             Spacer()
-            ForEach(0 ..< 5) { i in
+            ForEach(0 ..< maxSquare) { i in
                 ProgressionSquareView(isActual: actualSquare == i)
             }
             Spacer()
         }
         .padding(.top, 10)
     }
+    
     var _buildLogoAndName: some View {
         HStack(alignment: .center) {
             Image(image)
