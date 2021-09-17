@@ -18,11 +18,11 @@ struct Journey: Decodable, Identifiable {
     let dynamicResults: [DynamicResult]?
 }
 
-let sampleJourney = Journey(id: 1,
-                            image: "image.jpg",
-                            title: "Jornada 01",
-                            description: "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger.",
-                            challenges: nil,
-                            blogs: nil,
-                            quizes: nil,
-                            dynamicResults: nil)
+//let sampleJourney = Journey(id: 1,
+//                            image: "image.jpg",
+//                            title: "Jornada 01",
+//                            description: "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger.",
+//                            challenges: nil,
+//                            blogs: nil,
+//                            quizes: nil,
+//                            dynamicResults: nil)

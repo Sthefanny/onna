@@ -17,12 +17,14 @@ class JourneyViewModel: ObservableObject {
         let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.journeyUrl.text)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
+        print("accessToken = \(accessToken)")
         
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(accessToken, forHTTPHeaderField: "Authorization")
         
+        print("request = \(request)")
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {

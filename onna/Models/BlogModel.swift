@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct Blog: Decodable, Identifiable {
+struct Blog: Decodable {
     let id: Int
     let journeyId: Int
+    let icon: String
+    let title: String
     let page: String
 }

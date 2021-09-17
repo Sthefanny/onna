@@ -30,13 +30,15 @@ struct HomeView: View {
             VStack {
                 _buildStories
                 _buildTodayJourneyAndTimeline
-                _buildFirstContentLine
+                _buildBlogCard
+                _buildQuizCard
+                _buildChallengeCard
                 Spacer()
                 BottomProgressionSquareView(actualSquare: 1, maxSquare: 3)
             }
         }
         .onAppear {
-            //            viewModel.fetchJourney()
+            viewModel.fetchJourney()
         }
         .gesture(
             DragGesture()
@@ -67,6 +69,7 @@ struct HomeView: View {
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
         }
+        .padding(.top, 20)
         .padding(.bottom, 20)
     }
     
@@ -152,14 +155,16 @@ struct HomeView: View {
         .padding(.top, 5)
     }
     
-    var _buildFirstContentLine: some View {
-        HStack {
-            Image("GirlPowerIcon")
+    var _buildBlogCard: some View {
+        let firstBlog = viewModel.journey.first?.blogs?.first
+
+        return HStack {
+            Image(firstBlog?.icon ?? "")
                 .resizable()
                 .frame(width: 130, height: 110)
                 .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-            
-            Text("Blog: Aprenda sobre o empoderamento do corpo ")
+
+            Text("Blog: \(firstBlog?.title ?? "")")
                 .multilineTextAlignment(.leading)
                 .foregroundColor(.onnaBackgroundBlack)
                 .onnaFont(.callout)
@@ -167,8 +172,50 @@ struct HomeView: View {
         }
         .frame(width: 350, height: 110, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.onnaGreen)
-        .padding(.vertical, 20)
+        .foregroundColor(getColorByContent(value: .blog))
+        .padding(.top, 20)
+    }
+
+    var _buildQuizCard: some View {
+        let firstQuiz = viewModel.journey.first?.quizes?.first
+
+        return HStack {
+            Image(firstQuiz?.icon ?? "")
+                .resizable()
+                .frame(width: 130, height: 110)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+
+            Text("Quiz: \(firstQuiz?.title ?? "")")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.onnaBackgroundBlack)
+                .onnaFont(.callout)
+                .padding(.trailing, 20)
+        }
+        .frame(width: 350, height: 110, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(getColorByContent(value: .quiz))
+        .padding(.vertical, 10)
+    }
+
+    var _buildChallengeCard: some View {
+        let firstChallenge = viewModel.journey.first?.challenges?.first
+
+        return HStack {
+            Image(firstChallenge?.icon ?? "")
+                .resizable()
+                .frame(width: 130, height: 110)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+
+            Text("Challenge: \(firstChallenge?.title ?? "")")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.onnaBackgroundBlack)
+                .onnaFont(.callout)
+                .padding(.trailing, 20)
+        }
+        .frame(width: 350, height: 110, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(getColorByContent(value: .challenge))
+        .padding(.bottom, 10)
     }
 }
 
