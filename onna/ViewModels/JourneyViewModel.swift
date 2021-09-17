@@ -12,12 +12,11 @@ class JourneyViewModel: ObservableObject {
     @Published var journey = [Journey]()
     @Published var filteredJourney = [Journey]()
     
-    func fetchJourney() {
+    func fetchJourney(callback: @escaping (Bool) -> Void) {
         
         let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.journeyUrl.text)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
-        print("accessToken = \(accessToken)")
         
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "GET"
@@ -29,10 +28,13 @@ class JourneyViewModel: ObservableObject {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
                 guard let journey = try? JSONDecoder().decode([Journey].self, from: data!) else {
+                    callback(false)
                     return
                 }
                 DispatchQueue.main.async {
                     self.journey = journey
+                    
+                    callback(true)
                 }
             }
         })

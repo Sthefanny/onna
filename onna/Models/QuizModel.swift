@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Quiz: Decodable {
+struct Quiz: Decodable, Identifiable {
     let id: Int
     let journeyId: Int
     let icon: String
@@ -19,14 +19,14 @@ struct Quiz: Decodable {
     let negativeResult: String
 }
 
-struct QuizQuestion: Decodable {
+struct QuizQuestion: Decodable, Identifiable {
     let id: Int
     let quizId: Int
     let index: Int
     let text: String
 }
 
-struct QuizAnswer: Decodable {
+struct QuizAnswer: Decodable, Identifiable {
     let id: Int
     let quizQuestionId: Int
     let text: String

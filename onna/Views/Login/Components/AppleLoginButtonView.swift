@@ -112,8 +112,8 @@ struct AppleLoginButtonView : View {
                     default:
                         break
                     }
-                case .failure(let error):
-                    print("failure", error)
+                case .failure(_):
+                    showErrorAlert = true
                 }
             }
         )

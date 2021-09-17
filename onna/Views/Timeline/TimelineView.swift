@@ -56,7 +56,6 @@ struct TimelineView: View {
                 
                 .onEnded { _ in
                     if self.offset.width < 0 {
-                        print("Direita: Entrou no onEnded 1 com \(self.offset.width) e com \(screenWidth)")
                         withAnimation {
                             viewRouter.previousPage = .timelineView
                             viewRouter.currentPage = .homeView

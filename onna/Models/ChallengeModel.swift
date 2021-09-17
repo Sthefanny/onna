@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Challenge: Decodable {
+struct Challenge: Decodable, Identifiable {
     let id: Int
     let journeyId: Int
     let icon: String

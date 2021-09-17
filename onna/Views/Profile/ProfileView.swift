@@ -12,6 +12,7 @@ struct ProfileView: View {
     @State private var offset = CGSize.zero
     let screenWidth = UIScreen.main.bounds.size.width
     @State var actualView: WhichView = .journey
+    @ObservedObject var viewModel = JourneyViewModel()
 
     var body: some View {
         ZStack {
@@ -30,6 +31,7 @@ struct ProfileView: View {
                             .resizable()
                             .frame(width: 20, height: 20, alignment: .center)
                     }
+                    .padding(.top, 10)
                     
                     VStack {
                         Image("Profile-Pic-4")
@@ -68,12 +70,19 @@ struct ProfileView: View {
                         }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
                         
                         VStack {
-                            ViewSlider(actualView: $actualView)
+                            ViewSlider(viewModel: viewModel, actualView: $actualView)
                         }
                     }
                 }
                 Spacer()
                 BottomProgressionSquareView(actualSquare: 2, maxSquare: 3)
+            }
+            .onAppear {
+                viewModel.fetchJourney { hasJorney in
+                    if (!hasJorney){
+                        viewRouter.currentPage = .loginView
+                    }
+                }
             }
             .gesture(
                 DragGesture()
@@ -83,7 +92,6 @@ struct ProfileView: View {
                     
                     .onEnded { _ in
                         if self.offset.width > 0 {
-                            print("Esquerda: Entrou no onEnded 2 com \(self.offset.width) e com \(screenWidth)")
                             withAnimation {
                                 viewRouter.previousPage = .profileView
                                 viewRouter.currentPage = .homeView
@@ -97,6 +105,7 @@ struct ProfileView: View {
 
 struct ViewSlider : View {
     
+    @ObservedObject var viewModel: JourneyViewModel
     @Binding var actualView: WhichView
     var width = UIScreen.main.bounds.width
     
@@ -104,7 +113,7 @@ struct ViewSlider : View {
         
         VStack(spacing: 0){
             
-            AppBar(actualView: $actualView)
+            TabBar(actualView: $actualView)
             
             GeometryReader{g in
                 
@@ -112,11 +121,11 @@ struct ViewSlider : View {
                     
                     switch actualView {
                     case .journey:
-                        InputRow()
+                        InputRow(viewModel: viewModel)
                             .frame(width: width)
                            
                     case .wall:
-                        WallView()
+                        WallView(viewModel: viewModel)
                             .frame(width: width)
                            
                     case .faves:
@@ -131,7 +140,7 @@ struct ViewSlider : View {
     }
 }
 
-struct AppBar : View {
+struct TabBar : View {
     
     @Binding var actualView: WhichView
     var width = UIScreen.main.bounds.width

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LeftStickerCell: View {
-    var stickerCellInfo: StickerCellInfo
+    var stickerCellInfo: Journey
+    
     var body: some View {
         HStack {
             Image(stickerCellInfo.image)
@@ -17,18 +18,23 @@ struct LeftStickerCell: View {
                 .padding(.trailing, 15)
             VStack(alignment: .leading) {
                 Text(stickerCellInfo.title)
-                    .onnaFont(OnnaFontSystem.TextStyle.title2)
+                    .onnaFont(.title2)
                     .foregroundColor(.onnaWhite)
-                Text(stickerCellInfo.body)
-                    .onnaFont(OnnaFontSystem.TextStyle.callout)
+                Text(stickerCellInfo.description)
+                    .onnaFont(.callout)
                     .foregroundColor(.onnaWhite)
             }   
-        }.frame(width: 370, height: 130, alignment: .center)
+        }
+        .frame(width: 370, height: 130, alignment: .center)
     }
 }
 
 struct LeftStickerCell_Previews: PreviewProvider {
     static var previews: some View {
-        LeftStickerCell(stickerCellInfo: StickerCellInfo(image: "", title: "", body: ""))
+        ZStack {
+            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
+            let journey = Journey(id: 0, image: "girl-power-quiz", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenges: nil, blogs: nil, quizes: nil, dynamicResults: nil)
+            LeftStickerCell(stickerCellInfo: journey)
+        }
     }
 }

@@ -38,7 +38,11 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            viewModel.fetchJourney()
+            viewModel.fetchJourney{ hasJorney in
+                if (!hasJorney){
+                    viewRouter.currentPage = .loginView
+                }
+            }
         }
         .gesture(
             DragGesture()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JourneyInputView: View {
-    var journeyInputCell: JourneyInputCell
+    var journeyInputCell: Journey
     
     
     var body: some View {
@@ -19,14 +19,17 @@ struct JourneyInputView: View {
                 .foregroundColor(.onnaBlue)
                 .frame(width: 50, height: 50, alignment: .center)
                 .cornerRadius(10)
+            
             VStack(alignment: .leading) {
                 Text(journeyInputCell.title)
-                    .onnaFont(OnnaFontSystem.TextStyle.title2)
+                    .onnaFont(.title2)
                     .foregroundColor(.onnaWhite)
-                Text(journeyInputCell.bodyText)
-                    .onnaFont(OnnaFontSystem.TextStyle.callout)
+                Text(journeyInputCell.description)
+                    .onnaFont(.callout)
                     .foregroundColor(.onnaWhite)
+                    .frame(width: 250, height: 40, alignment: .leading)
             }
+            .padding(.leading)
         }
     }
 }
@@ -40,6 +43,10 @@ struct JourneyInputCell: Identifiable {
 
 struct JourneyInputView_Previews: PreviewProvider {
     static var previews: some View {
-        JourneyInputView(journeyInputCell: JourneyInputCell(title: "Title", bodyText: "Aprenda mais sobre esse assunto"))
+        ZStack {
+            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
+            let journey = Journey(id: 0, image: "", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenges: nil, blogs: nil, quizes: nil, dynamicResults: nil)
+            JourneyInputView(journeyInputCell: journey)
+        }
     }
 }

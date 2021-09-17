@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DynamicResult: Decodable {
+struct DynamicResult: Decodable, Identifiable {
     let id: Int
     let journeyId: Int
     let userId: Int
