@@ -13,8 +13,9 @@ struct Story01_2View: View {
                 _buildTitleAndDescription
                 _buildImage
                 _buildText2
+                    
             }
-            .padding(.top, 5)
+            .padding(.top, 50)
             
             NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .story01_3View}, hasError: .constant(false))
                 .padding(.top, 300)
@@ -59,6 +60,8 @@ struct Story01_2View: View {
                 .foregroundColor(.onnaBackgroundBlack)
                 .frame(width: 300, height: 240, alignment: .leading)
                 .multilineTextAlignment(.trailing)
+               
+
             
         }
         .padding(.leading, 30)
@@ -71,6 +74,7 @@ struct Story01_2View: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.horizontal)
+                .padding( .vertical, 10)
         }
         .padding(.horizontal)
     }

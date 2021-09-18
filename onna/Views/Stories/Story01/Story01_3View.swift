@@ -72,6 +72,7 @@ var _buildTitle: some View {
             .fill(Color.onnaBackgroundBlack)
             .frame(width: 6, height: 413, alignment: .center)
         
+        
     }
     .padding(.trailing, 20)
 }
