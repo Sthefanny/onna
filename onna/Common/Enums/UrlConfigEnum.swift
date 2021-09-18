@@ -15,6 +15,7 @@ enum UrlConfig: String {
     case challengeUrl = "/challenge"
     case blogUrl = "/blog"
     case quizUrl = "/quiz"
+    case quizQuestionUrl = "/quiz-question/getbyindex"
     case dynamicResultUrl = "/dynamic-results"
     case storyUrl = "/story"
 

@@ -60,7 +60,7 @@ struct StickerCell_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            let journey = Journey(id: 0, image: "girl-power-quiz", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenges: nil, blogs: nil, quizes: nil, dynamicResults: nil)
+            let journey = Journey(id: 0, image: "girl-power-quiz", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenge: nil, blog: nil, quiz: nil, dynamicResults: nil)
             StickerCell(stickerCellInfo: journey, side: .left)
         }
     }

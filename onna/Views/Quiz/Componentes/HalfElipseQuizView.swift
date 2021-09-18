@@ -11,8 +11,7 @@ struct HalfElipseQuizView: View {
     
     @State var action: () -> Void
     @State var quizAnswers: [QuizAnswer]
-    @State var leftColor: Color? = Color.onnaWhite
-    @State var rightColor: Color? = Color.onnaWhite
+    @State var showCorrect = false
     
     var body: some View {
         HStack {
@@ -21,8 +20,10 @@ struct HalfElipseQuizView: View {
                 if i % 2 == 0 {
                     ZStack {
                         Button(action: {
-                            leftColor = quizAnswers[i].isCorrect ? Color.green : Color.red
-                            self.action()
+                            showCorrect = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.action()
+                            }
                         }) {
                             Image("Quiz-Half")
                                 .resizable()
@@ -30,7 +31,7 @@ struct HalfElipseQuizView: View {
                         }
                         Text(quizAnswers[i].text)
                             .onnaFont(.body)
-                            .foregroundColor(leftColor)
+                            .foregroundColor(showCorrect ? quizAnswers[i].isCorrect ? Color.green : Color.red : .onnaWhite)
                             .frame(width: 130, height: 100, alignment: .center)
                             .rotationEffect(Angle(degrees: -45))
                             .transformEffect(CGAffineTransform(translationX: -20, y: -20))
@@ -39,8 +40,10 @@ struct HalfElipseQuizView: View {
                 } else {
                     ZStack {
                         Button(action: {
-                            rightColor = quizAnswers[i].isCorrect ? Color.green : Color.red
-                            self.action()
+                            showCorrect = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.action()
+                            }
                         }) {
                             Image("Quiz-Half-2")
                                 .resizable()
@@ -48,7 +51,7 @@ struct HalfElipseQuizView: View {
                         }
                         Text(quizAnswers[i].text)
                             .onnaFont(.body)
-                            .foregroundColor(rightColor)
+                            .foregroundColor(showCorrect ? quizAnswers[i].isCorrect ? Color.green : Color.red : .onnaWhite)
                             .frame(width: 130, height: 100, alignment: .center)
                             .rotationEffect(Angle(degrees: -48))
                             .transformEffect(CGAffineTransform(translationX: 20, y: 20))

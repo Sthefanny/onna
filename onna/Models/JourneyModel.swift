@@ -12,9 +12,9 @@ struct Journey: Decodable, Identifiable {
     let image: String
     let title: String
     let description: String
-    let challenges: [Challenge]?
-    let blogs: [Blog]?
-    let quizes: [Quiz]?
+    let challenge: Challenge?
+    let blog: Blog?
+    let quiz: Quiz?
     let dynamicResults: [DynamicResult]?
 }
 

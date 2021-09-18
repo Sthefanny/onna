@@ -9,17 +9,18 @@ import SwiftUI
 
 struct QuizView: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @State var quiz: Quiz
+    @ObservedObject var viewModel = QuizViewModel()
+    @State var quizId: Int
     
-    init(_ quiz: Quiz) {
-        self.quiz = quiz
+    init(_ quizId: Int) {
+        self.quizId = quizId
     }
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView(conteudoName: quiz.title)
+            ConteudoVoltarView(conteudoName: viewModel.quiz?.title ?? "")
                 .padding(.bottom, 20)
             
             ZStack {
@@ -28,12 +29,12 @@ struct QuizView: View {
                     .frame(width: 390, height: 730, alignment: .bottom)
                     .padding(.top, 100)
                 
-                Image(quiz.image)
+                Image(viewModel.quiz?.image ?? "")
                     .resizable()
                     .padding(.top, 140)
                 
                 VStack() {
-                    Text(quiz.description)
+                    Text(viewModel.quiz?.description ?? "")
                         .onnaFont(.title1)
                         .foregroundColor(Color.onnaBackgroundBlack)
                         .multilineTextAlignment(.center)
@@ -41,22 +42,30 @@ struct QuizView: View {
                     
                     
                     BlackButtonView(action: {
-                        viewRouter.parameter = quiz.id
+                        viewRouter.parameter = viewModel.quiz?.id
                         viewRouter.parameter2 = 1
+                        viewRouter.parameter3 = viewModel.quiz?.quizQuestions.count
                         viewRouter.currentPage = .quizQuestionView
                     }, buttonText: "Próximo")
-                        .offset(x: 110, y: 240)
+                    .offset(x: 110, y: 240)
                 }
             }
+        }
+        .onAppear{
+            viewModel.getQuiz(id: quizId) { hasItem in
+                if (!hasItem){
+                    DispatchQueue.main.async {
+                        viewRouter.currentPage = .loginView
+                    }
+                }
+            }
+            
         }
     }
 }
 
 struct QuizFirstView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView(Quiz(id: 1, journeyId: 1, icon: "", title: "Menstruação", description: "Você consegue acertar todas as perguntas deste quiz sobre menstruação?", image: "Quiz-Background", imageType: "full", positiveResult: "", negativeResult: "", quizQuestions: [QuizQuestion(id: 0, quizId: 1, index: 1, text: "Qual das alternativas a seguir pode potencialmente atrasar sua menstruação?", quizAnswers: [
-            QuizAnswer(id: 0, quizQuestionId: 1, text: "Verdadeiro", isCorrect: false),
-            QuizAnswer(id: 1, quizQuestionId: 1, text: "Falso", isCorrect: true)
-        ])]))
+        QuizView(1)
     }
 }

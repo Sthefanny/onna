@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct JourneyInputView: View {
+    @State private var showingSheet = false
     var journeyInputCell: Journey
-    
     
     var body: some View {
         
@@ -31,6 +31,12 @@ struct JourneyInputView: View {
             }
             .padding(.leading)
         }
+        .onTapGesture(count: 1, perform: {
+            showingSheet.toggle()
+        })
+        .sheet(isPresented: $showingSheet) {
+            JorneyMapView(journey: journeyInputCell)
+        }
     }
 }
 
@@ -45,7 +51,7 @@ struct JourneyInputView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            let journey = Journey(id: 0, image: "", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenges: nil, blogs: nil, quizes: nil, dynamicResults: nil)
+            let journey = Journey(id: 0, image: "", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenge: nil, blog: nil, quiz: nil, dynamicResults: nil)
             JourneyInputView(journeyInputCell: journey)
         }
     }

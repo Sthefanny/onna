@@ -13,7 +13,7 @@ class QuizQuestionViewModel: ObservableObject {
     
     func getQuizQuestion(quizId: Int, questionIndex: Int, callback: @escaping (Bool) -> Void) {
         
-        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.quizUrl.text)/\(quizId)"
+        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.quizQuestionUrl.text)?QuizId=\(quizId)&Index=\(questionIndex)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
         

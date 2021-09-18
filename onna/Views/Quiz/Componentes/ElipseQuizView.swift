@@ -10,8 +10,7 @@ import SwiftUI
 struct ElipseQuizView: View {
     @State var action: () -> Void
     @State var quizAnswers: [QuizAnswer]
-    @State var leftColor: Color? = Color.onnaWhite
-    @State var rightColor: Color? = Color.onnaWhite
+    @State var showCorrect = false
     
     var body: some View {
         VStack() {
@@ -28,28 +27,29 @@ struct ElipseQuizView: View {
     }
     
     func _buildEllipseAnswer(answer: QuizAnswer) -> some View {
-        var color = Color.onnaWhite
-        return HStack {
-            ZStack {
-                Button(action: {
-                    color = answer.isCorrect ? Color.green : Color.red
-                    self.action()
-                }) {
+        return Button(action: {
+            showCorrect = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.action()
+            }
+        }) {
+            HStack {
+                ZStack {
                     Image("ElipseQuiz")
                         .resizable()
                         .frame(width: 150, height: 150)
+                    Text(answer.text)
+                        .onnaFont(.body)
+                        .foregroundColor(showCorrect ? answer.isCorrect ? Color.green : Color.red : .onnaWhite)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 110, height: 120, alignment: .center)
                 }
-                Text(answer.text)
-                    .onnaFont(.body)
-                    .foregroundColor(color)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 110, height: 120, alignment: .center)
             }
         }
         .padding(8)
     }
 }
-    
+
 struct ElipseQuizView_Previews: PreviewProvider {
     static var previews: some View {
         ElipseQuizView(action: {}, quizAnswers: [

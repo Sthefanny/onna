@@ -10,13 +10,15 @@ import SwiftUI
 struct QuizQuestionView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @ObservedObject var viewModel = QuizQuestionViewModel()
     @State var quizId: Int
     @State var actualIndex: Int
-    @ObservedObject var viewModel = QuizQuestionViewModel()
+    @State var totalQuestions: Int
     
-    init(_ quizId: Int, _ actualIndex: Int) {
+    init(_ quizId: Int, _ actualIndex: Int, _ totalQuestions: Int) {
         self.quizId = quizId
         self.actualIndex = actualIndex
+        self.totalQuestions = totalQuestions
     }
     
     var body: some View {
@@ -49,20 +51,10 @@ struct QuizQuestionView: View {
                     .foregroundColor(.onnaYellow)
                     
                     if (viewModel.quizQuestion?.quizAnswers.count == 4) {
-                        ElipseQuizView(action: {
-                            let nextIndex = actualIndex + 1
-                            viewRouter.parameter = quizId
-                            viewRouter.parameter2 = nextIndex
-                            viewRouter.currentPage = .quizQuestionView
-                        }, quizAnswers: viewModel.quizQuestion!.quizAnswers)
-                    } else {
-                        HalfElipseQuizView(action: {
-                            let nextIndex = actualIndex + 1
-                            viewRouter.parameter = quizId
-                            viewRouter.parameter2 = nextIndex
-                            viewRouter.currentPage = .quizQuestionView
-                        }, quizAnswers: viewModel.quizQuestion!.quizAnswers)
-                        .padding(.top, 60)
+                        ElipseQuizView(action: {showNext()}, quizAnswers: viewModel.quizQuestion!.quizAnswers)
+                    } else if (viewModel.quizQuestion?.quizAnswers.count == 2) {
+                        HalfElipseQuizView(action: {showNext()}, quizAnswers: viewModel.quizQuestion!.quizAnswers)
+                            .padding(.top, 60)
                     }
                     
                     Spacer()
@@ -84,10 +76,26 @@ struct QuizQuestionView: View {
             }
         }
     }
+    
+    func showNext() {
+        viewRouter.currentPage = .loadingView
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let nextIndex = actualIndex + 1
+            
+            if (nextIndex > totalQuestions) {
+                viewRouter.currentPage = .quizResultView
+            } else {
+                viewRouter.parameter = quizId
+                viewRouter.parameter2 = nextIndex
+                viewRouter.parameter3 = totalQuestions
+                viewRouter.currentPage = .quizQuestionView
+            }
+        }
+    }
 }
 
 struct QuizQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizQuestionView(1, 1)
+        QuizQuestionView(1, 1, 9)
     }
 }

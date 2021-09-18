@@ -54,9 +54,13 @@ struct NavigationView: View {
         case .challengeView:
             ChallengeView(viewRouter.parameter as! Challenge)
         case .quizView:
-            QuizView(viewRouter.parameter as! Quiz)
+            QuizView(viewRouter.parameter as! Int)
         case .quizQuestionView:
-            QuizQuestionView(viewRouter.parameter as! Int, viewRouter.parameter2 as! Int)
+            QuizQuestionView(viewRouter.parameter as! Int, viewRouter.parameter2 as! Int, viewRouter.parameter3 as! Int)
+        case .loadingView:
+            LoadingView()
+        case .quizResultView:
+            QuizResultView()
         }
     }
 }

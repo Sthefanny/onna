@@ -13,5 +13,6 @@ class ViewRouter: ObservableObject {
     @Published var currentPage: Page = .onBoarding01View
     @Published var parameter: Any?
     @Published var parameter2: Any?
+    @Published var parameter3: Any?
     
 }

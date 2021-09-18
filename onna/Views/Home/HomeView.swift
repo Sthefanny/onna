@@ -163,7 +163,7 @@ struct HomeView: View {
     }
     
     var _buildBlogCard: some View {
-        let firstBlog = viewModel.journey.first?.blogs?.first
+        let firstBlog = viewModel.journey.first?.blog
         
         return HStack {
             Image(firstBlog?.icon ?? "")
@@ -188,7 +188,7 @@ struct HomeView: View {
     }
     
     var _buildQuizCard: some View {
-        let firstQuiz = viewModel.journey.first?.quizes?.first
+        let firstQuiz = viewModel.journey.first?.quiz
         
         return HStack {
             Image(firstQuiz?.icon ?? "")
@@ -207,14 +207,14 @@ struct HomeView: View {
         .foregroundColor(getColorByContent(value: .quiz))
         .padding(.vertical, 10)
         .onTapGesture(count: 1, perform: {
-            viewRouter.parameter = firstQuiz
+            viewRouter.parameter = firstQuiz?.id
             viewRouter.previousPage = .homeView
             viewRouter.currentPage = .quizView
         })
     }
     
     var _buildChallengeCard: some View {
-        let firstChallenge = viewModel.journey.first?.challenges?.first
+        let firstChallenge = viewModel.journey.first?.challenge
         
         return HStack {
             Image(firstChallenge?.icon ?? "")
