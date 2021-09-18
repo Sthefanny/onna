@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChallengeButtonView: View {
+struct BlackButtonView: View {
     
     @State var action: () -> Void
     let buttonText: String
@@ -19,7 +19,8 @@ struct ChallengeButtonView: View {
                     Text(buttonText)
                         .onnaFont(.body)
                         .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
-                        .frame(width: 163, height: 41, alignment: .center)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 50))
                         .foregroundColor(.onnaBackgroundBlack)
                         .padding(.top, 32)
@@ -29,6 +30,6 @@ struct ChallengeButtonView: View {
 
 struct ChallengeButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeButtonView(action: {}, buttonText: "Bora escrever!")
+        BlackButtonView(action: {}, buttonText: "Bora escrever!")
     }
 }

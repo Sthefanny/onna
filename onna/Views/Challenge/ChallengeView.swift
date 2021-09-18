@@ -1,62 +1,63 @@
 //
-//  ChallengeView.swift
+//  ChallengeSendTextView.swift
 //  onna
 //
-//  Created by Jessica Akemi Meguro on 09/09/21.
+//  Created by Jessica Akemi Meguro on 13/09/21.
 //
 
 import SwiftUI
 
-//struct Challenges: Decodable {
-//    let id: Int
-//    let journeyId: Int
-//    let title: String
-//    let description: String
-//    let tip: String
-//}
-
 struct ChallengeView: View {
-    
     @EnvironmentObject var viewRouter: ViewRouter
+    @State var challenge: Challenge
+    
+    init(_ challenge: Challenge) {
+        self.challenge = challenge
+    }
     
     var body: some View {
         
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView(action: {}, conteudoName: "BLOG")
+            ConteudoVoltarView(conteudoName: "BLOG")
             
-            if viewRouter.previousPage == .homeView {
-                ConteudoVoltarView(action: {viewRouter.currentPage = .homeView}, conteudoName: "BLOG")
-            } else {
-                ConteudoVoltarView(action: {viewRouter.currentPage = .timelineView}, conteudoName: "BLOG")
-            }
-            
-            ZStack {
+            ZStack () {
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.onnaWhite)
+                    .fill(Color.onnaGreyContent)
                     .frame(width: 390, height: 730, alignment: .bottom)
                     .padding(.top, 100)
                 
-                VStack (alignment: .center){
-                    Image("Illustration-1")
+                VStack {
+                    Spacer()
+                    
+                    Image(challenge.image!)
                         .resizable()
-                        .frame(width: 200, height: 200)
-                        .padding()
+                        .frame(maxWidth: 200, maxHeight: 200)
                     
-                    ChallengeTextView(challenge: "Challenge", title: "Girl Power", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou algo motivacional.", tip: "Pense com carinho :)")
+                    ChallengeTextView(challenge: challenge)
                     
-                    ChallengeButtonView(action: {viewRouter.currentPage = .challengeSendTextView}, buttonText: "Bora escrever!")
-                    
+                    TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
                 }
+                
             }
+        }
+        .onTapGesture {
+            self.hideKeyboard()
+        }
+    }
+    
+    struct ChallengeSendTextView_Previews: PreviewProvider {
+        static var previews: some View {
+            let challenge = Challenge(id: 0, journeyId: 0, icon: "", image: "", title: "Amor Próprio", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.", tip: "Pense com carinho :)")
+            ChallengeView(challenge)
         }
     }
 }
 
 
-struct ChallengeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengeView()
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

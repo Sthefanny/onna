@@ -22,6 +22,10 @@ struct NavigationView: View {
             OnBoarding04View()
         case .onBoarding05View:
             OnBoarding05View()
+        case .contentFeminismView:
+            ContentFeminismView()
+        case .contentBodyPositiveView:
+            ContentBodyPositiveView()
         case .loginView:
             LoginView()
         case .homeView:
@@ -32,10 +36,6 @@ struct NavigationView: View {
             case .timelineView:
                 HomeView()
                     .transition(.move(edge: .trailing))
-            case .challengeView:
-                ChallengeView()
-            case .challengeSendTextView:
-                ChallengeSendTextView()
             default:
                 HomeView()
             }
@@ -52,9 +52,9 @@ struct NavigationView: View {
         case .story01View:
             Story01View()
         case .challengeView:
-            ChallengeView()
-        case .challengeSendTextView:
-            ChallengeSendTextView()
+            ChallengeView(viewRouter.parameter as! Challenge)
+        case .quizView:
+            QuizView()
         }
     }
 }

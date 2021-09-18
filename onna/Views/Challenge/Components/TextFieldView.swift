@@ -11,48 +11,58 @@ struct TextFieldView: View {
     
     let placeholder: String
     @State var message: String
-    let internalPadding: CGFloat = 5
+    let internalPadding: CGFloat
     @State var action: () -> Void
     
+    init(placeholder: String, message: String, internalPadding: CGFloat = 5, action: @escaping () -> Void) {
+        self.placeholder = placeholder
+        self.message = message
+        self.internalPadding = internalPadding
+        self.action = action
+        UITextView.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
+        
         VStack (alignment: .center, spacing: 32){
             
             ZStack (alignment: .topLeading){
                 TextEditor(text: $message)
-                    .frame(width: 330, height: 120, alignment: .topLeading)
-                    .cornerRadius(13.0)
-                    .colorMultiply(.onnaGreyStories)
+                    .padding()
+                    .background(Color.onnaTextEditor)
+                    .foregroundColor(Color.black.opacity(0.4))
                     .onnaFont(.callout)
-                    .padding(internalPadding)
+                    .frame(width: 330, height: 120, alignment: .topLeading)
+                    .cornerRadius(13)
                 
                 if message.isEmpty {
                     Text(placeholder)
                         .foregroundColor(Color.onnaGreyBoxes.opacity(0.4))
                         .onnaFont(.callout)
-                        .padding(EdgeInsets(top:7, leading: 4, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top:20, leading: 15, bottom: 20, trailing: 15))
                         .padding(internalPadding)
                 }
             }
             Button(action: {
                 self.action()
             }, label: {
-                        Text("Yas!")
-                            .onnaFont(.body)
-                            .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
-                            .frame(width: 163, height: 41, alignment: .center)
-                            .background(RoundedRectangle(cornerRadius: 50))
-                            .foregroundColor(.onnaBackgroundBlack)
-                            .padding(.bottom, 32)
+                Text("Yas!")
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
+                    .frame(width: 163, height: 41, alignment: .center)
+                    .background(RoundedRectangle(cornerRadius: 50))
+                    .foregroundColor(.onnaBackgroundBlack)
+                    .padding(.bottom, 32)
             })
         }
-        
-        
-        
     }
 }
 
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
+        ZStack {
+            Color.onnaGreyContent.edgesIgnoringSafeArea(.all)
+            TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
+        }
     }
 }

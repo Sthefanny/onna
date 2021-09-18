@@ -8,41 +8,40 @@
 import SwiftUI
 
 struct ConteudoVoltarView: View {
-    
-    @State var action: () -> Void
+    @EnvironmentObject var viewRouter: ViewRouter
     @State var didTap : Bool = false
     let conteudoName: String
     
     var body: some View {
-        HStack (alignment: .center, spacing: 100) {
+        HStack (alignment: .center, spacing: 10) {
             
             Button(action: {
-                self.action()
+                viewRouter.currentPage = viewRouter.previousPage
             }, label: {
                 Label("Voltar", systemImage: "chevron.backward")
                     .onnaFont(.body)
                     .foregroundColor(.onnaWhite)
-                    .frame(width: 75)
-                    .padding(EdgeInsets(top:35, leading: 14, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top:0, leading: 14, bottom: 0, trailing: 0))
             })
             
-            //criar uma variavel informando pra qual página quero voltar (passar a função)
+            Spacer()
             
             Text(conteudoName)
                 .onnaFont(.body)
                 .foregroundColor(.onnaWhite)
-                .padding(.top, 35)
+            
+            Spacer()
             
             Button(action: {
                 self.didTap.toggle()
             }) {
                 Image(systemName: self.didTap == false ? "heart" : "heart.fill")
                     .imageScale(.large)
-                    .padding(.top, 35)
                     .foregroundColor(Color.onnaPink)
             }
             .padding()
         }
+        .padding(.top, 35)
     }
 }
 
@@ -50,7 +49,7 @@ struct ConteudoVoltarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            ConteudoVoltarView(action: {}, conteudoName: "BLOG")
+            ConteudoVoltarView(conteudoName: "Feminismo")
         }
     }
 }

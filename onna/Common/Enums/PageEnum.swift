@@ -14,6 +14,9 @@ enum Page {
     case onBoarding04View
     case onBoarding05View
     
+    case contentFeminismView
+    case contentBodyPositiveView
+    
     case loginView
     case homeView
     case profileView
@@ -22,5 +25,5 @@ enum Page {
     case story01_3View
     case story01View
     case challengeView
-    case challengeSendTextView
+    case quizView
 }

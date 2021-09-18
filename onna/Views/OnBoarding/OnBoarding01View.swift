@@ -36,7 +36,7 @@ struct OnBoarding01View: View {
             // Fim - Limpar tudo
             
             let isLogged = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)
-            print("token = \(isLogged)")
+            print("token = \(String(describing: isLogged))")
             if isLogged != nil {
                 viewRouter.currentPage = .homeView
             }

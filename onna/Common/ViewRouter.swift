@@ -11,5 +11,6 @@ class ViewRouter: ObservableObject {
     
     @Published var previousPage: Page = .onBoarding01View
     @Published var currentPage: Page = .onBoarding01View
+    @Published var parameter: Any?
     
 }

@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct QuizSecondView: View {
+struct QuizQuestionView: View {
     
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView(action: {}, conteudoName: "QUIZ")
+            ConteudoVoltarView(conteudoName: "QUIZ")
             
             ZStack {
                 
@@ -27,8 +27,8 @@ struct QuizSecondView: View {
                     
                     Spacer()
                     
-                    QuizQuestionView(conteudo: "Quiz", numero: "12.", description: "Qual das alternativas a seguir pode potencialmente atrasar sua menstruação? ")
-                        .padding(EdgeInsets(top:32, leading: 0, bottom: 32, trailing: 0))
+                    Text("1.")
+                    Text("Qual das alternativas a seguir pode potencialmente atrasar sua menstruação? ")
                     
 //                    _buildFirstTypeQuiz
                     _buildSecondTypeQuiz
@@ -57,8 +57,8 @@ struct QuizSecondView: View {
     }
 }
 
-struct QuizSecondView_Previews: PreviewProvider {
+struct QuizQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizSecondView()
+        QuizQuestionView()
     }
 }

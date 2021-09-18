@@ -161,13 +161,13 @@ struct HomeView: View {
     
     var _buildBlogCard: some View {
         let firstBlog = viewModel.journey.first?.blogs?.first
-
+        
         return HStack {
             Image(firstBlog?.icon ?? "")
                 .resizable()
                 .frame(width: 130, height: 110)
                 .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-
+            
             Text("Blog: \(firstBlog?.title ?? "")")
                 .multilineTextAlignment(.leading)
                 .foregroundColor(.onnaBackgroundBlack)
@@ -178,17 +178,21 @@ struct HomeView: View {
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(getColorByContent(value: .blog))
         .padding(.top, 20)
+        .onTapGesture(count: 1, perform: {
+            viewRouter.previousPage = .homeView
+            viewRouter.currentPage = getContentType(value: firstBlog!.page)
+        })
     }
-
+    
     var _buildQuizCard: some View {
         let firstQuiz = viewModel.journey.first?.quizes?.first
-
+        
         return HStack {
             Image(firstQuiz?.icon ?? "")
                 .resizable()
                 .frame(width: 130, height: 110)
                 .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-
+            
             Text("Quiz: \(firstQuiz?.title ?? "")")
                 .multilineTextAlignment(.leading)
                 .foregroundColor(.onnaBackgroundBlack)
@@ -199,17 +203,21 @@ struct HomeView: View {
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(getColorByContent(value: .quiz))
         .padding(.vertical, 10)
+        .onTapGesture(count: 1, perform: {
+            viewRouter.previousPage = .homeView
+            viewRouter.currentPage = .quizView
+        })
     }
-
+    
     var _buildChallengeCard: some View {
         let firstChallenge = viewModel.journey.first?.challenges?.first
-
+        
         return HStack {
             Image(firstChallenge?.icon ?? "")
                 .resizable()
                 .frame(width: 130, height: 110)
                 .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-
+            
             Text("Challenge: \(firstChallenge?.title ?? "")")
                 .multilineTextAlignment(.leading)
                 .foregroundColor(.onnaBackgroundBlack)
@@ -220,6 +228,11 @@ struct HomeView: View {
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(getColorByContent(value: .challenge))
         .padding(.bottom, 10)
+        .onTapGesture(count: 1, perform: {
+            viewRouter.parameter = firstChallenge
+            viewRouter.previousPage = .homeView
+            viewRouter.currentPage = .challengeView
+        })
     }
 }
 

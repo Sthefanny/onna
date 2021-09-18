@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct QuizFirstView: View {
+struct QuizView: View {
     var body: some View {
         
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView(action: {}, conteudoName: "QUIZ")
-                .padding(.top, 19)
+            ConteudoVoltarView(conteudoName: "QUIZ")
+                .padding(.bottom, 20)
             
             ZStack {
                 
@@ -25,17 +25,18 @@ struct QuizFirstView: View {
                 
                 Image("Quiz-Background")
                     .resizable()
-                    .frame(width: 390, height: 730, alignment: .bottom)
                     .padding(.top, 140)
                 
-                VStack {
-                
-                    ChallengeTextView(challenge: "Quiz", title: "Menstruação", description: "Você consegue acertar todas as perguntas deste quiz sobre menstruação? Descubre o quanto você sabe sobre seu próprio corpo.", tip: "")
-                        .padding(EdgeInsets(top: 200, leading: 0, bottom: 150, trailing: 0))
-            
+                VStack() {
+                    Text("Você consegue acertar todas as perguntas deste quiz sobre menstruação?")
+                        .onnaFont(.title1)
+                        .foregroundColor(Color.onnaBackgroundBlack)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 200, height: 200, alignment: .center)
                     
-                ChallengeButtonView(action: {}, buttonText: "Bora escrever!")
-                    .padding(EdgeInsets(top: 150, leading: 200, bottom: 19, trailing: 20))
+                    
+                    BlackButtonView(action: {}, buttonText: "Próximo")
+                        .offset(x: 110, y: 240)
                 }
             }
         }
@@ -44,6 +45,6 @@ struct QuizFirstView: View {
 
 struct QuizFirstView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizFirstView()
+        QuizView()
     }
 }
