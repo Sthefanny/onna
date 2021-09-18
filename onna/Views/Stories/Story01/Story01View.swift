@@ -14,7 +14,7 @@ struct Story01View: View {
                 _buildTitleAndDescription
                 Spacer()
             }
-            .padding(.top, 4)
+            .padding(.top, 50)
             
             NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .story01_2View}, hasError: .constant(false))
                 .padding(.vertical, 400)
@@ -22,7 +22,8 @@ struct Story01View: View {
                 .padding(.trailing, 15)
             
             ExitButtonView(fieldName: "", action: { viewRouter.currentPage = .homeView}, hasError: .constant(false))
-                .padding(.vertical, 20)
+                .padding(.vertical, 70)
+                .padding(.horizontal, 50)
         }
     
             
