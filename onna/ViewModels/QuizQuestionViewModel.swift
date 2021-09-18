@@ -1,20 +1,19 @@
 //
-//  JourneyViewModel.swift
+//  QuizQuestionViewModel.swift
 //  onna
 //
-//  Created by Sthefanny Gonzaga on 08/09/21.
+//  Created by Sthefanny Gonzaga on 18/09/21.
 //
 
 import Foundation
 import SwiftUI
 
-class JourneyViewModel: ObservableObject {
-    @Published var journey = [Journey]()
-    @Published var filteredJourney = [Journey]()
+class QuizQuestionViewModel: ObservableObject {
+    @Published var quizQuestion: QuizQuestion?
     
-    func fetchJourney(callback: @escaping (Bool) -> Void) {
+    func getQuizQuestion(quizId: Int, questionIndex: Int, callback: @escaping (Bool) -> Void) {
         
-        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.journeyUrl.text)"
+        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.quizUrl.text)/\(quizId)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
         
@@ -26,12 +25,12 @@ class JourneyViewModel: ObservableObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                guard let journey = try? JSONDecoder().decode([Journey].self, from: data!) else {
+                guard let quizQuestion = try? JSONDecoder().decode(QuizQuestion.self, from: data!) else {
                     callback(false)
                     return
                 }
                 DispatchQueue.main.async {
-                    self.journey = journey
+                    self.quizQuestion = quizQuestion
                     
                     callback(true)
                 }
@@ -39,9 +38,5 @@ class JourneyViewModel: ObservableObject {
         })
         
         task.resume()
-    }
-    
-    func filterJourney(by filter: String) {
-        filteredJourney = journey.filter({ $0.title == filter })
     }
 }

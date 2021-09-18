@@ -14,7 +14,7 @@ struct WallView: View {
     var body: some View {
         VStack {
             ForEach(0 ..< viewModel.journey.count) { i in
-                StickerCell(stickerCellInfo: viewModel.journey[i], side: i % 2 == 1 ? .left : .right)
+                StickerCell(stickerCellInfo: viewModel.journey[i], side: i % 2 == 0 ? .left : .right)
             }
             
         }

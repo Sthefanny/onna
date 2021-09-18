@@ -17,6 +17,7 @@ struct Quiz: Decodable, Identifiable {
     let imageType: String
     let positiveResult: String
     let negativeResult: String
+    let quizQuestions: [QuizQuestion]
 }
 
 struct QuizQuestion: Decodable, Identifiable {
@@ -24,6 +25,7 @@ struct QuizQuestion: Decodable, Identifiable {
     let quizId: Int
     let index: Int
     let text: String
+    let quizAnswers: [QuizAnswer]
 }
 
 struct QuizAnswer: Decodable, Identifiable {

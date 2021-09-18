@@ -26,4 +26,5 @@ enum Page {
     case story01View
     case challengeView
     case quizView
+    case quizQuestionView
 }

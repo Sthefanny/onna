@@ -40,7 +40,10 @@ struct HomeView: View {
         .onAppear {
             viewModel.fetchJourney{ hasJorney in
                 if (!hasJorney){
-                    viewRouter.currentPage = .loginView
+                    
+                    DispatchQueue.main.async {
+                        viewRouter.currentPage = .loginView
+                    }
                 }
             }
         }
@@ -204,6 +207,7 @@ struct HomeView: View {
         .foregroundColor(getColorByContent(value: .quiz))
         .padding(.vertical, 10)
         .onTapGesture(count: 1, perform: {
+            viewRouter.parameter = firstQuiz
             viewRouter.previousPage = .homeView
             viewRouter.currentPage = .quizView
         })
