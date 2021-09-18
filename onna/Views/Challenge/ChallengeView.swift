@@ -16,6 +16,7 @@ import SwiftUI
 //}
 
 struct ChallengeView: View {
+    
     @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
@@ -23,7 +24,13 @@ struct ChallengeView: View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView()
+            ConteudoVoltarView(action: {}, conteudoName: "BLOG")
+            
+            if viewRouter.previousPage == .homeView {
+                ConteudoVoltarView(action: {viewRouter.currentPage = .homeView}, conteudoName: "BLOG")
+            } else {
+                ConteudoVoltarView(action: {viewRouter.currentPage = .timelineView}, conteudoName: "BLOG")
+            }
             
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
@@ -37,7 +44,7 @@ struct ChallengeView: View {
                         .frame(width: 200, height: 200)
                         .padding()
                     
-                    ChallengeTextView(challenge: "Challenge", title: "Amor Próprio", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.", tip: "Pense com carinho :)")
+                    ChallengeTextView(challenge: "Challenge", title: "Girl Power", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou algo motivacional.", tip: "Pense com carinho :)")
                     
                     ChallengeButtonView(action: {viewRouter.currentPage = .challengeSendTextView}, buttonText: "Bora escrever!")
                     

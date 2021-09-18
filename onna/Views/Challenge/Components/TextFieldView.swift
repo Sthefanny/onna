@@ -12,6 +12,7 @@ struct TextFieldView: View {
     let placeholder: String
     @State var message: String
     let internalPadding: CGFloat = 5
+    @State var action: () -> Void
     
     var body: some View {
         VStack (alignment: .center, spacing: 32){
@@ -32,13 +33,17 @@ struct TextFieldView: View {
                         .padding(internalPadding)
                 }
             }
-            Text("Yas!")
-                .onnaFont(.body)
-                .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
-                .frame(width: 163, height: 41, alignment: .center)
-                .background(RoundedRectangle(cornerRadius: 50))
-                .foregroundColor(.onnaBackgroundBlack)
-                .padding(.bottom, 32)
+            Button(action: {
+                self.action()
+            }, label: {
+                        Text("Yas!")
+                            .onnaFont(.body)
+                            .foregroundColor(.onnaWhite).multilineTextAlignment(.center)
+                            .frame(width: 163, height: 41, alignment: .center)
+                            .background(RoundedRectangle(cornerRadius: 50))
+                            .foregroundColor(.onnaBackgroundBlack)
+                            .padding(.bottom, 32)
+            })
         }
         
         
@@ -48,6 +53,6 @@ struct TextFieldView: View {
 
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "")
+        TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
     }
 }
