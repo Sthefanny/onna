@@ -10,18 +10,17 @@ import SwiftUI
 struct TextFieldWithButtonChat: View {
     @State var fieldName: String
     @State private var text: String = ""
-    @State var action: () -> Void
+    @Binding var isSuccess: Bool
+    @State var postId: Int
+    var callback: (Bool) -> Void
     
     var body: some View {
         TextField("" , text: $text)
             .placeholder(when: text.isEmpty) {
                 Text("Escreva aqui").foregroundColor(.onnaWhite)
             }
-            .onChange(of: text) { _ in
-                UserDefaults.standard.set(text, forKey: UserDefaultsKeys.nickName.name)
-            }
             .foregroundColor(.white)
-            .modifier(ChatButton(fieldName: $fieldName, text: $text, action: $action))
+            .modifier(ChatButton(fieldName: $fieldName, text: $text, isSuccess: $isSuccess, postId: postId, callback: callback))
             .padding(.vertical, 8)
             .padding(.leading, 20)
             .padding(.trailing, 8)
@@ -33,16 +32,18 @@ struct TextFieldWithButtonChat: View {
 struct ChatButton: ViewModifier {
     @Binding var fieldName: String
     @Binding var text: String
-    @Binding var action: () -> Void
+    @Binding var isSuccess: Bool
     @State private var showErrorAlert: Bool = false
-
+    @State var postId: Int
+    var callback: (Bool) -> Void
+    
     public func body(content: Content) -> some View
     {
         ZStack(alignment: .trailing)
         {
             content
             
-            NextRoundedButtonChat(fieldName: self.fieldName, action: self.action, hasError: .constant(text.isEmpty))
+            NextRoundedButtonChat(fieldName: self.fieldName, isSuccess: self.$isSuccess, hasError: .constant(text.isEmpty), postId: self.postId, text: self.$text, callback: self.callback)
         }
     }
 }
@@ -51,7 +52,7 @@ struct ChatButton: ViewModifier {
 struct TextFieldWithButtonChat_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            TextFieldWithButtonChat (fieldName: "", action: {})
+            TextFieldWithButtonChat (fieldName: "", isSuccess: .constant(true), postId: 1, callback: {isSuccess in})
         }
     }
 }

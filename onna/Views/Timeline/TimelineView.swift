@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TimelineView: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @ObservedObject var viewModel = JourneyViewModel()
     @State private var offset = CGSize.zero
     @State var textInput = ""
     let screenWidth = UIScreen.main.bounds.size.width
     @State var message = ""
     @State var actualView: ShowView = .recents
+    @ObservedObject var viewModel = PostViewModel()
     
     var body: some View {
         ZStack {
@@ -35,18 +35,27 @@ struct TimelineView: View {
                 
                 VStack {
                     _buildTextField
-                    _buildTextBox
                     
+                    TextEditorPostView(callback: {isSuccess in
+                        if(isSuccess) {
+                            viewModel.fetchPosts(callback: { isSuccess in })
+                            viewModel.fetchYourPosts(callback: { isSuccess in })
+                        }
+                    })
                 }
                 
                 VStack {
-                    
-                    SegmentedView(actualView: $actualView)
-                    
+                    _buildSegmentedView
                 }
                 Spacer()
                 BottomProgressionSquareView(actualSquare: 0, maxSquare: 3)
             }
+        }
+        .onAppear{
+            viewModel.fetchPosts(callback: { isSuccess in
+                viewModel.filterLikedPosts()
+            })
+            viewModel.fetchYourPosts(callback: { isSuccess in })
         }
         .gesture(
             DragGesture()
@@ -63,6 +72,9 @@ struct TimelineView: View {
                     }
                 }
         )
+        .onTapGesture {
+            self.hideKeyboard()
+        }
     }
     var _buildTextField: some View {
         ZStack {
@@ -78,61 +90,95 @@ struct TimelineView: View {
                     .foregroundColor(.onnaWhite)
                 TextField("Perguntas, dúvidas e depoimentos", text: $textInput)
                     .foregroundColor(.white)
+                    .onChange(of: textInput, perform: { value in
+                        viewModel.filterPosts(filter: value)
+                    })
             }.padding(20)
         }
     }
     
-    var _buildTextBox: some View {
-        
-        ZStack {
-            TextField("Escreva aqui o que te aflinge...", text: $message)
-                .onnaFont(.callout)
-                .foregroundColor(.onnaMainGrey)
-                .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
-                .frame(width: 350, height: 120, alignment: .topLeading)
-                .background(RoundedRectangle(cornerRadius: 13))
-                .foregroundColor(.onnaGreyBoxes)
-                .multilineTextAlignment(.leading)
-            
-            
-            Button(action: {
-                print("Clicked")
-            }) {
-                Image("Send-Message")
-                    .padding(.leading, 280)
-                    .padding(.top, 60)
-            }
-        }
-    }
-}
-
-
-struct SegmentedView : View {
-    var width = UIScreen.main.bounds.width
-    @Binding var actualView: ShowView
-    
-    var body: some View{
+    var _buildSegmentedView: some View{
         
         VStack(spacing: 0){
             
-            AppBar2(actualView: $actualView)
+            _buildTabBar
             
-            GeometryReader{g in
-                
+            GeometryReader{ g in
                 HStack(spacing: 0){
-                    
                     switch actualView {
                     case .recents:
-                        Recents(recentsInfo: RecentsInfo(profilePic: "Woman-1", userComment: "Text Text"))
-                            .frame(width: g.frame(in : .global).width)
-                           
+                        VStack {
+                            if (viewModel.posts.count == 0 && viewModel.filteredPosts.count == 0) {
+                                Text("Ainda não tem nada publicado nos chats, crie uma nova pergunta ou conversa para interagir com as outras pessoas.")
+                                    .onnaFont(.body)
+                                    .foregroundColor(.onnaMainGrey)
+                                    .padding(60)
+                            } else {
+                                let postsToShow = viewModel.filteredPosts.count == 0 ? viewModel.posts.reversed() : viewModel.filteredPosts.reversed()
+                                ScrollView {
+                                    ForEach(postsToShow) { post in
+                                        Button(action: {
+                                            viewRouter.parameter = post.id
+                                            viewRouter.previousPage = .timelineView
+                                            viewRouter.currentPage = .chatView
+                                        }, label: {
+                                            Recents(post: post)
+                                                .frame(width: g.frame(in : .global).width)
+                                        })
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.top, 20)
+                        
                     case .yours:
-                        Yours()
-                            .frame(width: g.frame(in : .global).width)
-                           
+                        VStack {
+                            if (viewModel.userPosts.count == 0 && viewModel.filteredPosts.count == 0) {
+                                Text("Ainda não tem nada publicado nos chats, crie uma nova pergunta ou conversa para interagir com as outras pessoas.")
+                                    .onnaFont(.body)
+                                    .foregroundColor(.onnaMainGrey)
+                                    .padding(60)
+                            } else {
+                                let postsToShow = viewModel.filteredUserPosts.count == 0 ? viewModel.userPosts.reversed() : viewModel.filteredPosts.reversed()
+                                ScrollView {
+                                    ForEach(postsToShow) { post in
+                                        Button(action: {
+                                            viewRouter.parameter = post.id
+                                            viewRouter.previousPage = .timelineView
+                                            viewRouter.currentPage = .chatView
+                                        }, label: {
+                                            Recents(post: post)
+                                                .frame(width: g.frame(in : .global).width)
+                                        })
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.top, 20)
+                        
                     case .yays:
-                        Yays()
-                            .frame(width: g.frame(in : .global).width)
+                        VStack {
+                            if (viewModel.likedPosts.count == 0) {
+                                Text("Você ainda não tem deu yay em nenhuma publicação.")
+                                    .onnaFont(.body)
+                                    .foregroundColor(.onnaMainGrey)
+                                    .padding(60)
+                            } else {
+                                ScrollView {
+                                    ForEach(viewModel.likedPosts.reversed()) { post in
+                                        Button(action: {
+                                            viewRouter.parameter = post.id
+                                            viewRouter.previousPage = .timelineView
+                                            viewRouter.currentPage = .chatView
+                                        }, label: {
+                                            Recents(post: post)
+                                                .frame(width: g.frame(in : .global).width)
+                                        })
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.top, 20)
                     }
                 }
             }
@@ -141,76 +187,35 @@ struct SegmentedView : View {
         .edgesIgnoringSafeArea(.all)
     }
     
-}
-
-struct AppBar2 : View {
-    var width = UIScreen.main.bounds.width
-    @Binding var actualView: ShowView
-    
-    var body: some View{
-        
+    var _buildTabBar: some View {
         VStack(alignment: .leading, content: {
-            
             HStack{
-                
-                Button(action: {
-                    actualView = .recents
-                }) {
-                    
-                    VStack(spacing: 8){
-                        
-                        HStack(spacing: 12){
-                            Text("Recentes")
-                                .foregroundColor( actualView == .recents ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .recents ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
-                Button(action: {
-                    actualView = .yours
-                    
-                }) {
-                    
-                    VStack(spacing: 8){
-                        
-                        HStack(spacing: 12){
-                            Text("Seus")
-                                .foregroundColor(actualView == .yours ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .yours ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
-                Button(action: {
-                    actualView = .yays
-                    
-                }) {
-                    
-                    VStack(spacing: 8){
-                        
-                        HStack(spacing: 12){
-                            Text("Yays")
-                                .foregroundColor(actualView == .yays ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .yays ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
+                _buildActiveBar(text: "Recentes", tab: .recents)
+                _buildActiveBar(text: "Seus", tab: .yours)
+                _buildActiveBar(text: "Yays", tab: .yays)
             }
         })
         .padding(.top, (UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0 + 15)
         .padding(.horizontal)
         .padding(.bottom, 10)
+    }
+    
+    func _buildActiveBar(text: String, tab: ShowView) -> some View {
+        Button(action: {
+            actualView = tab
+        }) {
+            VStack(spacing: 8){
+                
+                HStack(spacing: 12){
+                    Text(text)
+                        .foregroundColor( actualView == tab ? .onnaBlue : Color.onnaBlue.opacity(0.4))
+                }
+                
+                Capsule()
+                    .fill(actualView == tab ? Color.onnaBlue : Color.clear)
+                    .frame(width: 70, height: 4)
+            }
+        }
     }
 }
 

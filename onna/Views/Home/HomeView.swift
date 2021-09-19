@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = JourneyViewModel()
+    @ObservedObject var postsViewModel = PostViewModel()
     
     var instaStoryCells: [InstaStoryInfo] = [
         InstaStoryInfo(image: "Story01Icon", text: "Filtros", content: ""),
@@ -46,6 +47,7 @@ struct HomeView: View {
                     }
                 }
             }
+            postsViewModel.fetchPosts(callback: {isSuccess in})
         }
         .gesture(
             DragGesture()
@@ -87,7 +89,13 @@ struct HomeView: View {
                 .onnaFont(.callout)
             HStack {
                 _buildTodayJourney
-                _buildTimeline
+                Button(action: {
+                    viewRouter.parameter = postsViewModel.posts.last?.id
+                    viewRouter.previousPage = .homeView
+                    viewRouter.currentPage = .chatView
+                }, label: {
+                    _buildTimeline
+                })
             }
         }
     }
@@ -117,15 +125,17 @@ struct HomeView: View {
     var _buildTimeline: some View {
         VStack {
             HStack {
-                Image("Profile-Pic-3")
+                Image(postsViewModel.posts.last?.userImage ?? "")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle(), style: FillStyle())
-                Text("Juliana Gomez")
+                Text(postsViewModel.posts.last?.userName ?? "")
                     .foregroundColor(.white)
                     .onnaFont(.title2)
+                    .lineLimit(2)
+                    .frame(width: 95, height: 50, alignment: .leading)
             }
-            Text("Essa menstruação veio acabando com a minha vida 😭")
+            Text(postsViewModel.posts.last?.text ?? "")
                 .foregroundColor(.white)
                 .onnaFont(.callout)
                 .padding(.top, 5)
@@ -138,13 +148,15 @@ struct HomeView: View {
     }
     
     var _buildYaysAndComments: some View {
-        HStack {
+        let heartQuantity = postsViewModel.posts.last?.likeQuantity ?? 0
+        let commentQuantity = postsViewModel.posts.last?.commentQuantity ?? 0
+        return  HStack {
             HStack {
-                Image(systemName: "heart")
+                Image(systemName: postsViewModel.posts.last?.hasLiked == true ? "heart.fill": "heart")
                     .font(.system(size: 15))
                     .foregroundColor(.onnaPink)
                     .padding(.trailing, -5)
-                Text("35")
+                Text("\(heartQuantity)")
                     .onnaFont(.callout, textSize: 10)
                     .foregroundColor(.onnaWhite)
             }
@@ -153,7 +165,7 @@ struct HomeView: View {
                 Image(systemName: "bubble.left")
                     .font(.system(size: 12))
                     .foregroundColor(.white)
-                Text("35")
+                Text("\(commentQuantity)")
                     .onnaFont(.callout, textSize: 10)
                     .foregroundColor(.onnaWhite)
                     .padding(.leading, -5)

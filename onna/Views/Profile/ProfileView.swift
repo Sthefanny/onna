@@ -129,8 +129,7 @@ struct ViewSlider : View {
                             .frame(width: width)
                            
                     case .faves:
-                        Yays()
-                            .frame(width: g.frame(in : .global).width)
+                        Text("criar faves")
                     }
                 }
             }

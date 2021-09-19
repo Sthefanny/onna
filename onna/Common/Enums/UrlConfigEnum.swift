@@ -18,6 +18,11 @@ enum UrlConfig: String {
     case quizQuestionUrl = "/quiz-question/getbyindex"
     case dynamicResultUrl = "/dynamic-results"
     case storyUrl = "/story"
+    case postUrl = "/post"
+    case postByUserUrl = "/post/listbyuser"
+    case postWithComments = "/post/comment"
+    case addCommentToPost = "/post/comment/save"
+    case postLike = "/post/like"
 
     var text: String {
         return self.rawValue

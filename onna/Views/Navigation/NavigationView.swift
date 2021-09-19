@@ -61,6 +61,8 @@ struct NavigationView: View {
             LoadingView()
         case .quizResultView:
             QuizResultView()
+        case .chatView:
+            ChatView(viewRouter.parameter as! Int)
         }
     }
 }

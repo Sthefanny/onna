@@ -16,8 +16,6 @@
 		4146A40926E721360013A8A9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40826E721360013A8A9 /* HomeView.swift */; };
 		4146A40C26E722920013A8A9 /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146A40B26E722920013A8A9 /* StoryCellView.swift */; };
 		418D171A26F11C8F00276CB6 /* Recents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D171926F11C8F00276CB6 /* Recents.swift */; };
-		418D171C26F1257900276CB6 /* Yours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D171B26F1257900276CB6 /* Yours.swift */; };
-		418D171E26F125B400276CB6 /* Yays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D171D26F125B400276CB6 /* Yays.swift */; };
 		567B793326F11761008882CF /* JorneyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B793226F11761008882CF /* JorneyMapView.swift */; };
 		56E9235126EFBF7B0043C0CC /* ExitButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E9235026EFBF7B0043C0CC /* ExitButtonView.swift */; };
 		9310512526F137F100AD89E0 /* YaysConteudoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310512426F137F100AD89E0 /* YaysConteudoView.swift */; };
@@ -43,6 +41,9 @@
 		E524789126F3CFEC00EBBFB6 /* BottomProgressionSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524789026F3CFEC00EBBFB6 /* BottomProgressionSquareView.swift */; };
 		E52A09EB26F67DCE00850E40 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52A09EA26F67DCE00850E40 /* LoadingView.swift */; };
 		E52A09ED26F689B300850E40 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52A09EC26F689B300850E40 /* QuizResultView.swift */; };
+		E52A09F026F68C8600850E40 /* TextEditorPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52A09EF26F68C8600850E40 /* TextEditorPostView.swift */; };
+		E52A09F226F695EE00850E40 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52A09F126F695EE00850E40 /* PostModel.swift */; };
+		E52A09F426F6967A00850E40 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52A09F326F6967A00850E40 /* PostViewModel.swift */; };
 		E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */; };
 		E52F850126E7D0F400F7C8A7 /* OnBoarding02View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */; };
 		E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */; };
@@ -102,8 +103,6 @@
 		4146A40826E721360013A8A9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4146A40B26E722920013A8A9 /* StoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
 		418D171926F11C8F00276CB6 /* Recents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recents.swift; sourceTree = "<group>"; };
-		418D171B26F1257900276CB6 /* Yours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yours.swift; sourceTree = "<group>"; };
-		418D171D26F125B400276CB6 /* Yays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yays.swift; sourceTree = "<group>"; };
 		567B793226F11761008882CF /* JorneyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JorneyMapView.swift; sourceTree = "<group>"; };
 		56E9235026EFBF7B0043C0CC /* ExitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButtonView.swift; sourceTree = "<group>"; };
 		9310512426F137F100AD89E0 /* YaysConteudoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaysConteudoView.swift; sourceTree = "<group>"; };
@@ -129,6 +128,9 @@
 		E524789026F3CFEC00EBBFB6 /* BottomProgressionSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomProgressionSquareView.swift; sourceTree = "<group>"; };
 		E52A09EA26F67DCE00850E40 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E52A09EC26F689B300850E40 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
+		E52A09EF26F68C8600850E40 /* TextEditorPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorPostView.swift; sourceTree = "<group>"; };
+		E52A09F126F695EE00850E40 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		E52A09F326F6967A00850E40 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		E52F84FE26E7C77700F7C8A7 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
 		E52F850026E7D0F400F7C8A7 /* OnBoarding02View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding02View.swift; sourceTree = "<group>"; };
 		E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRoundedButtonView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,8 @@
 		0B9F5BC626EBCEAF0098E43B /* Components Chat */ = {
 			isa = PBXGroup;
 			children = (
+				E598B86326EFDBF4002C6976 /* NextRoundedButtonChat.swift */,
+				E598B86426EFDBF4002C6976 /* TextFieldButtonChat.swift */,
 				0B9F5BC726EBCF1F0098E43B /* ChatAwnsersView.swift */,
 				0B9F5BCC26EBE4220098E43B /* ChatQuestionView.swift */,
 				0BDE7C7826EFCAAA0023A4B5 /* ForwardButtonView.swift */,
@@ -294,12 +298,19 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		E52A09EE26F68B6500850E40 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E52A09EF26F68C8600850E40 /* TextEditorPostView.swift */,
+				418D171926F11C8F00276CB6 /* Recents.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E52F850226E7D16300F7C8A7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				9396ABBA26EBCE5C00075635 /* BlackButtonView.swift */,
-				E598B86326EFDBF4002C6976 /* NextRoundedButtonChat.swift */,
-				E598B86426EFDBF4002C6976 /* TextFieldButtonChat.swift */,
 				E52F850626E7D56800F7C8A7 /* SquaresAndLogoView.swift */,
 				E52F850326E7D18000F7C8A7 /* NextRoundedButtonView.swift */,
 				E52F850826E7D7BC00F7C8A7 /* ProgressionSquareView.swift */,
@@ -321,6 +332,7 @@
 				E524788A26F3A96C00EBBFB6 /* DynamicResultViewModel.swift */,
 				E524788C26F3A97700EBBFB6 /* StoryViewModel.swift */,
 				E565DB1926F6325C000CEB9F /* QuizQuestionViewModel.swift */,
+				E52A09F326F6967A00850E40 /* PostViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -335,6 +347,7 @@
 				E524787E26F3A39000EBBFB6 /* QuizModel.swift */,
 				E524788026F3A3C800EBBFB6 /* DynamicResultModel.swift */,
 				E524788226F3A75700EBBFB6 /* StoryModel.swift */,
+				E52A09F126F695EE00850E40 /* PostModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -473,10 +486,8 @@
 		E5A2604B26E8E376003BADB4 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				E52A09EE26F68B6500850E40 /* Components */,
 				E5A2604E26E8E45E003BADB4 /* TimelineView.swift */,
-				418D171926F11C8F00276CB6 /* Recents.swift */,
-				418D171B26F1257900276CB6 /* Yours.swift */,
-				418D171D26F125B400276CB6 /* Yays.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -637,7 +648,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E52A09F426F6967A00850E40 /* PostViewModel.swift in Sources */,
 				E524788F26F3C34400EBBFB6 /* ContentColorEnum.swift in Sources */,
+				E52A09F026F68C8600850E40 /* TextEditorPostView.swift in Sources */,
 				0BC5EC4726EFE07500309850 /* ContentFeminismView.swift in Sources */,
 				E565DB2A26F651FE000CEB9F /* Story01_2View.swift in Sources */,
 				E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */,
@@ -651,11 +664,9 @@
 				E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */,
 				E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */,
 				E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */,
-				418D171E26F125B400276CB6 /* Yays.swift in Sources */,
 				E524787F26F3A39000EBBFB6 /* QuizModel.swift in Sources */,
 				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
 				E52A09EB26F67DCE00850E40 /* LoadingView.swift in Sources */,
-				418D171C26F1257900276CB6 /* Yours.swift in Sources */,
 				9396ABBD26EBCFB000075635 /* TextFieldView.swift in Sources */,
 				E565DB1A26F6325C000CEB9F /* QuizQuestionViewModel.swift in Sources */,
 				9396ABBB26EBCE5C00075635 /* BlackButtonView.swift in Sources */,
@@ -665,6 +676,7 @@
 				E598B86526EFDBF4002C6976 /* NextRoundedButtonChat.swift in Sources */,
 				E56572A426F53D44004495F1 /* ContentTypeEnum.swift in Sources */,
 				E524787D26F3A32600EBBFB6 /* BlogModel.swift in Sources */,
+				E52A09F226F695EE00850E40 /* PostModel.swift in Sources */,
 				E565DB3226F65274000CEB9F /* LeftStickerCell.swift in Sources */,
 				E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */,
 				E565DB3626F65274000CEB9F /* JourneyInputView.swift in Sources */,

@@ -35,6 +35,10 @@ struct OnBoarding01View: View {
 //            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
             // Fim - Limpar tudo
             
+            
+            let userId = UserDefaults.standard.string(forKey: UserDefaultsKeys.userId.name)!
+            print("senha = \(userId)")
+            
             let isLogged = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)
             print("token = \(String(describing: isLogged))")
             if isLogged != nil {

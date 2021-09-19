@@ -31,7 +31,7 @@ struct NextRoundedButtonView: View {
                     .background(
                         RoundedRectangle(cornerRadius: 25)
                             .fill(Color.white)
-                            .shadow(color: .gray, radius: 4, x: 0, y: 4)
+                            .shadow(radius: 4, x: 0, y: 4)
                     )
             })
             .alert(isPresented: $showErrorAlert, content: {
