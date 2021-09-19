@@ -51,9 +51,9 @@ struct QuizQuestionView: View {
                     .foregroundColor(.onnaYellow)
                     
                     if (viewModel.quizQuestion?.quizAnswers.count == 4) {
-                        ElipseQuizView(action: {showNext()}, quizAnswers: viewModel.quizQuestion!.quizAnswers)
+                        ElipseQuizView(action: {showNext()}, quizAnswers: viewModel.quizQuestion!.quizAnswers, quizId: quizId, totalQuestions: totalQuestions)
                     } else if (viewModel.quizQuestion?.quizAnswers.count == 2) {
-                        HalfElipseQuizView(action: {showNext()}, quizAnswers: viewModel.quizQuestion!.quizAnswers)
+                        HalfElipseQuizView(action: {showNext()}, quizAnswers: viewModel.quizQuestion!.quizAnswers, quizId: quizId, totalQuestions: totalQuestions)
                             .padding(.top, 60)
                     }
                     
@@ -83,6 +83,7 @@ struct QuizQuestionView: View {
             let nextIndex = actualIndex + 1
             
             if (nextIndex > totalQuestions) {
+                viewRouter.parameter = quizId
                 viewRouter.currentPage = .quizResultView
             } else {
                 viewRouter.parameter = quizId

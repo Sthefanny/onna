@@ -32,6 +32,7 @@ struct TimelineView: View {
                         .resizable()
                         .frame(width: 20, height: 20, alignment: .center)
                 }
+                .padding(.top, 10)
                 
                 VStack {
                     _buildTextField

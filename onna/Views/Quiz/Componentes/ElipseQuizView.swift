@@ -11,6 +11,8 @@ struct ElipseQuizView: View {
     @State var action: () -> Void
     @State var quizAnswers: [QuizAnswer]
     @State var showCorrect = false
+    @State var quizId: Int
+    @State var totalQuestions: Int
     
     var body: some View {
         VStack() {
@@ -28,6 +30,7 @@ struct ElipseQuizView: View {
     
     func _buildEllipseAnswer(answer: QuizAnswer) -> some View {
         return Button(action: {
+            saveAnswer(answer: answer)
             showCorrect = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.action()
@@ -48,6 +51,12 @@ struct ElipseQuizView: View {
         }
         .padding(8)
     }
+    
+    func saveAnswer(answer: QuizAnswer) {
+        if (answer.isCorrect) {
+            QuizHelper.saveQuizAnswers(quizId: quizId, totalQuestions: totalQuestions)
+        }
+    }
 }
 
 struct ElipseQuizView_Previews: PreviewProvider {
@@ -57,6 +66,6 @@ struct ElipseQuizView_Previews: PreviewProvider {
             QuizAnswer(id: 1, quizQuestionId: 1, text: "Estresse", isCorrect: true),
             QuizAnswer(id: 2, quizQuestionId: 1, text: "Ganho de Peso", isCorrect: false),
             QuizAnswer(id: 3, quizQuestionId: 1, text: "Todas anteriores", isCorrect: false)
-        ])
+        ], quizId: 1, totalQuestions: 2)
     }
 }

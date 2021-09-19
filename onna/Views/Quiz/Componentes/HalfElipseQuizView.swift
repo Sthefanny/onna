@@ -12,6 +12,8 @@ struct HalfElipseQuizView: View {
     @State var action: () -> Void
     @State var quizAnswers: [QuizAnswer]
     @State var showCorrect = false
+    @State var quizId: Int
+    @State var totalQuestions: Int
     
     var body: some View {
         HStack {
@@ -20,6 +22,7 @@ struct HalfElipseQuizView: View {
                 if i % 2 == 0 {
                     ZStack {
                         Button(action: {
+                            saveAnswer(i: i)
                             showCorrect = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.action()
@@ -40,6 +43,7 @@ struct HalfElipseQuizView: View {
                 } else {
                     ZStack {
                         Button(action: {
+                            saveAnswer(i: i)
                             showCorrect = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.action()
@@ -62,6 +66,12 @@ struct HalfElipseQuizView: View {
         }
         .padding(8)
     }
+    
+    func saveAnswer(i: Int) {
+        if (quizAnswers[i].isCorrect) {
+            QuizHelper.saveQuizAnswers(quizId: quizId, totalQuestions: totalQuestions)
+        }
+    }
 }
 
 struct HalfElipseQuizView_Previews: PreviewProvider {
@@ -69,6 +79,6 @@ struct HalfElipseQuizView_Previews: PreviewProvider {
         HalfElipseQuizView(action: {}, quizAnswers: [
             QuizAnswer(id: 0, quizQuestionId: 1, text: "Verdadeiro", isCorrect: false),
             QuizAnswer(id: 1, quizQuestionId: 1, text: "Falso", isCorrect: true)
-        ])
+        ], quizId: 1, totalQuestions: 2)
     }
 }

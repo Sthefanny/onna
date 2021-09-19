@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ContentBodyPositiveView: View {
-    
     @EnvironmentObject var viewRouter: ViewRouter
-    var body: some View{
-        
+    @State var dynamicResult: DynamicResult
+    
+    init(_ dynamicResult: DynamicResult) {
+        self.dynamicResult = dynamicResult
+    }
+    
+    var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
             ScrollView{
-                ConteudoVoltarView(conteudoName: "Body Positive")
+                ConteudoVoltarView(conteudoName: "Body Positive", dynamicResult: dynamicResult)
                     .padding(.top, -30)
                     
                     VStack (alignment: .center) {
@@ -105,7 +109,7 @@ struct ContentBodyPositiveView: View {
 
 struct ContentBodyPositiveView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentBodyPositiveView()
+        ContentBodyPositiveView(DynamicResult(id: nil, journeyId: 1, entityId: 1, entityName: ""))
     }
 }
 

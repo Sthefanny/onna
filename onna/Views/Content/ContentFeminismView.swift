@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ContentFeminismView: View {
-    
     @EnvironmentObject var viewRouter: ViewRouter
+    @State var dynamicResult: DynamicResult
+    
+    init(_ dynamicResult: DynamicResult) {
+        self.dynamicResult = dynamicResult
+    }
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
             ScrollView{
-                ConteudoVoltarView(conteudoName: "Feminismo")
+                ConteudoVoltarView(conteudoName: "Feminismo", dynamicResult: dynamicResult)
                     .padding(.top, -30)
                 
                 VStack (alignment: .center){
@@ -167,6 +171,6 @@ struct ContentFeminismView: View {
 
 struct ContentFeminismView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentFeminismView()
+        ContentFeminismView(DynamicResult(id: nil, journeyId: 1, entityId: 1, entityName: ""))
     }
 }

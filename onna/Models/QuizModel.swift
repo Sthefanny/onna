@@ -34,3 +34,9 @@ struct QuizAnswer: Decodable, Identifiable {
     let text: String
     let isCorrect: Bool
 }
+
+struct QuizSavedAnswer: Decodable, Encodable {
+    let quizId: Int
+    let totalQuestion: Int
+    let correctQuestions: Int
+}

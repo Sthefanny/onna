@@ -52,6 +52,7 @@ struct QuizView: View {
             }
         }
         .onAppear{
+            QuizHelper.cleanAnswersByQuizId(quizId: quizId)
             viewModel.getQuiz(id: quizId) { hasItem in
                 if (!hasItem){
                     DispatchQueue.main.async {

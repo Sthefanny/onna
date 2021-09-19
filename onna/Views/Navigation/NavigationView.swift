@@ -23,9 +23,9 @@ struct NavigationView: View {
         case .onBoarding05View:
             OnBoarding05View()
         case .contentFeminismView:
-            ContentFeminismView()
+            ContentFeminismView(viewRouter.parameter as! DynamicResult)
         case .contentBodyPositiveView:
-            ContentBodyPositiveView()
+            ContentBodyPositiveView(viewRouter.parameter as! DynamicResult)
         case .loginView:
             LoginView()
         case .homeView:
@@ -52,7 +52,7 @@ struct NavigationView: View {
         case .story01View:
             Story01View()
         case .challengeView:
-            ChallengeView(viewRouter.parameter as! Challenge)
+            ChallengeView(viewRouter.parameter as! Challenge, viewRouter.parameter2 as! DynamicResult)
         case .quizView:
             QuizView(viewRouter.parameter as! Int)
         case .quizQuestionView:
@@ -60,7 +60,7 @@ struct NavigationView: View {
         case .loadingView:
             LoadingView()
         case .quizResultView:
-            QuizResultView()
+            QuizResultView(viewRouter.parameter as! Int)
         case .chatView:
             ChatView(viewRouter.parameter as! Int)
         }

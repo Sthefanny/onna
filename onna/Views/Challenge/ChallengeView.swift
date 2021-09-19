@@ -10,9 +10,12 @@ import SwiftUI
 struct ChallengeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var challenge: Challenge
+    @ObservedObject var viewModel = DynamicResultViewModel()
+    var dynamicResult: DynamicResult
     
-    init(_ challenge: Challenge) {
+    init(_ challenge: Challenge, _ dynamicResult: DynamicResult) {
         self.challenge = challenge
+        self.dynamicResult = dynamicResult
     }
     
     var body: some View {
@@ -37,7 +40,9 @@ struct ChallengeView: View {
                     
                     ChallengeTextView(challenge: challenge)
                     
-                    TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
+                    TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", callback: {_ in
+                        viewModel.addResult(result: dynamicResult, callback: {_ in})
+                    })
                 }
                 
             }
@@ -50,7 +55,7 @@ struct ChallengeView: View {
     struct ChallengeSendTextView_Previews: PreviewProvider {
         static var previews: some View {
             let challenge = Challenge(id: 0, journeyId: 0, icon: "", image: "", title: "Amor Próprio", description: "Envie uma mensagem de amor para você mesma no futuro. Pode ser alguma coisa que você admira em si, um objetivo que conseguiu cumprir ou um motivacional.", tip: "Pense com carinho :)")
-            ChallengeView(challenge)
+            ChallengeView(challenge, DynamicResult(id: nil, journeyId: 1, entityId: 1, entityName: ""))
         }
     }
 }

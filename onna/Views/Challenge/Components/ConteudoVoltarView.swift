@@ -11,11 +11,16 @@ struct ConteudoVoltarView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var didTap : Bool = false
     let conteudoName: String
+    var dynamicResult: DynamicResult?
+    @ObservedObject var viewModel = DynamicResultViewModel()
     
     var body: some View {
         HStack (alignment: .center, spacing: 10) {
             
             Button(action: {
+                if (dynamicResult != nil) {
+                    viewModel.addResult(result: dynamicResult!, callback: {_ in})
+                }
                 viewRouter.currentPage = viewRouter.previousPage
             }, label: {
                 Label("Voltar", systemImage: "chevron.backward")

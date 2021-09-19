@@ -13,6 +13,7 @@ struct ProfileView: View {
     let screenWidth = UIScreen.main.bounds.size.width
     @State var actualView: WhichView = .journey
     @ObservedObject var viewModel = JourneyViewModel()
+    var width = UIScreen.main.bounds.width
 
     var body: some View {
         ZStack {
@@ -70,7 +71,7 @@ struct ProfileView: View {
                         }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
                         
                         VStack {
-                            ViewSlider(viewModel: viewModel, actualView: $actualView)
+                            _buildViewSlider
                         }
                     }
                 }
@@ -101,19 +102,12 @@ struct ProfileView: View {
             )
         }
     }
-}
-
-struct ViewSlider : View {
     
-    @ObservedObject var viewModel: JourneyViewModel
-    @Binding var actualView: WhichView
-    var width = UIScreen.main.bounds.width
-    
-    var body: some View{
+    var _buildViewSlider: some View{
         
         VStack(spacing: 0){
             
-            TabBar(actualView: $actualView)
+            _buildTabBar
             
             GeometryReader{g in
                 
@@ -137,75 +131,36 @@ struct ViewSlider : View {
         .animation(.default)
         .edgesIgnoringSafeArea(.all)
     }
-}
-
-struct TabBar : View {
     
-    @Binding var actualView: WhichView
-    var width = UIScreen.main.bounds.width
-    
-    var body: some View{
-        
+    var _buildTabBar: some View {
         VStack(alignment: .leading, content: {
             HStack{
-                
-                Button(action: {
-                    actualView = .journey
-                }) {
-                    
-                    VStack(spacing: 8){
-                        
-                        HStack(spacing: 12){
-                            
-                            
-                            Text("Jornada")
-                                .foregroundColor(actualView == .journey ? .onnaBlue : Color.onnaBlue.opacity(0.4)) .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        }
-                        Capsule()
-                            .fill(actualView == .journey ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
-                Button(action: {
-                    actualView = .wall
-                }) {
-                    
-                    VStack(spacing: 8){
-                        HStack(spacing: 12){
-                            Text("Mural")
-                                .foregroundColor(actualView == .wall ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                                .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .wall ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
-                Button(action: {
-                    actualView = .faves
-                }) {
-                    
-                    VStack(spacing: 8){
-                        HStack(spacing: 12){
-                            Text("Faves")
-                                .foregroundColor(actualView == .faves ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                                .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .faves ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
+                _buildActiveBar(text: "Jornada", tab: .journey)
+                _buildActiveBar(text: "Mural", tab: .wall)
+                _buildActiveBar(text: "Faves", tab: .faves)
             }
         })
         .padding(.top, (UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0 + 15)
         .padding(.horizontal)
         .padding(.bottom, 10)
-        
+    }
+
+    func _buildActiveBar(text: String, tab: WhichView) -> some View {
+        Button(action: {
+            actualView = tab
+        }) {
+            VStack(spacing: 8){
+                
+                HStack(spacing: 12){
+                    Text(text)
+                        .foregroundColor( actualView == tab ? .onnaBlue : Color.onnaBlue.opacity(0.4))
+                }
+                
+                Capsule()
+                    .fill(actualView == tab ? Color.onnaBlue : Color.clear)
+                    .frame(width: 70, height: 4)
+            }
+        }
     }
 }
 
@@ -214,9 +169,6 @@ enum WhichView {
     case wall
     case faves
 }
-
-
-
 
 
 struct ProfileView_Previews: PreviewProvider {

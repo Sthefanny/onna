@@ -12,13 +12,13 @@ struct TextFieldView: View {
     let placeholder: String
     @State var message: String
     let internalPadding: CGFloat
-    @State var action: () -> Void
+    var callback: (Bool) -> Void
     
-    init(placeholder: String, message: String, internalPadding: CGFloat = 5, action: @escaping () -> Void) {
+    init(placeholder: String, message: String, internalPadding: CGFloat = 5, callback: @escaping (Bool) -> Void) {
         self.placeholder = placeholder
         self.message = message
         self.internalPadding = internalPadding
-        self.action = action
+        self.callback = callback
         UITextView.appearance().backgroundColor = .clear
     }
     
@@ -44,7 +44,7 @@ struct TextFieldView: View {
                 }
             }
             Button(action: {
-                self.action()
+                self.callback(true)
             }, label: {
                 Text("Yas!")
                     .onnaFont(.body)
@@ -62,7 +62,7 @@ struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.onnaGreyContent.edgesIgnoringSafeArea(.all)
-            TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", action: {})
+            TextFieldView(placeholder: "Fale com o seu eu do futuro...", message: "", callback: {isSuccess in})
         }
     }
 }

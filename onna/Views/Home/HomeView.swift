@@ -28,14 +28,18 @@ struct HomeView: View {
         ZStack(alignment: .top) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            VStack {
-                _buildStories
-                _buildTodayJourneyAndTimeline
-                _buildBlogCard
-                _buildQuizCard
-                _buildChallengeCard
-                Spacer()
-                BottomProgressionSquareView(actualSquare: 1, maxSquare: 3)
+            if (viewModel.journey.count > 0) {
+                VStack {
+                    _buildStories
+                    _buildTodayJourneyAndTimeline
+                    _buildBlogCard
+                    _buildQuizCard
+                    _buildChallengeCard
+                    Spacer()
+                    BottomProgressionSquareView(actualSquare: 1, maxSquare: 3)
+                }
+            } else {
+                LoadingView()
             }
         }
         .onAppear {
@@ -194,7 +198,9 @@ struct HomeView: View {
         .foregroundColor(getColorByContent(value: .blog))
         .padding(.top, 20)
         .onTapGesture(count: 1, perform: {
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstBlog!.id, entityName: EntityNameEnum.blog.name)
             viewRouter.previousPage = .homeView
+            viewRouter.parameter = dynamicResult
             viewRouter.currentPage = getContentType(value: firstBlog!.page)
         })
     }

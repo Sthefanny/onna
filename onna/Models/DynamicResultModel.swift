@@ -8,10 +8,8 @@
 import Foundation
 
 struct DynamicResult: Decodable, Identifiable {
-    let id: Int
+    let id: Int?
     let journeyId: Int
-    let userId: Int
     let entityId: Int
     let entityName: String
-    let answer: String
 }
