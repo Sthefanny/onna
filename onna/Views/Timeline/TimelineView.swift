@@ -63,7 +63,6 @@ struct TimelineView: View {
                 .onChanged { gesture in
                     self.offset = gesture.translation
                 }
-                
                 .onEnded { _ in
                     if self.offset.width < 0 {
                         withAnimation {
@@ -160,7 +159,7 @@ struct TimelineView: View {
                     case .yays:
                         VStack {
                             if (viewModel.likedPosts.count == 0) {
-                                Text("Você ainda não tem deu yay em nenhuma publicação.")
+                                Text("Você ainda não deu yay em nenhuma publicação.")
                                     .onnaFont(.body)
                                     .foregroundColor(.onnaMainGrey)
                                     .padding(60)

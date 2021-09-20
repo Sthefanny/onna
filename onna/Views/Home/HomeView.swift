@@ -251,7 +251,9 @@ struct HomeView: View {
         .foregroundColor(getColorByContent(value: .challenge))
         .padding(.bottom, 10)
         .onTapGesture(count: 1, perform: {
-            viewRouter.parameter = firstChallenge
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstChallenge!.id, entityName: EntityNameEnum.challenge.name)
+            viewRouter.parameter = firstChallenge?.id
+            viewRouter.parameter2 = dynamicResult
             viewRouter.previousPage = .homeView
             viewRouter.currentPage = .challengeView
         })

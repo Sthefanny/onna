@@ -9,12 +9,11 @@ import Foundation
 import SwiftUI
 
 class ChallengeViewModel: ObservableObject {
-    @Published var challenge = [Challenge]()
-    @Published var filteredChallenge = [Challenge]()
+    @Published var challenge: Challenge?
     
-    func fetchChallenge() {
+    func getChallengeById(challengeId: Int, callback: @escaping (Bool) -> Void) {
         
-        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.challengeUrl.text)"
+        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.challengeUrl.text)/\(challengeId)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
         
@@ -26,19 +25,18 @@ class ChallengeViewModel: ObservableObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                guard let challenge = try? JSONDecoder().decode([Challenge].self, from: data!) else {
+                guard let challenge = try? JSONDecoder().decode(Challenge.self, from: data!) else {
+                    callback(false)
                     return
                 }
                 DispatchQueue.main.async {
                     self.challenge = challenge
+                    
+                    callback(true)
                 }
             }
         })
         
         task.resume()
-    }
-    
-    func filterChallenge(by filter: String) {
-        filteredChallenge = challenge.filter({ $0.title == filter })
     }
 }

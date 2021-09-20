@@ -13,8 +13,18 @@ struct InputRow: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            ForEach(viewModel.journey, id: \.id) { journey in
-                JourneyInputView(journeyInputCell:journey)
+            if (viewModel.journey.count == 0) {
+                Text("Ainda não tem nenhuma jornada criada. Aguarde que em breve vai ter coisa nova aqui!")
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaMainGrey)
+                    .frame(width: 300, height: 100, alignment: .top)
+                    .padding(30)
+            } else {
+                ScrollView {
+                    ForEach(viewModel.journey, id: \.id) { journey in
+                        JourneyInputView(journey:journey)
+                    }
+                }
             }
         }
         .padding(.horizontal, 50)

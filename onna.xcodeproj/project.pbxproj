@@ -28,6 +28,9 @@
 		93F0033B26EFC5FF00E5553B /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0033A26EFC5FF00E5553B /* ChallengeView.swift */; };
 		93F46C9526F273D400F3D15B /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F46C9426F273D400F3D15B /* QuizView.swift */; };
 		E50091DD26F7A0700018BE30 /* QuizHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50091DC26F7A0700018BE30 /* QuizHelper.swift */; };
+		E50091DF26F7E1430018BE30 /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50091DE26F7E1430018BE30 /* WallView.swift */; };
+		E50091E126F7E2EA0018BE30 /* FavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50091E026F7E2EA0018BE30 /* FavesView.swift */; };
+		E50091E326F7FF010018BE30 /* FaveInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50091E226F7FF010018BE30 /* FaveInputView.swift */; };
 		E524787B26F3A2B700EBBFB6 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524787A26F3A2B700EBBFB6 /* ChallengeModel.swift */; };
 		E524787D26F3A32600EBBFB6 /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524787C26F3A32600EBBFB6 /* BlogModel.swift */; };
 		E524787F26F3A39000EBBFB6 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E524787E26F3A39000EBBFB6 /* QuizModel.swift */; };
@@ -77,7 +80,6 @@
 		E565DB2B26F651FE000CEB9F /* Story01_3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565DB2726F651FE000CEB9F /* Story01_3View.swift */; };
 		E565DB3226F65274000CEB9F /* LeftStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565DB2D26F65274000CEB9F /* LeftStickerCell.swift */; };
 		E565DB3326F65274000CEB9F /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565DB2E26F65274000CEB9F /* StickerCell.swift */; };
-		E565DB3426F65274000CEB9F /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565DB2F26F65274000CEB9F /* WallView.swift */; };
 		E565DB3526F65274000CEB9F /* InputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565DB3026F65274000CEB9F /* InputRow.swift */; };
 		E565DB3626F65274000CEB9F /* JourneyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565DB3126F65274000CEB9F /* JourneyInputView.swift */; };
 		E57C5A1826F7844D00ABE4BF /* EntityNameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C5A1726F7844D00ABE4BF /* EntityNameEnum.swift */; };
@@ -117,6 +119,9 @@
 		93F0033A26EFC5FF00E5553B /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		93F46C9426F273D400F3D15B /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		E50091DC26F7A0700018BE30 /* QuizHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHelper.swift; sourceTree = "<group>"; };
+		E50091DE26F7E1430018BE30 /* WallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
+		E50091E026F7E2EA0018BE30 /* FavesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavesView.swift; sourceTree = "<group>"; };
+		E50091E226F7FF010018BE30 /* FaveInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaveInputView.swift; sourceTree = "<group>"; };
 		E524787A26F3A2B700EBBFB6 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		E524787C26F3A32600EBBFB6 /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
 		E524787E26F3A39000EBBFB6 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
@@ -169,7 +174,6 @@
 		E565DB2726F651FE000CEB9F /* Story01_3View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story01_3View.swift; sourceTree = "<group>"; };
 		E565DB2D26F65274000CEB9F /* LeftStickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftStickerCell.swift; sourceTree = "<group>"; };
 		E565DB2E26F65274000CEB9F /* StickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
-		E565DB2F26F65274000CEB9F /* WallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
 		E565DB3026F65274000CEB9F /* InputRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputRow.swift; sourceTree = "<group>"; };
 		E565DB3126F65274000CEB9F /* JourneyInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyInputView.swift; sourceTree = "<group>"; };
 		E57C5A1726F7844D00ABE4BF /* EntityNameEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityNameEnum.swift; sourceTree = "<group>"; };
@@ -477,11 +481,13 @@
 		E565DB2C26F65274000CEB9F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E50091DE26F7E1430018BE30 /* WallView.swift */,
 				E565DB2D26F65274000CEB9F /* LeftStickerCell.swift */,
 				E565DB2E26F65274000CEB9F /* StickerCell.swift */,
-				E565DB2F26F65274000CEB9F /* WallView.swift */,
 				E565DB3026F65274000CEB9F /* InputRow.swift */,
 				E565DB3126F65274000CEB9F /* JourneyInputView.swift */,
+				E50091E026F7E2EA0018BE30 /* FavesView.swift */,
+				E50091E226F7FF010018BE30 /* FaveInputView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -665,6 +671,7 @@
 				E52A09F426F6967A00850E40 /* PostViewModel.swift in Sources */,
 				E524788F26F3C34400EBBFB6 /* ContentColorEnum.swift in Sources */,
 				E52A09F026F68C8600850E40 /* TextEditorPostView.swift in Sources */,
+				E50091E326F7FF010018BE30 /* FaveInputView.swift in Sources */,
 				0BC5EC4726EFE07500309850 /* ContentFeminismView.swift in Sources */,
 				E565DB2A26F651FE000CEB9F /* Story01_2View.swift in Sources */,
 				E552EA9326E80AF000035C4B /* OnBoarding05View.swift in Sources */,
@@ -693,6 +700,7 @@
 				E52A09F226F695EE00850E40 /* PostModel.swift in Sources */,
 				E565DB3226F65274000CEB9F /* LeftStickerCell.swift in Sources */,
 				E598B86626EFDBF4002C6976 /* TextFieldButtonChat.swift in Sources */,
+				E50091E126F7E2EA0018BE30 /* FavesView.swift in Sources */,
 				E565DB3626F65274000CEB9F /* JourneyInputView.swift in Sources */,
 				E565DB2826F651FE000CEB9F /* Story01_4View.swift in Sources */,
 				E565DB3326F65274000CEB9F /* StickerCell.swift in Sources */,
@@ -714,6 +722,7 @@
 				0BD6837326F2584F0062834E /* ContentBodyPositiveView.swift in Sources */,
 				E565DB2926F651FE000CEB9F /* Story01View.swift in Sources */,
 				E552EA9926E82B0D00035C4B /* ViewRouter.swift in Sources */,
+				E50091DF26F7E1430018BE30 /* WallView.swift in Sources */,
 				E50091DD26F7A0700018BE30 /* QuizHelper.swift in Sources */,
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
 				E565DB3526F65274000CEB9F /* InputRow.swift in Sources */,
@@ -727,7 +736,6 @@
 				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
 				93CD333626F28CED00FB86D0 /* ElipseQuizView.swift in Sources */,
 				9396ABB926EBCE1400075635 /* ChallengeTextView.swift in Sources */,
-				E565DB3426F65274000CEB9F /* WallView.swift in Sources */,
 				E598B86826EFDCD7002C6976 /* UserViewModel.swift in Sources */,
 				E5A2604F26E8E45E003BADB4 /* TimelineView.swift in Sources */,
 				E552EA8B26E7E2BC00035C4B /* TextFieldWithButtonView.swift in Sources */,
@@ -871,7 +879,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onna/onna.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"onna/Preview Content\"";
 				DEVELOPMENT_TEAM = H7R4J57657;
 				ENABLE_PREVIEWS = YES;
@@ -895,7 +903,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onna/onna.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"onna/Preview Content\"";
 				DEVELOPMENT_TEAM = H7R4J57657;
 				ENABLE_PREVIEWS = YES;

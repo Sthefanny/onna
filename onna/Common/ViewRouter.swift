@@ -14,5 +14,6 @@ class ViewRouter: ObservableObject {
     @Published var parameter: Any?
     @Published var parameter2: Any?
     @Published var parameter3: Any?
+    @Published var parameter4: Any?
     
 }

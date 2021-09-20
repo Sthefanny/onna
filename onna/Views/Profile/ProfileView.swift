@@ -14,93 +14,91 @@ struct ProfileView: View {
     @State var actualView: WhichView = .journey
     @ObservedObject var viewModel = JourneyViewModel()
     var width = UIScreen.main.bounds.width
-
+    
     var body: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
             VStack {
-                ScrollView {
+                HStack {
+                    Image("Star")
+                        .resizable()
+                        .frame(width: 20, height: 20, alignment: .center)
+                    Text("Perfil")
+                        .onnaFont(OnnaFontSystem .TextStyle.title1)
+                        .foregroundColor(.white)
+                    Image("Star")
+                        .resizable()
+                        .frame(width: 20, height: 20, alignment: .center)
+                }
+                .padding(.top, 10)
+                
+                VStack {
+                    Image("Profile-Pic-4")
+                        .resizable()
+                        .clipShape(Circle(), style: FillStyle())
+                        .frame(width: 100, height: 100, alignment: .center)
+                    Text("Malu Gonzatta")
+                        .onnaFont(OnnaFontSystem.TextStyle.subheadline)
+                        .foregroundColor(.white)
                     HStack {
-                        Image("Star")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .center)
-                        Text("Perfil")
-                            .onnaFont(OnnaFontSystem .TextStyle.title1)
+                        Text("idade")
+                            .onnaFont(OnnaFontSystem.TextStyle.body)
                             .foregroundColor(.white)
-                        Image("Star")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .padding(.trailing, 20)
+                        Text("•")
+                            .onnaFont(OnnaFontSystem.TextStyle.body)
+                            .foregroundColor(.white)
+                            .padding(.trailing, 20)
+                        Text("insta")
+                            .onnaFont(OnnaFontSystem.TextStyle.body)
+                            .foregroundColor(.white)
+                    }.padding()
+                    
+                    VStack(alignment: .center) {
+                        Text("falo besteira e amo \nconversar sobre ppk")
+                            .onnaFont(OnnaFontSystem.TextStyle.body)
+                            .foregroundColor(.white)
                     }
-                    .padding(.top, 10)
+                    .frame(width: 250, height: 70, alignment: .center)
+                    .background(RoundedRectangle(cornerRadius: 20))
+                    .foregroundColor(.onnaMainGrey.opacity(0.4))
+                    .padding()
+                    
+                    HStack {
+                        
+                    }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
                     
                     VStack {
-                        Image("Profile-Pic-4")
-                            .resizable()
-                            .clipShape(Circle(), style: FillStyle())
-                            .frame(width: 100, height: 100, alignment: .center)
-                        Text("Malu Gonzatta")
-                            .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                            .foregroundColor(.white)
-                        HStack {
-                            Text("idade")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 20)
-                            Text("•")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 20)
-                            Text("insta")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                        }.padding()
-                        
-                        VStack(alignment: .center) {
-                            Text("falo besteira e amo \nconversar sobre ppk")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 250, height: 70, alignment: .center)
-                        .background(RoundedRectangle(cornerRadius: 20))
-                        .foregroundColor(.onnaMainGrey.opacity(0.4))
-                        .padding()
-                        
-                        HStack {
-                            
-                        }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
-                        
-                        VStack {
-                            _buildViewSlider
-                        }
+                        _buildViewSlider
                     }
                 }
                 Spacer()
                 BottomProgressionSquareView(actualSquare: 2, maxSquare: 3)
             }
-            .onAppear {
-                viewModel.fetchJourney { hasJorney in
-                    if (!hasJorney){
-                        viewRouter.currentPage = .loginView
-                    }
+        }
+        .onAppear {
+            viewModel.fetchJourney { hasJorney in
+                if (!hasJorney){
+                    viewRouter.currentPage = .loginView
                 }
             }
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.offset = gesture.translation
-                    }
-                    
-                    .onEnded { _ in
-                        if self.offset.width > 0 {
-                            withAnimation {
-                                viewRouter.previousPage = .profileView
-                                viewRouter.currentPage = .homeView
-                            }
+            viewModel.fetchCompletedJourneys{ _ in }
+        }
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    self.offset = gesture.translation
+                }
+                .onEnded { _ in
+                    if self.offset.width > 0 {
+                        withAnimation {
+                            viewRouter.previousPage = .profileView
+                            viewRouter.currentPage = .homeView
                         }
                     }
-            )
-        }
+                }
+        )
     }
     
     var _buildViewSlider: some View{
@@ -117,13 +115,14 @@ struct ProfileView: View {
                     case .journey:
                         InputRow(viewModel: viewModel)
                             .frame(width: width)
-                           
+                        
                     case .wall:
                         WallView(viewModel: viewModel)
                             .frame(width: width)
-                           
+                        
                     case .faves:
-                        Text("criar faves")
+                        FavesView(viewModel: viewModel)
+                            .frame(width: width)
                     }
                 }
             }
@@ -144,7 +143,7 @@ struct ProfileView: View {
         .padding(.horizontal)
         .padding(.bottom, 10)
     }
-
+    
     func _buildActiveBar(text: String, tab: WhichView) -> some View {
         Button(action: {
             actualView = tab

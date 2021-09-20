@@ -13,10 +13,22 @@ struct WallView: View {
     
     var body: some View {
         VStack {
-            ForEach(0 ..< viewModel.journey.count) { i in
-                StickerCell(stickerCellInfo: viewModel.journey[i], side: i % 2 == 0 ? .left : .right)
+            if (viewModel.completedJourneys.count == 0) {
+                Text("Ainda não tem nada no seu mural. Complete alguma jornada para começar a criar seu mural!")
+                    .onnaFont(.body)
+                    .foregroundColor(.onnaMainGrey)
+                    .frame(width: 300, height: 100, alignment: .top)
+                    .padding(30)
+            } else {
+                ScrollView {
+                    ForEach(0 ..< viewModel.completedJourneys.count) { i in
+                        StickerCell(stickerCellInfo: viewModel.completedJourneys[i], side: i % 2 == 0 ? .left : .right)
+                    }
+                }
             }
-            
+        }
+        .onAppear {
+            viewModel.fetchCompletedJourneys{_ in}
         }
     }
 }

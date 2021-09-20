@@ -16,3 +16,10 @@ struct Challenge: Decodable, Identifiable {
     let description: String
     let tip: String
 }
+
+struct ChallengeResponse: Decodable, Identifiable {
+    let id: Int
+    let title: String
+    let description: String
+    let completed: Bool
+}

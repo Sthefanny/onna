@@ -1,15 +1,15 @@
 //
-//  JourneyInputView.swift
+//  FaveInputView.swift
 //  onna
 //
-//  Created by Daniella Onishi on 09/09/21.
+//  Created by Sthefanny Gonzaga on 19/09/21.
 //
 
 import SwiftUI
 
-struct JourneyInputView: View {
+struct FaveInputView: View {
     @State private var showingSheet = false
-    var journey: Journey
+    var journey: ContentLiked
     
     var body: some View {
         
@@ -22,10 +22,7 @@ struct JourneyInputView: View {
                 .padding(5)
             
             VStack(alignment: .leading) {
-                Text(journey.title)
-                    .onnaFont(.title2)
-                    .foregroundColor(.onnaWhite)
-                Text(journey.description)
+                Text(journey.text)
                     .onnaFont(.callout)
                     .foregroundColor(.onnaWhite)
                     .frame(width: 250, height: 40, alignment: .leading)
@@ -36,17 +33,13 @@ struct JourneyInputView: View {
             showingSheet.toggle()
         })
         .sheet(isPresented: $showingSheet) {
-            JorneyMapView(journeyId: journey.id)
+            JorneyMapView(journeyId: journey.journeyId)
         }
     }
 }
 
-struct JourneyInputView_Previews: PreviewProvider {
+struct FaveInputView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            let journey = Journey(id: 0, image: "", title: "Title", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenge: nil, blog: nil, quiz: nil, dynamicResults: nil)
-            JourneyInputView(journey: journey)
-        }
+        FaveInputView(journey: ContentLiked(journeyId: 1, entityId: 1, entityName: "Teste", image: "", text: "lalalal la lala"))
     }
 }

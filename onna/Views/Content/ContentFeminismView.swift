@@ -20,7 +20,7 @@ struct ContentFeminismView: View {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
             ScrollView{
-                ConteudoVoltarView(conteudoName: "Feminismo", dynamicResult: dynamicResult)
+                ConteudoVoltarView(conteudoName: "Blog", dynamicResult: dynamicResult, saveResult: true)
                     .padding(.top, -30)
                 
                 VStack (alignment: .center){

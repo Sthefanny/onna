@@ -9,10 +9,21 @@ import SwiftUI
 
 struct LoadingView: View {
     
+    @State var animate = false
+    
     var body: some View {
-        Image("Onna-Logo")
-            .aspectRatio(1, contentMode: .fit)
-            .padding(20)
+        
+        VStack(alignment: .center){
+            Spacer()
+            Image("Onna-Logo")
+                .rotationEffect(.init(degrees: self.animate ? 360 : 0))
+                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false))
+            Spacer()
+            
+        }
+        .onAppear {
+            self.animate.toggle()
+        }
     }
 }
 

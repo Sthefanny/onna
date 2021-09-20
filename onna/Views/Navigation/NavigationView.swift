@@ -52,15 +52,15 @@ struct NavigationView: View {
         case .story01View:
             Story01View()
         case .challengeView:
-            ChallengeView(viewRouter.parameter as! Challenge, viewRouter.parameter2 as! DynamicResult)
+            ChallengeView(viewRouter.parameter as! Int, viewRouter.parameter2 as! DynamicResult)
         case .quizView:
-            QuizView(viewRouter.parameter as! Int)
+            QuizView(viewRouter.parameter as! Int, viewRouter.parameter2 as! DynamicResult)
         case .quizQuestionView:
-            QuizQuestionView(viewRouter.parameter as! Int, viewRouter.parameter2 as! Int, viewRouter.parameter3 as! Int)
+            QuizQuestionView(viewRouter.parameter as! DynamicResult, viewRouter.parameter2 as! Int, viewRouter.parameter3 as! Int, viewRouter.parameter4 as! Int)
         case .loadingView:
             LoadingView()
         case .quizResultView:
-            QuizResultView(viewRouter.parameter as! Int)
+            QuizResultView(viewRouter.parameter as! Int, viewRouter.parameter as! Int)
         case .chatView:
             ChatView(viewRouter.parameter as! Int)
         }

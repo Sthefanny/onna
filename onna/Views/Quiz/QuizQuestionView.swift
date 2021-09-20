@@ -11,11 +11,13 @@ struct QuizQuestionView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = QuizQuestionViewModel()
+    var dynamicResult: DynamicResult
     @State var quizId: Int
     @State var actualIndex: Int
     @State var totalQuestions: Int
     
-    init(_ quizId: Int, _ actualIndex: Int, _ totalQuestions: Int) {
+    init(_ dynamicResult: DynamicResult, _ quizId: Int, _ actualIndex: Int, _ totalQuestions: Int) {
+        self.dynamicResult = dynamicResult
         self.quizId = quizId
         self.actualIndex = actualIndex
         self.totalQuestions = totalQuestions
@@ -26,7 +28,7 @@ struct QuizQuestionView: View {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
             
-            ConteudoVoltarView(conteudoName: "QUIZ")
+            ConteudoVoltarView(conteudoName: "Quiz", dynamicResult: dynamicResult, saveResult: false)
                 .padding(.top, -40)
             
             ZStack(alignment: .bottom) {
@@ -83,20 +85,22 @@ struct QuizQuestionView: View {
             let nextIndex = actualIndex + 1
             
             if (nextIndex > totalQuestions) {
-                viewRouter.parameter = quizId
+                viewRouter.parameter = dynamicResult.journeyId
+                viewRouter.parameter2 = quizId
                 viewRouter.currentPage = .quizResultView
             } else {
-                viewRouter.parameter = quizId
-                viewRouter.parameter2 = nextIndex
-                viewRouter.parameter3 = totalQuestions
+                viewRouter.parameter = dynamicResult.journeyId
+                viewRouter.parameter2 = quizId
+                viewRouter.parameter3 = nextIndex
+                viewRouter.parameter4 = totalQuestions
                 viewRouter.currentPage = .quizQuestionView
             }
         }
     }
 }
 
-struct QuizQuestionView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizQuestionView(1, 1, 9)
-    }
-}
+//struct QuizQuestionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuizQuestionView(1, 1, 9, 2)
+//    }
+//}

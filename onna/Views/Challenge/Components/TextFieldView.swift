@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TextFieldView: View {
-    
     let placeholder: String
     @State var message: String
     let internalPadding: CGFloat

@@ -11,16 +11,18 @@ struct QuizView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = QuizViewModel()
     @State var quizId: Int
+    var dynamicResult: DynamicResult
     
-    init(_ quizId: Int) {
+    init(_ quizId: Int, _ dynamicResult: DynamicResult) {
         self.quizId = quizId
+        self.dynamicResult = dynamicResult
     }
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            ConteudoVoltarView(conteudoName: viewModel.quiz?.title ?? "")
+            ConteudoVoltarView(conteudoName: "Quiz", dynamicResult: dynamicResult, saveResult: false)
                 .padding(.bottom, 20)
             
             ZStack {
@@ -42,9 +44,10 @@ struct QuizView: View {
                     
                     
                     BlackButtonView(action: {
-                        viewRouter.parameter = viewModel.quiz?.id
-                        viewRouter.parameter2 = 1
-                        viewRouter.parameter3 = viewModel.quiz?.quizQuestions.count
+                        viewRouter.parameter = dynamicResult
+                        viewRouter.parameter2 = viewModel.quiz?.id
+                        viewRouter.parameter3 = 1
+                        viewRouter.parameter4 = viewModel.quiz?.quizQuestions.count
                         viewRouter.currentPage = .quizQuestionView
                     }, buttonText: "Próximo")
                     .offset(x: 110, y: 240)
@@ -65,8 +68,8 @@ struct QuizView: View {
     }
 }
 
-struct QuizFirstView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizView(1)
-    }
-}
+//struct QuizFirstView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuizView(1)
+//    }
+//}

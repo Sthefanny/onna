@@ -60,7 +60,7 @@ struct AppleLoginButtonView : View {
                             
                             //Create user in API
                             
-                            viewModel.user = User(firstName: firstName, lastName: lastName, email: email, password: userId, deviceId: "", version: "1.0.0", so: "iOS", token: nil)
+                            viewModel.user = User(image: getRandomProfileImage(), firstName: firstName, lastName: lastName, email: email, password: userId, deviceId: "", version: "1.0.0", so: "iOS", token: nil)
                             viewModel.createAndLoginUser { isLogged in
                                 // Change login state
                                 if (isLogged){
@@ -93,7 +93,7 @@ struct AppleLoginButtonView : View {
                                     
                                     //Login user in API
                                     DispatchQueue.main.async {
-                                        viewModel.user = User(firstName: nil, lastName: nil, email: email!, password: userId, deviceId: nil, version: nil, so: nil, token: nil)
+                                        viewModel.user = User(image: getRandomProfileImage(), firstName: nil, lastName: nil, email: email!, password: userId, deviceId: nil, version: nil, so: nil, token: nil)
                                         viewModel.loginUser { isLogged in
                                             // Change login state
                                             if (isLogged){
@@ -126,5 +126,10 @@ struct AppleLoginButtonView : View {
         })
 
         
+    }
+    
+    func getRandomProfileImage() -> String {
+        let randomNum = Int.random(in: 1..<5)
+        return "Profile-Pic-\(randomNum)"
     }
 }

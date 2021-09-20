@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct QuizResultView: View {
+    @State var journeyId: Int
     @State var quizId: Int
     @State var quizSavedAnswer: QuizSavedAnswer?
     @State var quizResultType: QuizResultType?
+    @State var dynamicResult: DynamicResult?
     
-    init(_ quizId: Int) {
+    init(_ journeyId: Int, _ quizId: Int) {
+        self.journeyId = journeyId
         self.quizId = quizId
     }
     
@@ -22,7 +25,7 @@ struct QuizResultView: View {
             
             if(quizResultType != nil) {
                 VStack {
-                    ConteudoVoltarView(conteudoName: "QUIZ")
+                    ConteudoVoltarView(conteudoName: "Quiz", dynamicResult: dynamicResult!, saveResult: true)
                         .padding(.top, -40)
                     
                     _buildResultQuantity
@@ -40,6 +43,7 @@ struct QuizResultView: View {
         .onAppear {
             quizSavedAnswer = QuizHelper.getQuizAnswersByQuizId(quizId: quizId)
             quizResultType = quizSavedAnswer!.correctQuestions >= (quizSavedAnswer!.totalQuestion / 2) ? .positive : .negative
+            dynamicResult = DynamicResult(id: nil, journeyId: journeyId, entityId: quizId, entityName: EntityNameEnum.quiz.name)
         }
     }
     
@@ -89,6 +93,6 @@ enum QuizResultType {
 
 struct QuizResultView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizResultView(1)
+        QuizResultView(1, 1)
     }
 }

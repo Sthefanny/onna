@@ -20,6 +20,13 @@ struct Quiz: Decodable, Identifiable {
     let quizQuestions: [QuizQuestion]
 }
 
+struct QuizResponse: Decodable, Identifiable {
+    let id: Int
+    let title: String
+    let description: String
+    let completed: Bool
+}
+
 struct QuizQuestion: Decodable, Identifiable {
     let id: Int
     let quizId: Int

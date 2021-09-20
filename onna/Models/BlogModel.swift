@@ -14,3 +14,10 @@ struct Blog: Decodable, Identifiable {
     let title: String
     let page: String
 }
+
+struct BlogResponse: Decodable, Identifiable {
+    let id: Int
+    let title: String
+    let page: String
+    let completed: Bool
+}

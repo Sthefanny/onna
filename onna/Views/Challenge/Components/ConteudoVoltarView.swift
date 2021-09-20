@@ -9,17 +9,19 @@ import SwiftUI
 
 struct ConteudoVoltarView: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @State var didTap : Bool = false
     let conteudoName: String
-    var dynamicResult: DynamicResult?
+    var dynamicResult: DynamicResult
     @ObservedObject var viewModel = DynamicResultViewModel()
+    @ObservedObject var journeyViewModel = JourneyViewModel()
+    var saveResult: Bool
+    @State var hasLiked = false
     
     var body: some View {
         HStack (alignment: .center, spacing: 10) {
             
             Button(action: {
-                if (dynamicResult != nil) {
-                    viewModel.addResult(result: dynamicResult!, callback: {_ in})
+                if (saveResult == true) {
+                    viewModel.addResult(result: dynamicResult, callback: {_ in})
                 }
                 viewRouter.currentPage = viewRouter.previousPage
             }, label: {
@@ -38,23 +40,46 @@ struct ConteudoVoltarView: View {
             Spacer()
             
             Button(action: {
-                self.didTap.toggle()
+                if (journeyViewModel.hasLike == true) {
+                    journeyViewModel.dislike(entityId: dynamicResult.entityId, entityName: dynamicResult.entityName, callback: {isSuccess in
+                        if(isSuccess) {
+                            getHasLike()
+                        }
+                    })
+                } else {
+                    journeyViewModel.like(entityId: dynamicResult.entityId, entityName: dynamicResult.entityName, callback: {isSuccess in
+                        if(isSuccess) {
+                            getHasLike()
+                        }
+                    })
+                }
             }) {
-                Image(systemName: self.didTap == false ? "heart" : "heart.fill")
+                Image(systemName: hasLiked == false ? "heart" : "heart.fill")
                     .imageScale(.large)
                     .foregroundColor(Color.onnaPink)
             }
             .padding()
         }
+        .onAppear {
+            getHasLike()
+        }
         .padding(.top, 35)
+    }
+    
+    func getHasLike() {
+        journeyViewModel.contentHasLike(entityId: dynamicResult.entityId, entityName: dynamicResult.entityName, callback: {isSuccess in
+            if (isSuccess) {
+                hasLiked = journeyViewModel.hasLike!
+            }
+        })
     }
 }
 
-struct ConteudoVoltarView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            ConteudoVoltarView(conteudoName: "Feminismo")
-        }
-    }
-}
+//struct ConteudoVoltarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ZStack {
+//            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
+//            ConteudoVoltarView(conteudoName: "Feminismo", saveResult: true)
+//        }
+//    }
+//}

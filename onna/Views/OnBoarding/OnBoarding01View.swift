@@ -35,6 +35,8 @@ struct OnBoarding01View: View {
 //            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
             // Fim - Limpar tudo
             
+            //ToDo: Tirar prints
+            
             
             let userId = UserDefaults.standard.string(forKey: UserDefaultsKeys.userId.name)!
             print("senha = \(userId)")
