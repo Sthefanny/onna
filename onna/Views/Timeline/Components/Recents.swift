@@ -29,7 +29,7 @@ struct Recents: View {
                     
                     VStack {
                         HStack {
-                            Image(systemName: post.hasLiked ?  "heart.fill" : "heart")
+                            Image(post.hasLiked ?  "Icon-Star-White-Fill" : "Icon-Star-White")
                                 .resizable()
                                 .frame(width: 20, height: 20, alignment: .center)
                                 .foregroundColor(.onnaPink)

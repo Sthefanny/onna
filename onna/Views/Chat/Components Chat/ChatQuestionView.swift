@@ -47,8 +47,9 @@ struct ChatQuestionView: View {
                     }
                 }, label: {
                     HStack {
-                        Image(systemName: hasLiked ? "heart.fill" : "heart")
-                            .font(.system(size: 20))
+                        Image(hasLiked ? "Icon-Star-White-Fill" : "Icon-Star-White")
+                            .resizable()
+                            .frame(width: 20, height: 20, alignment: .center)
                             .foregroundColor(.onnaPink)
                         
                         Text("\(post.likeQuantity) yays")

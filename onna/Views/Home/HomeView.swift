@@ -11,6 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = JourneyViewModel()
     @ObservedObject var postsViewModel = PostViewModel()
+    @State private var showModal = true
     
     var instaStoryCells: [InstaStoryInfo] = [
         InstaStoryInfo(image: "Story01Icon", text: "Filtros", content: ""),
@@ -156,8 +157,9 @@ struct HomeView: View {
         let commentQuantity = postsViewModel.posts.last?.commentQuantity ?? 0
         return  HStack {
             HStack {
-                Image(systemName: postsViewModel.posts.last?.hasLiked == true ? "heart.fill": "heart")
-                    .font(.system(size: 15))
+                Image(postsViewModel.posts.last?.hasLiked == true ? "Icon-Star-White-Fill" : "Icon-Star-White")
+                    .resizable()
+                    .frame(width: 15, height: 15, alignment: .center)
                     .foregroundColor(.onnaPink)
                     .padding(.trailing, -5)
                 Text("\(heartQuantity)")

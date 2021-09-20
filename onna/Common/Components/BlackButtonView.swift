@@ -23,7 +23,6 @@ struct BlackButtonView: View {
                         .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 50))
                         .foregroundColor(.onnaBackgroundBlack)
-                        .padding(.top, 32)
         })
     }
 }
