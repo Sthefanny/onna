@@ -1,5 +1,5 @@
 //
-//  TutorialSheetView.swift
+//  TutorialCommunitySheetView.swift
 //  onna
 //
 //  Created by Sthefanny Gonzaga on 19/09/21.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct TutorialDiscoverySheetView: View {
+struct TutorialCommunitySheetView: View {
     @State var value = 0.0
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var body: some View {
         VStack {
             VStack {
-                Text("Descobertas")
+                Text("Comunidade")
                     .onnaFont(.subheadline, textSize: 22)
                     .foregroundColor(.onnaBackgroundBlack)
                     .padding(.top, 30)
@@ -23,11 +23,11 @@ struct TutorialDiscoverySheetView: View {
                 
                 
                 HStack {
-                    Image("discovery-icon")
+                    Image("community-icon")
                         .resizable()
                         .frame(width: 35, height: 35, alignment: .top)
                     
-                    Text("Para explorar e conhecer melhor o aplicativo, você pode usar swipe para os lados e descobrir as outras telas.")
+                    Text("Seja livre para compartilhar perguntas e depoimentos ou acompanhe e faça o conteúdo de outras garotas brilhar!")
                         .onnaFont(.body, textSize: 15)
                         .foregroundColor(.onnaBackgroundBlack)
                         .padding(.leading, 10)
@@ -37,9 +37,9 @@ struct TutorialDiscoverySheetView: View {
                 .frame(width: 385, height: 100, alignment: .leading)
             
                 BlackButtonView(action: {
-                    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hasViewedTutorialDiscovery.name)
+                    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hasViewedTutorialCommunity.name)
                     self.viewControllerHolder?.dismiss(animated: true, completion: nil)
-                }, buttonText: "Começar a explorar")
+                }, buttonText: "Começar a conversar")
             }
             .frame(width: 385, height: 250, alignment: .topLeading)
             .foregroundColor(.white)
@@ -52,11 +52,8 @@ struct TutorialDiscoverySheetView: View {
     }
 }
 
-struct TutorialDiscoverySheetView_Previews: PreviewProvider {
+struct TutorialCommunitySheetView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
-            TutorialDiscoverySheetView()
-        }
+        TutorialCommunitySheetView()
     }
 }

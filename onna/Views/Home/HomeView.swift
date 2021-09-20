@@ -11,7 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = JourneyViewModel()
     @ObservedObject var postsViewModel = PostViewModel()
-    @State private var showModal = true
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var instaStoryCells: [InstaStoryInfo] = [
         InstaStoryInfo(image: "Story01Icon", text: "Filtros", content: ""),
@@ -44,6 +44,15 @@ struct HomeView: View {
             }
         }
         .onAppear {
+            let hasViewedTutorial = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasViewedTutorialDiscovery.name)
+            if (hasViewedTutorial == false) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve) {
+                        TutorialDiscoverySheetView()
+                    }
+                }
+            }
+            
             viewModel.fetchJourney{ hasJorney in
                 if (!hasJorney){
                     

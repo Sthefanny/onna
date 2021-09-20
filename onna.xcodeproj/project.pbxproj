@@ -94,6 +94,9 @@
 		E5E5AA1226E1543F003BFBED /* bruno-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1126E1541E003BFBED /* bruno-regular.otf */; };
 		E5E5AA1526E16868003BFBED /* chivo-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */; };
 		E5E5AA1626E1686B003BFBED /* chivo-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */; };
+		E5EE9AF126F8241F003DACFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EE9AF026F8241F003DACFD /* ContentView.swift */; };
+		E5EE9AF326F8288D003DACFD /* TutorialCommunitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EE9AF226F8288D003DACFD /* TutorialCommunitySheetView.swift */; };
+		E5EE9AF526F828A7003DACFD /* TutorialJourneySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EE9AF426F828A7003DACFD /* TutorialJourneySheetView.swift */; };
 		E5F62CB826E1898F00EEA4D6 /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */; };
 		E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F62CB926E1899900EEA4D6 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
@@ -189,6 +192,9 @@
 		E5E5AA1126E1541E003BFBED /* bruno-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bruno-regular.otf"; sourceTree = "<group>"; };
 		E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-bold.ttf"; sourceTree = "<group>"; };
 		E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-regular.ttf"; sourceTree = "<group>"; };
+		E5EE9AF026F8241F003DACFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E5EE9AF226F8288D003DACFD /* TutorialCommunitySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCommunitySheetView.swift; sourceTree = "<group>"; };
+		E5EE9AF426F828A7003DACFD /* TutorialJourneySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialJourneySheetView.swift; sourceTree = "<group>"; };
 		E5F62CB726E1898F00EEA4D6 /* FontEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEnum.swift; sourceTree = "<group>"; };
 		E5F62CB926E1899900EEA4D6 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,6 +318,9 @@
 			isa = PBXGroup;
 			children = (
 				E50091E526F80EFE0018BE30 /* TutorialDiscoverySheetView.swift */,
+				E5EE9AF226F8288D003DACFD /* TutorialCommunitySheetView.swift */,
+				E5EE9AF426F828A7003DACFD /* TutorialJourneySheetView.swift */,
+				E5EE9AF026F8241F003DACFD /* ContentView.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -681,6 +690,7 @@
 			files = (
 				E52A09F426F6967A00850E40 /* PostViewModel.swift in Sources */,
 				E524788F26F3C34400EBBFB6 /* ContentColorEnum.swift in Sources */,
+				E5EE9AF126F8241F003DACFD /* ContentView.swift in Sources */,
 				E52A09F026F68C8600850E40 /* TextEditorPostView.swift in Sources */,
 				E50091E326F7FF010018BE30 /* FaveInputView.swift in Sources */,
 				0BC5EC4726EFE07500309850 /* ContentFeminismView.swift in Sources */,
@@ -698,6 +708,7 @@
 				E54DFEA426DFF808004DAC6D /* OnBoarding01View.swift in Sources */,
 				E552EA9126E808C200035C4B /* OnBoarding04View.swift in Sources */,
 				E524787F26F3A39000EBBFB6 /* QuizModel.swift in Sources */,
+				E5EE9AF526F828A7003DACFD /* TutorialJourneySheetView.swift in Sources */,
 				E52F850426E7D18000F7C8A7 /* NextRoundedButtonView.swift in Sources */,
 				E52A09EB26F67DCE00850E40 /* LoadingView.swift in Sources */,
 				9396ABBD26EBCFB000075635 /* TextFieldView.swift in Sources */,
@@ -720,6 +731,7 @@
 				E565DB2B26F651FE000CEB9F /* Story01_3View.swift in Sources */,
 				E524788D26F3A97700EBBFB6 /* StoryViewModel.swift in Sources */,
 				E52F850726E7D56800F7C8A7 /* SquaresAndLogoView.swift in Sources */,
+				E5EE9AF326F8288D003DACFD /* TutorialCommunitySheetView.swift in Sources */,
 				E552EA9E26E82BAA00035C4B /* NavigationView.swift in Sources */,
 				E552EA9B26E82B3500035C4B /* PageEnum.swift in Sources */,
 				E52F850926E7D7BC00F7C8A7 /* ProgressionSquareView.swift in Sources */,

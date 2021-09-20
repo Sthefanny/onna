@@ -17,6 +17,9 @@ enum UserDefaultsKeys: String {
     case accessToken = "accessToken"
     case refreshToken = "refreshToken"
     case actualQuizes = "actualQuizes"
+    case hasViewedTutorialDiscovery = "hasViewedTutorialDiscovery"
+    case hasViewedTutorialCommunity = "hasViewedTutorialCommunity"
+    case hasViewedTutorialJourney = "hasViewedTutorialJourney"
 
     var name: String {
         return self.rawValue

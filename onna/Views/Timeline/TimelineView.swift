@@ -15,6 +15,7 @@ struct TimelineView: View {
     @State var message = ""
     @State var actualView: ShowView = .recents
     @ObservedObject var viewModel = PostViewModel()
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var body: some View {
         ZStack {
@@ -53,6 +54,15 @@ struct TimelineView: View {
             }
         }
         .onAppear{
+            let hasViewedTutorial = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasViewedTutorialCommunity.name)
+            if (hasViewedTutorial == false) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve) {
+                        TutorialCommunitySheetView()
+                    }
+                }
+            }
+            
             viewModel.fetchPosts(callback: { isSuccess in
                 viewModel.filterLikedPosts()
             })

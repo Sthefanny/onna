@@ -14,6 +14,7 @@ struct ProfileView: View {
     @State var actualView: WhichView = .journey
     @ObservedObject var viewModel = JourneyViewModel()
     var width = UIScreen.main.bounds.width
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var body: some View {
         ZStack {
@@ -78,6 +79,15 @@ struct ProfileView: View {
             }
         }
         .onAppear {
+            let hasViewedTutorial = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasViewedTutorialJourney.name)
+            if (hasViewedTutorial == false) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve) {
+                        TutorialJourneySheetView()
+                    }
+                }
+            }
+            
             viewModel.fetchJourney { hasJorney in
                 if (!hasJorney){
                     viewRouter.currentPage = .loginView
