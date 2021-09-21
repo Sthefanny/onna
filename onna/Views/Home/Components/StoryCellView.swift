@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StoryCellView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
+    
     var instaStoryInfo: InstaStoryInfo
     var body: some View {
         HStack {
@@ -21,6 +23,9 @@ struct StoryCellView: View {
                     .foregroundColor(.white)
             }
         }
+        .onTapGesture(count: 1, perform: {
+            viewRouter.currentPage = .story01View
+        })
     }
 }
 
@@ -33,6 +38,8 @@ struct InstaStoryInfo: Identifiable {
 
 struct StoryCellView_Previews: PreviewProvider {
     static var previews: some View {
-        StoryCellView(instaStoryInfo: InstaStoryInfo(image: "", text: "", content: ""))
+        ZStack {
+            StoryCellView(instaStoryInfo: InstaStoryInfo(image: "", text: "", content: ""))
+        }
     }
 }

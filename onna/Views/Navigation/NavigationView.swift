@@ -12,6 +12,8 @@ struct NavigationView: View {
     
     var body: some View {
         switch viewRouter.currentPage {
+        case .splashScreenView:
+            SplashScreenView()
         case .onBoarding01View:
             OnBoarding01View()
         case .onBoarding02View:
@@ -22,6 +24,10 @@ struct NavigationView: View {
             OnBoarding04View()
         case .onBoarding05View:
             OnBoarding05View()
+        case .contentFeminismView:
+            ContentFeminismView(viewRouter.parameter as! DynamicResult)
+        case .contentBodyPositiveView:
+            ContentBodyPositiveView(viewRouter.parameter as! DynamicResult)
         case .loginView:
             LoginView()
         case .homeView:
@@ -32,10 +38,6 @@ struct NavigationView: View {
             case .timelineView:
                 HomeView()
                     .transition(.move(edge: .trailing))
-            case .challengeView:
-                ChallengeView()
-            case .challengeSendTextView:
-                ChallengeSendTextView()
             default:
                 HomeView()
             }
@@ -52,9 +54,19 @@ struct NavigationView: View {
         case .story01View:
             Story01View()
         case .challengeView:
-            ChallengeView()
-        case .challengeSendTextView:
-            ChallengeSendTextView()
+            ChallengeView(viewRouter.parameter as! Int, viewRouter.parameter2 as! DynamicResult)
+        case .quizView:
+            QuizView(viewRouter.parameter as! Int, viewRouter.parameter2 as! DynamicResult)
+        case .quizQuestionView:
+            QuizQuestionView(viewRouter.parameter as! DynamicResult, viewRouter.parameter2 as! Int, viewRouter.parameter3 as! Int, viewRouter.parameter4 as! Int)
+        case .loadingView:
+            LoadingView()
+        case .quizResultView:
+            QuizResultView(viewRouter.parameter as! Int, viewRouter.parameter as! Int)
+        case .chatView:
+            ChatView(viewRouter.parameter as! Int)
+        case .profileConfigView:
+            ProfileConfigView()
         }
     }
 }

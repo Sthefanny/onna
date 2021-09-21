@@ -12,81 +12,123 @@ struct ProfileView: View {
     @State private var offset = CGSize.zero
     let screenWidth = UIScreen.main.bounds.size.width
     @State var actualView: WhichView = .journey
-
+    @ObservedObject var viewModel = JourneyViewModel()
+    @ObservedObject var userViewModel = UserViewModel()
+    var width = UIScreen.main.bounds.width
+    @State var fullName = ""
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    
     var body: some View {
         ZStack {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
             VStack {
-                ScrollView {
-                    HStack {
-                        Image("Star")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .center)
-                        Text("Perfil")
-                            .onnaFont(OnnaFontSystem .TextStyle.title1)
-                            .foregroundColor(.white)
-                        Image("Star")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .center)
-                    }
-                    
-                    VStack {
-                        Image("Profile-Pic-4")
+                HStack {
+                    Image("Star")
+                        .resizable()
+                        .frame(width: 20, height: 20, alignment: .center)
+                    Text("Perfil")
+                        .onnaFont(OnnaFontSystem .TextStyle.title1)
+                        .foregroundColor(.white)
+                    Image("Star")
+                        .resizable()
+                        .frame(width: 20, height: 20, alignment: .center)
+                }
+                .padding(.top, 10)
+                
+                VStack {
+//                    Button(action: {
+//                        viewRouter.previousPage = .profileView
+//                        viewRouter.currentPage = .profileConfigView
+//                    }, label: {
+                        Image(userViewModel.user?.image ?? "Profile-Pic-4")
                             .resizable()
                             .clipShape(Circle(), style: FillStyle())
                             .frame(width: 100, height: 100, alignment: .center)
-                        Text("Malu Gonzatta")
-                            .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                            .foregroundColor(.white)
-                        HStack {
-                            Text("idade")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 20)
-                            Text("•")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 20)
-                            Text("insta")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                        }.padding()
+//                    })
+                    Text("\(fullName)")
+                        .onnaFont(OnnaFontSystem.TextStyle.subheadline)
+                        .foregroundColor(.white)
+//                    HStack {
+//                        Text("idade")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                            .padding(.trailing, 20)
+//                        Text("•")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                            .padding(.trailing, 20)
+//                        Text("insta")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                    }.padding()
+//                    
+//                    VStack(alignment: .center) {
+//                        Text("falo besteira e amo \nconversar sobre ppk")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                    }
+//                    .frame(width: 250, height: 70, alignment: .center)
+//                    .background(RoundedRectangle(cornerRadius: 20))
+//                    .foregroundColor(.onnaMainGrey.opacity(0.4))
+//                    .padding()
+                    
+                    HStack {
                         
-                        VStack(alignment: .center) {
-                            Text("falo besteira e amo \nconversar sobre ppk")
-                                .onnaFont(OnnaFontSystem.TextStyle.body)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 250, height: 70, alignment: .center)
-                        .background(RoundedRectangle(cornerRadius: 20))
-                        .foregroundColor(.onnaMainGrey.opacity(0.4))
-                        .padding()
-                        
-                        HStack {
-                            
-                        }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
-                        
-                        VStack {
-                            ViewSlider(actualView: $actualView)
-                        }
+                    }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
+                    
+                    VStack {
+                        _buildViewSlider
+                    }
+                }
+                Spacer()
+                BottomProgressionSquareView(actualSquare: 2, maxSquare: 3)
+            }
+        }
+        .onAppear {
+            let hasViewedTutorial = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasViewedTutorialJourney.name)
+            if (hasViewedTutorial == false) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve) {
+                        TutorialJourneySheetView()
                     }
                 }
             }
+            
+            viewModel.fetchJourney { hasJorney in
+                if (!hasJorney){
+                    viewRouter.currentPage = .loginView
+                }
+            }
+            viewModel.fetchCompletedJourneys{ _ in }
+            
+            userViewModel.getUserInfo { isSuccess in
+                if (isSuccess) {
+                    fullName = "\(userViewModel.user?.firstName ?? "") \(userViewModel.user?.lastName ?? "")"
+                }
+            }
         }
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    self.offset = gesture.translation
+                }
+                .onEnded { _ in
+                    if self.offset.width > 0 {
+                        withAnimation {
+                            viewRouter.previousPage = .profileView
+                            viewRouter.currentPage = .homeView
+                        }
+                    }
+                }
+        )
     }
-}
-
-struct ViewSlider : View {
     
-    @Binding var actualView: WhichView
-    var width = UIScreen.main.bounds.width
-    
-    var body: some View{
+    var _buildViewSlider: some View{
         
         VStack(spacing: 0){
             
-            AppBar(actualView: $actualView)
+            _buildTabBar
             
             GeometryReader{g in
                 
@@ -94,16 +136,16 @@ struct ViewSlider : View {
                     
                     switch actualView {
                     case .journey:
-                        InputRow()
+                        InputRow(viewModel: viewModel)
                             .frame(width: width)
-                           
+                        
                     case .wall:
-                        WallView()
+                        WallView(viewModel: viewModel)
                             .frame(width: width)
-                           
+                        
                     case .faves:
-                        Yays()
-                            .frame(width: g.frame(in : .global).width)
+                        FavesView(viewModel: viewModel)
+                            .frame(width: width)
                     }
                 }
             }
@@ -111,75 +153,36 @@ struct ViewSlider : View {
         .animation(.default)
         .edgesIgnoringSafeArea(.all)
     }
-}
-
-struct AppBar : View {
     
-    @Binding var actualView: WhichView
-    var width = UIScreen.main.bounds.width
-    
-    var body: some View{
-        
+    var _buildTabBar: some View {
         VStack(alignment: .leading, content: {
             HStack{
-                
-                Button(action: {
-                    actualView = .journey
-                }) {
-                    
-                    VStack(spacing: 8){
-                        
-                        HStack(spacing: 12){
-                            
-                            
-                            Text("Jornada")
-                                .foregroundColor(actualView == .journey ? .onnaBlue : Color.onnaBlue.opacity(0.4)) .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        }
-                        Capsule()
-                            .fill(actualView == .journey ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
-                Button(action: {
-                    actualView = .wall
-                }) {
-                    
-                    VStack(spacing: 8){
-                        HStack(spacing: 12){
-                            Text("Mural")
-                                .foregroundColor(actualView == .wall ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                                .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .wall ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
-                
-                Button(action: {
-                    actualView = .faves
-                }) {
-                    
-                    VStack(spacing: 8){
-                        HStack(spacing: 12){
-                            Text("Faves")
-                                .foregroundColor(actualView == .faves ? .onnaBlue : Color.onnaBlue.opacity(0.4))
-                                .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        }
-                        
-                        Capsule()
-                            .fill(actualView == .faves ? Color.onnaBlue : Color.clear)
-                            .frame(width: 70, height: 4)
-                    }
-                }
+                _buildActiveBar(text: "Jornada", tab: .journey)
+                _buildActiveBar(text: "Mural", tab: .wall)
+                _buildActiveBar(text: "Faves", tab: .faves)
             }
         })
         .padding(.top, (UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0 + 15)
         .padding(.horizontal)
         .padding(.bottom, 10)
-        
+    }
+    
+    func _buildActiveBar(text: String, tab: WhichView) -> some View {
+        Button(action: {
+            actualView = tab
+        }) {
+            VStack(spacing: 8){
+                
+                HStack(spacing: 12){
+                    Text(text)
+                        .foregroundColor( actualView == tab ? .onnaBlue : Color.onnaBlue.opacity(0.4))
+                }
+                
+                Capsule()
+                    .fill(actualView == tab ? Color.onnaBlue : Color.clear)
+                    .frame(width: 70, height: 4)
+            }
+        }
     }
 }
 
@@ -188,9 +191,6 @@ enum WhichView {
     case wall
     case faves
 }
-
-
-
 
 
 struct ProfileView_Previews: PreviewProvider {

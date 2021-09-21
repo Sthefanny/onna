@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = JourneyViewModel()
+    @ObservedObject var postsViewModel = PostViewModel()
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var instaStoryCells: [InstaStoryInfo] = [
         InstaStoryInfo(image: "Story01Icon", text: "Filtros", content: ""),
@@ -24,39 +26,56 @@ struct HomeView: View {
     let screenWidth = UIScreen.main.bounds.size.width
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.onnaBackgroundBlack.edgesIgnoringSafeArea(.all)
             
-            VStack {
-                _buildStories
-                _buildTextField
-                _buildTodayJourney
-                _buildFirstContentLine
-                _buildLatestTimeline
-                _buildSecondContentLine
-                
+            if (viewModel.journey.count > 0) {
+                VStack {
+                    _buildStories
+                    _buildTodayJourneyAndTimeline
+                    _buildChallengeCard
+                    _buildBlogCard
+                    _buildQuizCard
+                    Spacer()
+                    BottomProgressionSquareView(actualSquare: 1, maxSquare: 3)
+                }
+            } else {
+                LoadingView()
             }
         }
         .onAppear {
-            print("TESTES")
-            viewModel.fetchJourney()
+            let hasViewedTutorial = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasViewedTutorialDiscovery.name)
+            if (hasViewedTutorial == false) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.viewControllerHolder?.present(style: .overCurrentContext, transitionStyle: .crossDissolve) {
+                        TutorialDiscoverySheetView()
+                    }
+                }
+            }
+            
+            viewModel.fetchJourney{ hasJorney in
+                if (!hasJorney){
+                    
+                    DispatchQueue.main.async {
+                        viewRouter.currentPage = .loginView
+                    }
+                }
+            }
+            postsViewModel.fetchPosts(callback: {isSuccess in})
         }
         .gesture(
             DragGesture()
                 .onChanged { gesture in
                     self.offset = gesture.translation
                 }
-
+                
                 .onEnded { _ in
                     if self.offset.width < 0 {
-                        print("Direita: Entrou no onEnded 1 com \(self.offset.width) e com \(screenWidth)")
                         withAnimation {
                             viewRouter.previousPage = .homeView
                             viewRouter.currentPage = .profileView
                         }
                     } else {
-                        self.offset = .zero
-                        print("Esquerda: Entrou no onEnded 2 com \(self.offset.width) e com \(screenWidth)")
                         withAnimation {
                             viewRouter.previousPage = .homeView
                             viewRouter.currentPage = .timelineView
@@ -70,103 +89,187 @@ struct HomeView: View {
         HStack {
             ForEach(instaStoryCells, id: \.id) { story in
                 StoryCellView(instaStoryInfo:story)
-                    .padding(EdgeInsets(top: 35, leading: 10, bottom: 0, trailing: 10))
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
         }
+        .padding(.top, 20)
+        .padding(.bottom, 20)
     }
     
-    var _buildTextField: some View {
-        ZStack {
-            Rectangle()
-                .frame(width: 344, height: 44, alignment: .center)
-                .foregroundColor(Color("greyBoxes"))
-                .cornerRadius(100)
+    var _buildTodayJourneyAndTimeline: some View {
+        VStack (alignment: .leading) {
+            Text("Bombando por aí")
+                .foregroundColor(.white)
+                .onnaFont(.callout)
             HStack {
-                Image("Baloon-With-Star")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .padding(.leading, 30)
-                TextField("O que te aflinge...?", text: $textInput)
-                    .foregroundColor(.onnaWhite)
-            }.padding(19)
-            
+                _buildTodayJourney
+                Button(action: {
+                    viewRouter.parameter = postsViewModel.posts.last?.id
+                    viewRouter.previousPage = .homeView
+                    viewRouter.currentPage = .chatView
+                }, label: {
+                    _buildTimeline
+                })
+            }
         }
     }
     
     var _buildTodayJourney: some View {
-        HStack {
-            let jorney = viewModel.journey.first
-            Rectangle()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.yellow)
-                .cornerRadius(8)
-                .padding(.leading, 12)
-            Spacer()
-            VStack(alignment: .leading) {
-                Text(jorney?.title ?? "")
+        VStack {
+            HStack {
+                Rectangle()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(.yellow)
+                    .cornerRadius(8)
+                Text("Jornada de hoje")
                     .foregroundColor(.white)
-                    .font(.title2)
-                Text(jorney?.description ?? "")
-                    .foregroundColor(.white)
-                    .font(.caption2)
+                    .onnaFont(.title2)
             }
-            Spacer()
+            Text("Hoje a tarefa é escrever uma mensagem bonita pra você!")
+                .foregroundColor(.white)
+                .onnaFont(.callout)
+                .padding(.top, 5)
         }
-        .padding()
-        .frame(width: 335, height: 120, alignment: .center)
+        .padding(10)
+        .frame(width: 170, height: 170, alignment: .center)
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(.onnaGreyBoxes)
     }
     
-    var _buildFirstContentLine: some View {
-        HStack {
-            Image("GirlPowerIcon")
-                .resizable()
-                .frame(width: 150, height: 150)
-                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-            Image("FeminismoIcon")
-                .resizable()
-                .frame(width: 150, height: 150)
-                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 0))
+    var _buildTimeline: some View {
+        VStack {
+            HStack {
+                Image(postsViewModel.posts.last?.userImage == nil || postsViewModel.posts.last?.userImage == "" ? "Profile-Pic-1" : postsViewModel.posts.last?.userImage! as! String)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle(), style: FillStyle())
+                Text(postsViewModel.posts.last?.userName ?? "")
+                    .foregroundColor(.white)
+                    .onnaFont(.title2)
+                    .lineLimit(2)
+                    .frame(width: 95, height: 50, alignment: .leading)
+            }
+            Text(postsViewModel.posts.last?.text ?? "")
+                .foregroundColor(.white)
+                .onnaFont(.callout)
+                .padding(.top, 5)
+            _buildYaysAndComments
         }
+        .padding(10)
+        .frame(width: 170, height: 170, alignment: .center)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(.onnaGreyBoxes)
     }
     
-    var _buildLatestTimeline: some View {
-        ZStack {
-            Rectangle()
-                .frame(width: 335, height: 120, alignment: .center)
-                .cornerRadius(20)
-                .foregroundColor(Color("greyBoxes"))
+    var _buildYaysAndComments: some View {
+        let heartQuantity = postsViewModel.posts.last?.likeQuantity ?? 0
+        let commentQuantity = postsViewModel.posts.last?.commentQuantity ?? 0
+        return  HStack {
             HStack {
-                VStack(alignment: .leading) {
-                    Text("Juliana Gomez")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .padding(.bottom, 5)
-                    Text("Essa menstruação veio \nacabando com a minha vida 😭")
-                        .foregroundColor(.white)
-                        .font(.caption)
-                }
-                Image("Profile-Pic-3")
+                Image(postsViewModel.posts.last?.hasLiked == true ? "Icon-Star-White-Fill" : "Icon-Star-White")
                     .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle(), style: FillStyle())
-                    .padding(.leading, 20)
+                    .frame(width: 15, height: 15, alignment: .center)
+                    .foregroundColor(.onnaPink)
+                    .padding(.trailing, -5)
+                Text("\(heartQuantity)")
+                    .onnaFont(.callout, textSize: 10)
+                    .foregroundColor(.onnaWhite)
+            }
+            .padding(.trailing, 10)
+            HStack {
+                Image(systemName: "bubble.left")
+                    .font(.system(size: 12))
+                    .foregroundColor(.white)
+                Text("\(commentQuantity)")
+                    .onnaFont(.callout, textSize: 10)
+                    .foregroundColor(.onnaWhite)
+                    .padding(.leading, -5)
             }
         }
+        .padding(.top, 5)
     }
     
-    var _buildSecondContentLine: some View {
-        HStack {
-            Image("MenstruacaoIcon")
+    var _buildChallengeCard: some View {
+        let firstChallenge = viewModel.journey.first?.challenge
+        
+        return HStack {
+            Image(firstChallenge?.icon ?? "")
                 .resizable()
-                .frame(width: 150, height: 150)
+                .frame(width: 130, height: 110)
                 .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-            Image("BodyPositiveIcon")
-                .resizable()
-                .frame(width: 150, height: 150)
-                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 0))
+            
+            Text("Challenge: \(firstChallenge?.title ?? "")")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.onnaBackgroundBlack)
+                .onnaFont(.callout)
+                .padding(.trailing, 20)
         }
+        .frame(width: 350, height: 110, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(getColorByContent(value: .challenge))
+        .padding(.top, 20)
+        .onTapGesture(count: 1, perform: {
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstChallenge!.id, entityName: EntityNameEnum.challenge.name)
+            viewRouter.parameter = firstChallenge?.id
+            viewRouter.parameter2 = dynamicResult
+            viewRouter.previousPage = .homeView
+            viewRouter.currentPage = .challengeView
+        })
+    }
+    
+    var _buildBlogCard: some View {
+        let firstBlog = viewModel.journey.first?.blog
+        
+        return HStack {
+            Image(firstBlog?.icon ?? "")
+                .resizable()
+                .frame(width: 130, height: 110)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+            
+            Text("Blog: \(firstBlog?.title ?? "")")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.onnaBackgroundBlack)
+                .onnaFont(.callout)
+                .padding(.trailing, 20)
+        }
+        .frame(width: 350, height: 110, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(getColorByContent(value: .blog))
+        .padding(.vertical, 10)
+        .onTapGesture(count: 1, perform: {
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstBlog!.id, entityName: EntityNameEnum.blog.name)
+            viewRouter.previousPage = .homeView
+            viewRouter.parameter = dynamicResult
+            viewRouter.currentPage = getContentType(value: firstBlog!.page)
+        })
+    }
+    
+    var _buildQuizCard: some View {
+        let firstQuiz = viewModel.journey.first?.quiz
+        
+        return HStack {
+            Image(firstQuiz?.icon ?? "")
+                .resizable()
+                .frame(width: 130, height: 110)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+            
+            Text("Quiz: \(firstQuiz?.title ?? "")")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.onnaBackgroundBlack)
+                .onnaFont(.callout)
+                .padding(.trailing, 20)
+        }
+        .frame(width: 350, height: 110, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(getColorByContent(value: .quiz))
+        .padding(.bottom, 10)
+        .onTapGesture(count: 1, perform: {
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstQuiz!.id, entityName: EntityNameEnum.quiz.name)
+            viewRouter.parameter = firstQuiz?.id
+            viewRouter.previousPage = .homeView
+            viewRouter.parameter2 = dynamicResult
+            viewRouter.currentPage = .quizView
+        })
     }
 }
 

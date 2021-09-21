@@ -9,27 +9,21 @@ struct Story01View: View {
             Color.onnaGreyStories.edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .center) {
-                SquaresAndLogoView(actualSquare: 0, image : "Story01Icon", text : "Filtros", color: .onnaBackgroundBlack)
+                SquaresAndLogoView(actualSquare: 0, maxSquare: 3, image : "Story01Icon", text : "Filtros", color: .onnaBackgroundBlack)
                 _buildImage
                 _buildTitleAndDescription
                 Spacer()
             }
-            .padding(.top, 50)
+            .padding(.top, 5)
             
             NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .story01_2View}, hasError: .constant(false))
-                .padding(.vertical, 400)
-                .padding(.horizontal)
-                .padding(.trailing, 15)
+                .padding(.top, 300)
+                .padding(.trailing, 30)
             
             ExitButtonView(fieldName: "", action: { viewRouter.currentPage = .homeView}, hasError: .constant(false))
-                .padding(.vertical, 70)
-                .padding(.horizontal, 50)
+                .padding(.top, 20)
+                .padding(.trailing, 30)
         }
-    
-            
-            .onAppear() {
-                
-            }
     }
     
     var _buildTitleAndDescription: some View {

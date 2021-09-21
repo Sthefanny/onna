@@ -65,7 +65,7 @@ struct OnBoarding02View: View {
     }
     
     var _buildNameTextField: some View {
-        TextFieldWithButtonView(fieldName: "Nome", action: {viewRouter.currentPage = .onBoarding03View})
+        TextFieldWithButtonView(fieldName: "Nome", action: {viewRouter.currentPage = .onBoarding03View}, textColor: .onnaBackgroundBlack)
             .padding(.horizontal, 20)
     }
     

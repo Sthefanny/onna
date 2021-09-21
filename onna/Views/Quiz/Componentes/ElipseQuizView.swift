@@ -8,34 +8,64 @@
 import SwiftUI
 
 struct ElipseQuizView: View {
-    
     @State var action: () -> Void
-    let respostaNome: String
-    
+    @State var quizAnswers: [QuizAnswer]
+    @State var showCorrect = false
+    @State var quizId: Int
+    @State var totalQuestions: Int
     
     var body: some View {
-        HStack {
-            ZStack {
-                Button(action: {
-                    self.action()
-                }) {
+        VStack() {
+            HStack {
+                _buildEllipseAnswer(answer: quizAnswers[0])
+                _buildEllipseAnswer(answer: quizAnswers[1])
+            }
+            HStack {
+                _buildEllipseAnswer(answer: quizAnswers[2])
+                _buildEllipseAnswer(answer: quizAnswers[3])
+            }
+        }
+        .padding()
+    }
+    
+    func _buildEllipseAnswer(answer: QuizAnswer) -> some View {
+        return Button(action: {
+            saveAnswer(answer: answer)
+            showCorrect = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.action()
+            }
+        }) {
+            HStack {
+                ZStack {
                     Image("ElipseQuiz")
                         .resizable()
                         .frame(width: 150, height: 150)
+                    Text(answer.text)
+                        .onnaFont(.body)
+                        .foregroundColor(showCorrect ? answer.isCorrect ? Color.green : Color.red : .onnaWhite)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 110, height: 120, alignment: .center)
                 }
-                Text(respostaNome)
-                    .onnaFont(.body)
-                    .foregroundColor(.onnaWhite)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 110, height: 120, alignment: .center)
             }
         }
         .padding(8)
+    }
+    
+    func saveAnswer(answer: QuizAnswer) {
+        if (answer.isCorrect) {
+            QuizHelper.saveQuizAnswers(quizId: quizId, totalQuestions: totalQuestions)
+        }
     }
 }
 
 struct ElipseQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        ElipseQuizView(action: {}, respostaNome: "Exercício Físico")
+        ElipseQuizView(action: {}, quizAnswers: [
+            QuizAnswer(id: 0, quizQuestionId: 1, text: "Exercicio Físico", isCorrect: false),
+            QuizAnswer(id: 1, quizQuestionId: 1, text: "Estresse", isCorrect: true),
+            QuizAnswer(id: 2, quizQuestionId: 1, text: "Ganho de Peso", isCorrect: false),
+            QuizAnswer(id: 3, quizQuestionId: 1, text: "Todas anteriores", isCorrect: false)
+        ], quizId: 1, totalQuestions: 2)
     }
 }

@@ -27,15 +27,6 @@ struct OnBoarding01View: View {
             .ignoresSafeArea()
             .padding(.top, 5)
         }
-        .onAppear() {
-//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isLogged.name)
-            let isLogged = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLogged.name)
-            print("isLogged = \(isLogged)")
-            if isLogged {
-                viewRouter.currentPage = .homeView
-            }
-            
-        }
     }
     
     var _buildTitleAndDescription: some View {

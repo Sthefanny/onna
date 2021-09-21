@@ -8,11 +8,16 @@
 import Foundation
 
 enum Page {
+    case splashScreenView
+    
     case onBoarding01View
     case onBoarding02View
     case onBoarding03View
     case onBoarding04View
     case onBoarding05View
+    
+    case contentFeminismView
+    case contentBodyPositiveView
     
     case loginView
     case homeView
@@ -22,5 +27,11 @@ enum Page {
     case story01_3View
     case story01View
     case challengeView
-    case challengeSendTextView
+    case quizView
+    case quizQuestionView
+    case chatView
+    case profileConfigView
+    
+    case loadingView
+    case quizResultView
 }
