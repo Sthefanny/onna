@@ -90,6 +90,9 @@
 		E598B86A26EFE06A002C6976 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598B86926EFE06A002C6976 /* UserModel.swift */; };
 		E5A2604D26E8E388003BADB4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2604C26E8E388003BADB4 /* ProfileView.swift */; };
 		E5A2604F26E8E45E003BADB4 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2604E26E8E45E003BADB4 /* TimelineView.swift */; };
+		E5B53F2E26F8B3B000F1FEA6 /* ProfileConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B53F2D26F8B3B000F1FEA6 /* ProfileConfigView.swift */; };
+		E5B53F3126F8BEDC00F1FEA6 /* EditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B53F3026F8BEDC00F1FEA6 /* EditTextView.swift */; };
+		E5B53F3426F8DD0500F1FEA6 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B53F3326F8DD0500F1FEA6 /* SplashScreenView.swift */; };
 		E5E5AA0F26E1454F003BFBED /* OnnaFontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */; };
 		E5E5AA1226E1543F003BFBED /* bruno-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1126E1541E003BFBED /* bruno-regular.otf */; };
 		E5E5AA1526E16868003BFBED /* chivo-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5E5AA1426E1685C003BFBED /* chivo-regular.ttf */; };
@@ -188,6 +191,9 @@
 		E598B86926EFE06A002C6976 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E5A2604C26E8E388003BADB4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E5A2604E26E8E45E003BADB4 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		E5B53F2D26F8B3B000F1FEA6 /* ProfileConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigView.swift; sourceTree = "<group>"; };
+		E5B53F3026F8BEDC00F1FEA6 /* EditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextView.swift; sourceTree = "<group>"; };
+		E5B53F3326F8DD0500F1FEA6 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		E5E5AA0E26E1454F003BFBED /* OnnaFontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnnaFontSystem.swift; sourceTree = "<group>"; };
 		E5E5AA1126E1541E003BFBED /* bruno-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bruno-regular.otf"; sourceTree = "<group>"; };
 		E5E5AA1326E1685B003BFBED /* chivo-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "chivo-bold.ttf"; sourceTree = "<group>"; };
@@ -537,6 +543,31 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E5B53F2C26F8B39800F1FEA6 /* ProfileConfig */ = {
+			isa = PBXGroup;
+			children = (
+				E5B53F2F26F8BEBD00F1FEA6 /* Pages */,
+				E5B53F2D26F8B3B000F1FEA6 /* ProfileConfigView.swift */,
+			);
+			path = ProfileConfig;
+			sourceTree = "<group>";
+		};
+		E5B53F2F26F8BEBD00F1FEA6 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				E5B53F3026F8BEDC00F1FEA6 /* EditTextView.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		E5B53F3226F8DCE400F1FEA6 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E5B53F3326F8DD0500F1FEA6 /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
 		E5E5AA0D26E1452D003BFBED /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +616,8 @@
 		E5F62CBD26E191F700EEA4D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5B53F3226F8DCE400F1FEA6 /* SplashScreen */,
+				E5B53F2C26F8B39800F1FEA6 /* ProfileConfig */,
 				E50091E426F80EED0018BE30 /* Tutorial */,
 				E52A09E926F67DC000850E40 /* Loading */,
 				E565DB2226F651FE000CEB9F /* Stories */,
@@ -713,6 +746,7 @@
 				E52A09EB26F67DCE00850E40 /* LoadingView.swift in Sources */,
 				9396ABBD26EBCFB000075635 /* TextFieldView.swift in Sources */,
 				E565DB1A26F6325C000CEB9F /* QuizQuestionViewModel.swift in Sources */,
+				E5B53F2E26F8B3B000F1FEA6 /* ProfileConfigView.swift in Sources */,
 				9396ABBB26EBCE5C00075635 /* BlackButtonView.swift in Sources */,
 				E543658126E956D1005339A7 /* UrlConfigEnum.swift in Sources */,
 				E524787B26F3A2B700EBBFB6 /* ChallengeModel.swift in Sources */,
@@ -747,6 +781,7 @@
 				E565DB2926F651FE000CEB9F /* Story01View.swift in Sources */,
 				E552EA9926E82B0D00035C4B /* ViewRouter.swift in Sources */,
 				E50091DF26F7E1430018BE30 /* WallView.swift in Sources */,
+				E5B53F3126F8BEDC00F1FEA6 /* EditTextView.swift in Sources */,
 				E50091DD26F7A0700018BE30 /* QuizHelper.swift in Sources */,
 				E5F62CBA26E1899900EEA4D6 /* ColorExtension.swift in Sources */,
 				E565DB3526F65274000CEB9F /* InputRow.swift in Sources */,
@@ -760,6 +795,7 @@
 				E52F84FF26E7C77700F7C8A7 /* AppleLoginButtonView.swift in Sources */,
 				93CD333626F28CED00FB86D0 /* ElipseQuizView.swift in Sources */,
 				9396ABB926EBCE1400075635 /* ChallengeTextView.swift in Sources */,
+				E5B53F3426F8DD0500F1FEA6 /* SplashScreenView.swift in Sources */,
 				E598B86826EFDCD7002C6976 /* UserViewModel.swift in Sources */,
 				E5A2604F26E8E45E003BADB4 /* TimelineView.swift in Sources */,
 				E552EA8B26E7E2BC00035C4B /* TextFieldWithButtonView.swift in Sources */,
@@ -903,7 +939,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onna/onna.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"onna/Preview Content\"";
 				DEVELOPMENT_TEAM = H7R4J57657;
 				ENABLE_PREVIEWS = YES;
@@ -927,7 +963,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onna/onna.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"onna/Preview Content\"";
 				DEVELOPMENT_TEAM = H7R4J57657;
 				ENABLE_PREVIEWS = YES;

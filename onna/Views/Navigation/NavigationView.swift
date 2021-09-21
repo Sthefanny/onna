@@ -12,6 +12,8 @@ struct NavigationView: View {
     
     var body: some View {
         switch viewRouter.currentPage {
+        case .splashScreenView:
+            SplashScreenView()
         case .onBoarding01View:
             OnBoarding01View()
         case .onBoarding02View:
@@ -63,6 +65,8 @@ struct NavigationView: View {
             QuizResultView(viewRouter.parameter as! Int, viewRouter.parameter as! Int)
         case .chatView:
             ChatView(viewRouter.parameter as! Int)
+        case .profileConfigView:
+            ProfileConfigView()
         }
     }
 }

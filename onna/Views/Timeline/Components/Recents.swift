@@ -15,7 +15,7 @@ struct Recents: View {
         VStack  {
             VStack {
                 HStack {
-                    Image(post.userImage ?? "")
+                    Image(post.userImage != nil && post.userImage != "" ? post.userImage! : "Profile-Pic-2")
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 43, height: 43, alignment: .center)

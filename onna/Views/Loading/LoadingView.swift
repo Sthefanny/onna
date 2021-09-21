@@ -10,10 +10,12 @@ import SwiftUI
 struct LoadingView: View {
     
     @State var animate = false
+    let screenWidth = UIScreen.main.bounds.size.width
     
     var body: some View {
         
         VStack(alignment: .center){
+            HStack {}.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
             Spacer()
             Image("Onna-Logo")
                 .rotationEffect(.init(degrees: self.animate ? 360 : 0))

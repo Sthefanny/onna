@@ -33,9 +33,9 @@ struct HomeView: View {
                 VStack {
                     _buildStories
                     _buildTodayJourneyAndTimeline
+                    _buildChallengeCard
                     _buildBlogCard
                     _buildQuizCard
-                    _buildChallengeCard
                     Spacer()
                     BottomProgressionSquareView(actualSquare: 1, maxSquare: 3)
                 }
@@ -139,7 +139,7 @@ struct HomeView: View {
     var _buildTimeline: some View {
         VStack {
             HStack {
-                Image(postsViewModel.posts.last?.userImage ?? "")
+                Image(postsViewModel.posts.last?.userImage == nil || postsViewModel.posts.last?.userImage == "" ? "Profile-Pic-1" : postsViewModel.posts.last?.userImage! as! String)
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle(), style: FillStyle())
@@ -189,6 +189,34 @@ struct HomeView: View {
         .padding(.top, 5)
     }
     
+    var _buildChallengeCard: some View {
+        let firstChallenge = viewModel.journey.first?.challenge
+        
+        return HStack {
+            Image(firstChallenge?.icon ?? "")
+                .resizable()
+                .frame(width: 130, height: 110)
+                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
+            
+            Text("Challenge: \(firstChallenge?.title ?? "")")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.onnaBackgroundBlack)
+                .onnaFont(.callout)
+                .padding(.trailing, 20)
+        }
+        .frame(width: 350, height: 110, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundColor(getColorByContent(value: .challenge))
+        .padding(.top, 20)
+        .onTapGesture(count: 1, perform: {
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstChallenge!.id, entityName: EntityNameEnum.challenge.name)
+            viewRouter.parameter = firstChallenge?.id
+            viewRouter.parameter2 = dynamicResult
+            viewRouter.previousPage = .homeView
+            viewRouter.currentPage = .challengeView
+        })
+    }
+    
     var _buildBlogCard: some View {
         let firstBlog = viewModel.journey.first?.blog
         
@@ -207,7 +235,7 @@ struct HomeView: View {
         .frame(width: 350, height: 110, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(getColorByContent(value: .blog))
-        .padding(.top, 20)
+        .padding(.vertical, 10)
         .onTapGesture(count: 1, perform: {
             let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstBlog!.id, entityName: EntityNameEnum.blog.name)
             viewRouter.previousPage = .homeView
@@ -234,39 +262,13 @@ struct HomeView: View {
         .frame(width: 350, height: 110, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(getColorByContent(value: .quiz))
-        .padding(.vertical, 10)
-        .onTapGesture(count: 1, perform: {
-            viewRouter.parameter = firstQuiz?.id
-            viewRouter.previousPage = .homeView
-            viewRouter.currentPage = .quizView
-        })
-    }
-    
-    var _buildChallengeCard: some View {
-        let firstChallenge = viewModel.journey.first?.challenge
-        
-        return HStack {
-            Image(firstChallenge?.icon ?? "")
-                .resizable()
-                .frame(width: 130, height: 110)
-                .padding(EdgeInsets(top: 19, leading: 8, bottom: 19, trailing: 8))
-            
-            Text("Challenge: \(firstChallenge?.title ?? "")")
-                .multilineTextAlignment(.leading)
-                .foregroundColor(.onnaBackgroundBlack)
-                .onnaFont(.callout)
-                .padding(.trailing, 20)
-        }
-        .frame(width: 350, height: 110, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(getColorByContent(value: .challenge))
         .padding(.bottom, 10)
         .onTapGesture(count: 1, perform: {
-            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstChallenge!.id, entityName: EntityNameEnum.challenge.name)
-            viewRouter.parameter = firstChallenge?.id
-            viewRouter.parameter2 = dynamicResult
+            let dynamicResult = DynamicResult(id: nil, journeyId: viewModel.journey.first!.id, entityId: firstQuiz!.id, entityName: EntityNameEnum.quiz.name)
+            viewRouter.parameter = firstQuiz?.id
             viewRouter.previousPage = .homeView
-            viewRouter.currentPage = .challengeView
+            viewRouter.parameter2 = dynamicResult
+            viewRouter.currentPage = .quizView
         })
     }
 }

@@ -14,7 +14,7 @@ struct JourneyInputView: View {
     var body: some View {
         
         HStack {
-            Image(journey.image)
+            Image(getRandomJourneyImage())
                 .resizable()
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
                 .frame(width: 60, height: 60)
@@ -39,6 +39,13 @@ struct JourneyInputView: View {
             JorneyMapView(journeyId: journey.id)
         }
     }
+}
+
+
+
+func getRandomJourneyImage() -> String {
+    let randomNum = Int.random(in: 1..<6)
+    return "journey-icon-\(randomNum)"
 }
 
 struct JourneyInputView_Previews: PreviewProvider {

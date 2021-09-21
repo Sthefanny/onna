@@ -13,6 +13,9 @@ struct User: Decodable {
     let lastName: String?
     let email: String
     let password: String
+    let birthDate: String?
+    let insta: String?
+    let phrase: String?
     let deviceId: String?
     let version: String?
     let so: String?
@@ -22,4 +25,14 @@ struct User: Decodable {
 struct Token: Decodable {
     let accessToken: String
     let refreshToken: String
+}
+
+
+struct UserUpdate: Decodable {
+    let image: String
+    let firstName: String
+    let lastName: String
+    let birthDate: String
+    let insta: String
+    let phrase: String
 }

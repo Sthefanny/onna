@@ -69,7 +69,7 @@ struct ChatQuestionView: View {
             .padding(30)
             .padding(.bottom, 0)
             
-            Image(post.userImage ?? "")
+            Image(post.userImage == nil || post.userImage == "" ? "Profile-Pic-1" : post.userImage!)
                 .resizable()
                 .clipShape(Circle())
                 .frame(width: 70, height: 70)

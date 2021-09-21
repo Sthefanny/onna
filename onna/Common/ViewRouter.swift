@@ -9,8 +9,8 @@ import Foundation
 
 class ViewRouter: ObservableObject {
     
-    @Published var previousPage: Page = .onBoarding01View
-    @Published var currentPage: Page = .onBoarding01View
+    @Published var previousPage: Page = .splashScreenView
+    @Published var currentPage: Page = .splashScreenView
     @Published var parameter: Any?
     @Published var parameter2: Any?
     @Published var parameter3: Any?

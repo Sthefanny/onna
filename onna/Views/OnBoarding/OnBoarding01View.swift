@@ -27,27 +27,6 @@ struct OnBoarding01View: View {
             .ignoresSafeArea()
             .padding(.top, 5)
         }
-        .onAppear() {
-            // Início - Limpar tudo
-//            let domain = Bundle.main.bundleIdentifier!
-//            UserDefaults.standard.removePersistentDomain(forName: domain)
-//            UserDefaults.standard.synchronize()
-//            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-            // Fim - Limpar tudo
-            
-            //ToDo: Tirar prints
-            
-            
-            let userId = UserDefaults.standard.string(forKey: UserDefaultsKeys.userId.name)!
-            print("senha = \(userId)")
-            
-            let isLogged = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)
-            print("token = \(String(describing: isLogged))")
-            if isLogged != nil {
-                viewRouter.currentPage = .homeView
-            }
-            
-        }
     }
     
     var _buildTitleAndDescription: some View {

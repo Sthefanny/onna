@@ -89,7 +89,7 @@ struct QuizQuestionView: View {
                 viewRouter.parameter2 = quizId
                 viewRouter.currentPage = .quizResultView
             } else {
-                viewRouter.parameter = dynamicResult.journeyId
+                viewRouter.parameter = dynamicResult
                 viewRouter.parameter2 = quizId
                 viewRouter.parameter3 = nextIndex
                 viewRouter.parameter4 = totalQuestions

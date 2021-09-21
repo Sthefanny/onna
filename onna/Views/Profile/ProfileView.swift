@@ -13,7 +13,9 @@ struct ProfileView: View {
     let screenWidth = UIScreen.main.bounds.size.width
     @State var actualView: WhichView = .journey
     @ObservedObject var viewModel = JourneyViewModel()
+    @ObservedObject var userViewModel = UserViewModel()
     var width = UIScreen.main.bounds.width
+    @State var fullName = ""
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var body: some View {
@@ -35,36 +37,41 @@ struct ProfileView: View {
                 .padding(.top, 10)
                 
                 VStack {
-                    Image("Profile-Pic-4")
-                        .resizable()
-                        .clipShape(Circle(), style: FillStyle())
-                        .frame(width: 100, height: 100, alignment: .center)
-                    Text("Malu Gonzatta")
+//                    Button(action: {
+//                        viewRouter.previousPage = .profileView
+//                        viewRouter.currentPage = .profileConfigView
+//                    }, label: {
+                        Image(userViewModel.user?.image ?? "Profile-Pic-4")
+                            .resizable()
+                            .clipShape(Circle(), style: FillStyle())
+                            .frame(width: 100, height: 100, alignment: .center)
+//                    })
+                    Text("\(fullName)")
                         .onnaFont(OnnaFontSystem.TextStyle.subheadline)
                         .foregroundColor(.white)
-                    HStack {
-                        Text("idade")
-                            .onnaFont(OnnaFontSystem.TextStyle.body)
-                            .foregroundColor(.white)
-                            .padding(.trailing, 20)
-                        Text("•")
-                            .onnaFont(OnnaFontSystem.TextStyle.body)
-                            .foregroundColor(.white)
-                            .padding(.trailing, 20)
-                        Text("insta")
-                            .onnaFont(OnnaFontSystem.TextStyle.body)
-                            .foregroundColor(.white)
-                    }.padding()
-                    
-                    VStack(alignment: .center) {
-                        Text("falo besteira e amo \nconversar sobre ppk")
-                            .onnaFont(OnnaFontSystem.TextStyle.body)
-                            .foregroundColor(.white)
-                    }
-                    .frame(width: 250, height: 70, alignment: .center)
-                    .background(RoundedRectangle(cornerRadius: 20))
-                    .foregroundColor(.onnaMainGrey.opacity(0.4))
-                    .padding()
+//                    HStack {
+//                        Text("idade")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                            .padding(.trailing, 20)
+//                        Text("•")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                            .padding(.trailing, 20)
+//                        Text("insta")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                    }.padding()
+//                    
+//                    VStack(alignment: .center) {
+//                        Text("falo besteira e amo \nconversar sobre ppk")
+//                            .onnaFont(OnnaFontSystem.TextStyle.body)
+//                            .foregroundColor(.white)
+//                    }
+//                    .frame(width: 250, height: 70, alignment: .center)
+//                    .background(RoundedRectangle(cornerRadius: 20))
+//                    .foregroundColor(.onnaMainGrey.opacity(0.4))
+//                    .padding()
                     
                     HStack {
                         
@@ -94,6 +101,12 @@ struct ProfileView: View {
                 }
             }
             viewModel.fetchCompletedJourneys{ _ in }
+            
+            userViewModel.getUserInfo { isSuccess in
+                if (isSuccess) {
+                    fullName = "\(userViewModel.user?.firstName ?? "") \(userViewModel.user?.lastName ?? "")"
+                }
+            }
         }
         .gesture(
             DragGesture()

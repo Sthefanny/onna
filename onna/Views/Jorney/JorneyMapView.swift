@@ -5,10 +5,11 @@ struct JorneyMapView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @ObservedObject var viewModel = JourneyViewModel()
     @State var journeyId: Int
+    @State var bgImage: String?
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
-            Image("Journey-0-bg")
+            Image(bgImage ?? "Journey-0-bg")
                 .resizable()
                 .ignoresSafeArea()
                 .aspectRatio(contentMode: .fill)
@@ -26,7 +27,22 @@ struct JorneyMapView: View {
             
         }
         .onAppear {
-            viewModel.getJourneyById(journeyId: journeyId) { _ in }
+            viewModel.getJourneyById(journeyId: journeyId) { isSuccess in
+                if(isSuccess) {
+                    let challengeCompleteded = viewModel.journeyWithContent?.challenge?.completed == true
+                    let blogCompleteded = viewModel.journeyWithContent?.blog?.completed == true
+                    let quizCompleteded = viewModel.journeyWithContent?.quiz?.completed == true
+                    if(challengeCompleteded && blogCompleteded && quizCompleteded) {
+                        bgImage = "Journey-3-bg"
+                    } else if (challengeCompleteded) {
+                        bgImage = "Journey-1-bg"
+                    } else if (blogCompleteded) {
+                        bgImage = "Journey-2-bg"
+                    } else if (quizCompleteded) {
+                        bgImage = "Journey-3-bg"
+                    }
+                }
+            }
         }
     }
     var _buildTitleAndDescription: some View {
@@ -101,6 +117,7 @@ struct JorneyMapView: View {
                 viewRouter.currentPage = .challengeView
             case .quiz:
                 viewRouter.parameter = entityId
+                viewRouter.parameter2 = dynamicResult
                 viewRouter.currentPage = .quizView
             }
             
