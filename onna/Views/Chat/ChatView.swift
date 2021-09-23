@@ -4,13 +4,7 @@
 //
 //  Created by Deborah Santos on 09/09/21.
 
-//duvidinhas: crio um componente pra esse text field?
-//crio um componente pras respostas (chat?)
-// N consigo mudar a cor do "escreva aqui"
-
 import SwiftUI
-
-
 
 struct ChatView: View {
     @EnvironmentObject var viewRouter: ViewRouter

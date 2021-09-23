@@ -12,7 +12,7 @@ struct ChatAwnsersView: View {
     
     var body: some View {
         HStack{
-            Image(comment.userImage ?? "Profile-Pic-2")
+            Image(comment.userImage ?? "")
                 .resizable()
                 .clipShape(Circle())
                 .frame(width: 40, height: 40)

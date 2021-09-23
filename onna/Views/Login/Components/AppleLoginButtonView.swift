@@ -60,14 +60,15 @@ struct AppleLoginButtonView : View {
                             
                             //Create user in API
                             
-                            viewModel.user = User(image: getRandomProfileImage(), firstName: firstName, lastName: lastName, email: email, password: userId, birthDate: nil, insta: nil, phrase: nil, deviceId: "", version: "1.0.0", so: "iOS", token: nil)
+                            let user = User(image: getRandomProfileImage(), firstName: firstName, lastName: lastName, email: email, password: userId, birthDate: nil, insta: nil, phrase: nil, deviceId: "", version: "1.0.0", so: "iOS", token: nil)
+                            viewModel.user = user
                             viewModel.createAndLoginUser { isLogged in
                                 // Change login state
                                 if (isLogged){
                                     UserDefaults.standard.set(viewModel.user?.token?.accessToken, forKey: UserDefaultsKeys.accessToken.name)
                                     self.action()
                                 } else {
-                                    showErrorAlert = true
+                                    login(user: user)
                                 }
                             }
                         } else {
@@ -92,18 +93,8 @@ struct AppleLoginButtonView : View {
                                     UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLogged.name)
                                     
                                     //Login user in API
-                                    DispatchQueue.main.async {
-                                        viewModel.user = User(image: getRandomProfileImage(), firstName: nil, lastName: nil, email: email!, password: userId, birthDate: nil, insta: nil, phrase: nil, deviceId: nil, version: nil, so: nil, token: nil)
-                                        viewModel.loginUser { isLogged in
-                                            // Change login state
-                                            if (isLogged){
-                                                UserDefaults.standard.set(viewModel.user?.token?.accessToken, forKey: UserDefaultsKeys.accessToken.name)
-                                                self.action()
-                                            } else {
-                                                showErrorAlert = true
-                                            }
-                                        }
-                                    }
+                                    let user = User(image: getRandomProfileImage(), firstName: nil, lastName: nil, email: email!, password: userId, birthDate: nil, insta: nil, phrase: nil, deviceId: nil, version: nil, so: nil, token: nil)
+                                    login(user: user)
                                 }
                             }
                         }
@@ -131,5 +122,20 @@ struct AppleLoginButtonView : View {
     func getRandomProfileImage() -> String {
         let randomNum = Int.random(in: 1..<5)
         return "Profile-Pic-\(randomNum)"
+    }
+    
+    func login(user: User) -> Void {
+        DispatchQueue.main.async {
+            viewModel.user = user
+            viewModel.loginUser { isLogged in
+                // Change login state
+                if (isLogged){
+                    UserDefaults.standard.set(viewModel.user?.token?.accessToken, forKey: UserDefaultsKeys.accessToken.name)
+                    self.action()
+                } else {
+                    showErrorAlert = true
+                }
+            }
+        }
     }
 }

@@ -71,7 +71,7 @@ struct JorneyMapView: View {
                 .frame(width: 210, height: 90, alignment: .center)
                 .multilineTextAlignment(.leading)
         }
-        .offset(x: 20, y: 105)
+        .offset(x: 20, y: 115)
         
     }
     
@@ -85,7 +85,7 @@ struct JorneyMapView: View {
             
             _buildButtom(text: "2", color: .onnaYellow, pageType: .blog, entityId: viewModel.journeyWithContent!.blog!.id)
         }
-        .offset(x: -40, y: 120)
+        .offset(x: -40, y: 135)
     }
     
     
@@ -99,7 +99,7 @@ struct JorneyMapView: View {
                 .frame(width: 170, height: 90, alignment: .center)
                 .multilineTextAlignment(.leading)
         }
-        .offset(x: -30, y: 135)
+        .offset(x: -30, y: 150)
         
     }
     func _buildButtom(text: String, color: Color, pageType: EntityNameEnum, entityId: Int) -> some View {
@@ -139,9 +139,9 @@ struct JorneyMapView: View {
     }
 }
 
-//struct JorneyMapView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        JorneyMapView(journey: Journey(id: 0, image: "", title: "Menstruaçao", description: "Tudo o que acontece com o seu corpo durante a menstruação", challenge: nil, blog: nil, quiz: nil, dynamicResults: nil))
-//    }
-//}
+struct JorneyMapView_Previews: PreviewProvider {
+    static var previews: some View {
+        JorneyMapView(journeyId: 1)
+    }
+}
 

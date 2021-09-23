@@ -14,7 +14,7 @@ struct FavesView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if (viewModel.favesJourney.count == 0) {
+            if (viewModel.contentLiked.count == 0) {
                 Text("Você ainda não favoritou nenhum conteúdo.")
                     .onnaFont(.body)
                     .foregroundColor(.onnaMainGrey)
@@ -22,8 +22,8 @@ struct FavesView: View {
                     .padding(30)
             } else {
                 ScrollView {
-                    ForEach(0 ..< viewModel.favesJourney.count) { i in
-                        FaveInputView(journey: viewModel.favesJourney[i])
+                    ForEach(0 ..< viewModel.contentLiked.count) { i in
+                        FaveInputView(content: viewModel.contentLiked[i])
                     }
                 }
             }

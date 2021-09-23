@@ -139,7 +139,7 @@ struct HomeView: View {
     var _buildTimeline: some View {
         VStack {
             HStack {
-                Image(postsViewModel.posts.last?.userImage == nil || postsViewModel.posts.last?.userImage == "" ? "Profile-Pic-1" : postsViewModel.posts.last?.userImage! as! String)
+                Image(postsViewModel.posts.last?.userImage ?? "")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle(), style: FillStyle())

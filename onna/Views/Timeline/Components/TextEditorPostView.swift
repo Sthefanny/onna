@@ -39,16 +39,17 @@ struct TextEditorPostView: View {
             
             ZStack (alignment: .bottomTrailing) {
                 Button(action: {
-                    print("Clicked")
-                    viewModel.addPost(text: message) { isSuccess in
-                        if (isSuccess) {
-                            message = ""
-                            self.hideKeyboard()
-                        } else {
-                            showErrorAlert = true
+                    if (message != "") {
+                        viewModel.addPost(text: message) { isSuccess in
+                            if (isSuccess) {
+                                message = ""
+                                self.hideKeyboard()
+                            } else {
+                                showErrorAlert = true
+                            }
+                            
+                            self.callback(isSuccess)
                         }
-                        
-                        self.callback(isSuccess)
                     }
                 }) {
                     Image("Send-Message")

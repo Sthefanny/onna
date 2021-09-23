@@ -24,11 +24,13 @@ struct NextRoundedButtonChat: View {
                 if hasError {
                     showErrorAlert = true
                 } else {
-                    viewModel.addComment(postId: postId, text: text) { isSuccess in
-                        self.isSuccess = isSuccess
-                        self.text = ""
-                        self.hideKeyboard()
-                        self.callback(isSuccess)
+                    if (text != "") {
+                        viewModel.addComment(postId: postId, text: text) { isSuccess in
+                            self.isSuccess = isSuccess
+                            self.text = ""
+                            self.hideKeyboard()
+                            self.callback(isSuccess)
+                        }
                     }
                 }
             }, label: {

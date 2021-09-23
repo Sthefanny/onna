@@ -41,7 +41,7 @@ struct ProfileView: View {
 //                        viewRouter.previousPage = .profileView
 //                        viewRouter.currentPage = .profileConfigView
 //                    }, label: {
-                        Image(userViewModel.user?.image ?? "Profile-Pic-4")
+                        Image(userViewModel.user?.image ?? "")
                             .resizable()
                             .clipShape(Circle(), style: FillStyle())
                             .frame(width: 100, height: 100, alignment: .center)

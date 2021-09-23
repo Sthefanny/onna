@@ -11,7 +11,7 @@ import SwiftUI
 class JourneyViewModel: ObservableObject {
     @Published var journey = [Journey]()
     @Published var filteredJourney = [Journey]()
-    @Published var favesJourney = [ContentLiked]()
+    @Published var contentLiked = [ContentLiked]()
     @Published var completedJourneys = [Journey]()
     @Published var journeyWithContent: JourneyWithContent?
     @Published var hasLike: Bool?
@@ -126,7 +126,7 @@ class JourneyViewModel: ObservableObject {
                     return
                 }
                 DispatchQueue.main.async {
-                    self.favesJourney = journey
+                    self.contentLiked = journey
                     
                     callback(true)
                 }
