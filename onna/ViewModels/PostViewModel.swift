@@ -76,7 +76,6 @@ class PostViewModel: ObservableObject {
     
     func filterPosts(filter: String) {
         filteredPosts = posts.filter({ $0.text.lowercased().contains(filter.lowercased()) })
-        print(filteredPosts)
         filteredUserPosts = userPosts.filter({ $0.text.lowercased().contains(filter.lowercased()) })
     }
     

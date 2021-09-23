@@ -27,6 +27,7 @@ enum UrlConfig: String {
     case addCommentToPost = "/post/comment/save"
     case postLike = "/post/like"
     case userInfo = "/user/getuserinfo"
+    case userUrl = "/user"
 
     var text: String {
         return self.rawValue

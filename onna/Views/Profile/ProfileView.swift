@@ -16,6 +16,7 @@ struct ProfileView: View {
     @ObservedObject var userViewModel = UserViewModel()
     var width = UIScreen.main.bounds.width
     @State var fullName = ""
+    @State var age: Int?
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
     var body: some View {
@@ -36,49 +37,56 @@ struct ProfileView: View {
                 }
                 .padding(.top, 10)
                 
-                VStack {
-//                    Button(action: {
-//                        viewRouter.previousPage = .profileView
-//                        viewRouter.currentPage = .profileConfigView
-//                    }, label: {
-                        Image(userViewModel.user?.image ?? "")
-                            .resizable()
-                            .clipShape(Circle(), style: FillStyle())
-                            .frame(width: 100, height: 100, alignment: .center)
-//                    })
-                    Text("\(fullName)")
-                        .onnaFont(OnnaFontSystem.TextStyle.subheadline)
-                        .foregroundColor(.white)
-//                    HStack {
-//                        Text("idade")
-//                            .onnaFont(OnnaFontSystem.TextStyle.body)
-//                            .foregroundColor(.white)
-//                            .padding(.trailing, 20)
-//                        Text("•")
-//                            .onnaFont(OnnaFontSystem.TextStyle.body)
-//                            .foregroundColor(.white)
-//                            .padding(.trailing, 20)
-//                        Text("insta")
-//                            .onnaFont(OnnaFontSystem.TextStyle.body)
-//                            .foregroundColor(.white)
-//                    }.padding()
-//                    
-//                    VStack(alignment: .center) {
-//                        Text("falo besteira e amo \nconversar sobre ppk")
-//                            .onnaFont(OnnaFontSystem.TextStyle.body)
-//                            .foregroundColor(.white)
-//                    }
-//                    .frame(width: 250, height: 70, alignment: .center)
-//                    .background(RoundedRectangle(cornerRadius: 20))
-//                    .foregroundColor(.onnaMainGrey.opacity(0.4))
-//                    .padding()
-                    
-                    HStack {
-                        
-                    }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
-                    
+                if (userViewModel.user == nil) {
+                    LoadingView()
+                } else {
                     VStack {
-                        _buildViewSlider
+                        Button(action: {
+                            viewRouter.previousPage = .profileView
+                            viewRouter.currentPage = .profileConfigView
+                        }, label: {
+                            Image(userViewModel.user?.image ?? "")
+                                .resizable()
+                                .clipShape(Circle(), style: FillStyle())
+                                .frame(width: 100, height: 100, alignment: .center)
+                        })
+                        Text("\(fullName)")
+                            .onnaFont(OnnaFontSystem.TextStyle.subheadline)
+                            .foregroundColor(.white)
+                        HStack {
+                            Text("\(age ?? 0) anos")
+                                .onnaFont(OnnaFontSystem.TextStyle.body)
+                                .foregroundColor(.white)
+                                .padding(.trailing, 20)
+                            Text("•")
+                                .onnaFont(OnnaFontSystem.TextStyle.body)
+                                .foregroundColor(.white)
+                                .padding(.trailing, 20)
+                            Link("@\(userViewModel.user?.insta ?? "")", destination: URL(string: "https://www.instagram.com/\(userViewModel.user?.insta ?? "")")!)
+                                .onnaFont(OnnaFontSystem.TextStyle.body)
+                                .foregroundColor(.white)
+    //                        Text("@\(userViewModel.user?.insta ?? "")")
+    //                            .onnaFont(OnnaFontSystem.TextStyle.body)
+    //                            .foregroundColor(.white)
+                        }.padding()
+                        
+                        VStack(alignment: .center) {
+                            Text("\(userViewModel.user?.phrase ?? "")")
+                                .onnaFont(OnnaFontSystem.TextStyle.body)
+                                .foregroundColor(.white)
+                        }
+                        .frame(width: 250, height: 70, alignment: .center)
+                        .background(RoundedRectangle(cornerRadius: 20))
+                        .foregroundColor(.onnaMainGrey.opacity(0.4))
+                        .padding()
+                        
+                        HStack {
+                            
+                        }.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
+                        
+                        VStack {
+                            _buildViewSlider
+                        }
                     }
                 }
                 Spacer()
@@ -105,6 +113,16 @@ struct ProfileView: View {
             userViewModel.getUserInfo { isSuccess in
                 if (isSuccess) {
                     fullName = "\(userViewModel.user?.firstName ?? "") \(userViewModel.user?.lastName ?? "")"
+                    let birthDateString = userViewModel.user?.birthDate
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                    dateFormatter.dateFormat = "dd/MM/yyyy"
+                    let birthday = dateFormatter.date(from:birthDateString!)!
+                    let now = Date()
+                    let calendar = Calendar.current
+
+                    let ageComponents = calendar.dateComponents([.year], from: birthday, to: now)
+                    age = ageComponents.year
                 }
             }
         }

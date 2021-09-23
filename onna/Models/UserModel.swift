@@ -8,6 +8,7 @@
 import Foundation
 
 struct User: Decodable {
+    let id: Int?
     let image: String?
     let firstName: String?
     let lastName: String?
@@ -19,20 +20,10 @@ struct User: Decodable {
     let deviceId: String?
     let version: String?
     let so: String?
-    let token: Token?
+    var token: Token?
 }
 
 struct Token: Decodable {
     let accessToken: String
     let refreshToken: String
-}
-
-
-struct UserUpdate: Decodable {
-    let image: String
-    let firstName: String
-    let lastName: String
-    let birthDate: String
-    let insta: String
-    let phrase: String
 }

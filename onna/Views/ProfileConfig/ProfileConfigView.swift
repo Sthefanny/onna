@@ -17,6 +17,8 @@ struct ProfileConfigView: View {
     @State private var insta: String = ""
     @State private var phrase: String = ""
     @State private var birthDate = Date()
+    @State private var showSuccess = false
+    @State private var showError = false
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -38,6 +40,7 @@ struct ProfileConfigView: View {
                     HStack {}.frame(width: screenWidth.magnitude, height: 2, alignment: .center)
                     _buildProfileOptions
                     _buildEditList
+                    _buildMessage
                     Spacer()
                     _buildSaveButton
                 }
@@ -51,7 +54,7 @@ struct ProfileConfigView: View {
                 insta = viewModel.user?.insta ?? ""
                 phrase = viewModel.user?.phrase ?? ""
                 
-                if (viewModel.user?.birthDate != nil) {
+                if (viewModel.user?.birthDate != nil && viewModel.user?.birthDate != "") {
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
                     dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -76,10 +79,12 @@ struct ProfileConfigView: View {
     }
     
     func _buildProfileButton(image: String) -> some View {
-        print("profilePic == \(profilePic)")
-        let isSelected = profilePic == image
+        var isSelected = profilePic == image
         
-        return Button(action: {}, label: {
+        return Button(action: {
+            profilePic = image
+            isSelected = profilePic == image
+        }, label: {
             HStack {
                 Image(image)
                     .resizable()
@@ -104,6 +109,21 @@ struct ProfileConfigView: View {
         .background(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(.onnaMainGrey.opacity(0.4))
         .padding(.top, 100)
+    }
+    
+    var _buildMessage: some View {
+        if (showSuccess) {
+            return Text("Atualizado com sucesso.")
+                .onnaFont(.callout)
+                .foregroundColor(.green)
+        } else if (showError) {
+            return Text("Ocorreu um erro ao atualizar.")
+                .onnaFont(.callout)
+                .foregroundColor(.red)
+        }
+        return Text("")
+            .onnaFont(.callout)
+            .foregroundColor(.red)
     }
     
     var _buildFirstNameTextField: some View {
@@ -191,27 +211,39 @@ struct ProfileConfigView: View {
     }
     
     var _buildDatePicker: some View {
-        HStack {
-            DatePicker(selection: $birthDate, in: ...birthDate, displayedComponents: .date) {
-                Text("Data de nascimento:")
+        VStack {
+            HStack {
+                DatePicker(selection: $birthDate, in: ...Date(), displayedComponents: .date) {
+                    Text("Data de nascimento:")
+                }
             }
+            .frame(width: 300, height: 50, alignment: .leading)
+            .padding(.horizontal)
+            .foregroundColor(.white)
         }
-        .frame(width: 300, height: 50, alignment: .leading)
-        .padding(.horizontal)
-        .foregroundColor(.white)
     }
     
     var _buildSaveButton: some View {
         Button(action: {
             let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "dd/MM/yyyy"
             let birthDateString = dateFormatter.string(from: birthDate)
-            let updateUser = UserUpdate(image: profilePic, firstName: firstName, lastName: lastName, birthDate: birthDateString, insta: insta, phrase: phrase)
-            print("updateUser = \(updateUser)")
+            let password = UserDefaults.standard.string(forKey: UserDefaultsKeys.userId.name)!
+            let idUsuario = UserDefaults.standard.string(forKey: UserDefaultsKeys.idUsuario.name)!
+            let email = UserDefaults.standard.string(forKey: UserDefaultsKeys.email.name)!
+            let updateUser = User(id: Int(idUsuario), image: profilePic, firstName: firstName, lastName: lastName, email: email, password: password, birthDate: birthDateString, insta: insta, phrase: phrase, deviceId: "", version: "1.0.0", so: "iOS", token: nil)
             viewModel.updateUser(data: updateUser) { isSuccess in
                 if (isSuccess) {
-                    print("aeeeee")
+                    self.showSuccess = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.showSuccess = false
+                    }
                 } else {
-                    print("oh nous")
+                    self.showError = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.showError = false
+                    }
                 }
             }
         }, label: {

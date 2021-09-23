@@ -104,13 +104,13 @@ class UserViewModel: ObservableObject {
         task.resume()
     }
     
-    func updateUser(data: UserUpdate, callback: @escaping (Bool) -> Void) {
+    func updateUser(data: User, callback: @escaping (Bool) -> Void) {
         
-        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.addCommentToPost.text)"
+        let path = "\(UrlConfig.baseUrl.text)\(UrlConfig.userUrl.text)"
         
         let accessToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.accessToken.name)!
         
-        let params = ["firstName": "\(data.firstName)", "lastName": "\(data.lastName)", "image": "\(data.image)", "insta": "\(data.insta)", "phrase": "\(data.phrase)", "birthDate": "\(data.birthDate)"] as Dictionary<String, String>
+        let params = ["id": "\(data.id!)", "password": "\(data.password)", "email": "\(data.email)", "firstName": "\(data.firstName!)", "lastName": "\(data.lastName!)", "image": "\(data.image!)", "insta": "\(data.insta ?? "")", "phrase": "\(data.phrase ?? "")", "birthDate": "\(data.birthDate ?? "")"] as Dictionary<String, String>
         
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "PUT"
@@ -121,15 +121,15 @@ class UserViewModel: ObservableObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                if let httpResponse = response as? HTTPURLResponse {
-                    print(response)
-                    DispatchQueue.main.async {
-                        if (httpResponse.statusCode == 204) {
-                            callback(true)
-                        } else {
-                            callback(false)
-                        }
-                    }
+                guard let user = try? JSONDecoder().decode(User.self, from: data!) else {
+                    callback(false)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.user = user
+                    self.user?.token = Token(accessToken: accessToken, refreshToken: "")
+                    
+                    callback(true)
                 }
             }
         })

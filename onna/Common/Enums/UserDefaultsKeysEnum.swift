@@ -8,7 +8,8 @@
 import Foundation
 
 enum UserDefaultsKeys: String {
-    case userId = "userId"
+    case idUsuario = "idUsuario"
+    case userId = "userId" //password
     case email = "email"
     case nickName = "nickName"
     case firstName = "firstName"
