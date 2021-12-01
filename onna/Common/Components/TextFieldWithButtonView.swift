@@ -12,6 +12,7 @@ struct TextFieldWithButtonView: View {
     @State private var text: String = ""
     @State var action: () -> Void
     @State var textColor: Color?
+    let size = UIScreen.main.bounds
     
     var body: some View {
         TextField("" , text: $text)
@@ -24,8 +25,8 @@ struct TextFieldWithButtonView: View {
             .foregroundColor(textColor == nil ? .white : textColor)
             .modifier(GoButton(fieldName: $fieldName, text: $text, action: $action))
             .padding(.vertical, 8)
-            .padding(.leading, 20)
-            .padding(.trailing, 8)
+            .padding(.leading, size.width * 0.06)
+            .padding(.trailing, 4)
             .background(RoundedRectangle(cornerRadius: 30))
             .foregroundColor(.onnaWhite)
     }

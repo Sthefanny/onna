@@ -10,6 +10,7 @@ import SwiftUI
 struct OnBoarding03View: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var userName: String = ""
+    let size = UIScreen.main.bounds
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -48,18 +49,22 @@ struct OnBoarding03View: View {
     
     var _buildTitle: some View {
         VStack {
-            Text("Sendo assim,")
-                .onnaFont(.body, textSize: 18)
+            VStack {
+                Text("Sendo assim,")
+                    .onnaFont(.body, textSize: 18)
                 .foregroundColor(.onnaBackgroundBlack)
-            Text("Welcome\n\(userName)".uppercased())
-                .onnaFont(.title1, textSize: 24)
-                .foregroundColor(.onnaBackgroundBlack)
-                .multilineTextAlignment(.center)
+                Text("Welcome\n\(userName)".uppercased())
+                    .onnaFont(.title1, textSize: 24)
+                    .foregroundColor(.onnaBackgroundBlack)
+                    .multilineTextAlignment(.center)
+            }
+            .frame(width: size.width * 0.8, height: size.height * 0.13, alignment: .center)
+            
             Rectangle()
                 .fill(Color.onnaBackgroundBlack)
-                .frame(width: 284, height: 5, alignment: .center)
+                .frame(width: size.width * 0.7, height: 5, alignment: .center)
         }
-        .padding(.vertical, 20)
+        .padding(.vertical, size.height * 0.01)
     }
     
     var _buildDescription: some View {
@@ -69,7 +74,7 @@ struct OnBoarding03View: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(.onnaBackgroundBlack)
         }
-        .padding(.horizontal, 40)
+        .padding(.horizontal, size.width * 0.1)
     }
     
     var _buildImage: some View {
@@ -77,6 +82,7 @@ struct OnBoarding03View: View {
             Image("Dani")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: size.width, alignment: .trailing)
         }
         .ignoresSafeArea()
     }

@@ -13,7 +13,7 @@ struct SquaresAndLogoView: View {
     @State var image: String
     @State var text: String
     @State var color: Color = .onnaWhite
-
+    let size = UIScreen.main.bounds
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,7 +30,6 @@ struct SquaresAndLogoView: View {
             }
             Spacer()
         }
-        .padding(.top, -10)
     }
     
     var _buildLogoAndName: some View {
@@ -43,7 +42,7 @@ struct SquaresAndLogoView: View {
                 .onnaFont(.title2)
                 .foregroundColor(color)
         }
-        .padding(.leading, 40)
+        .padding(.leading, size.width * 0.1)
     }
 }
 

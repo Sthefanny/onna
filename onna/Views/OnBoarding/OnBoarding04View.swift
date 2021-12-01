@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnBoarding04View: View {
     @EnvironmentObject var viewRouter: ViewRouter
+    let size = UIScreen.main.bounds
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -40,6 +41,7 @@ struct OnBoarding04View: View {
                 .foregroundColor(.onnaBackgroundBlack)
                 .padding(.horizontal, 80)
         }
+        .padding(.bottom, size.height * 0.05)
     }
     
     var _buildImage: some View {
@@ -47,6 +49,7 @@ struct OnBoarding04View: View {
             Image("Jess")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: size.width, alignment: .center)
         }
         .ignoresSafeArea()
     }

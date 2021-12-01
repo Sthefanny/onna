@@ -11,6 +11,7 @@ struct OnBoarding01View: View {
     @AppStorage("login") private var login = false
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
     @EnvironmentObject var viewRouter: ViewRouter
+    let size = UIScreen.main.bounds
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -34,7 +35,7 @@ struct OnBoarding01View: View {
             _buildTitle
             _buildDescription
         }
-        .padding(.leading, 50)
+        .padding(.leading, size.width * 0.08)
     }
     
     var _buildTitle: some View {
@@ -42,10 +43,11 @@ struct OnBoarding01View: View {
             Text("OI,\nPRAZER")
                 .onnaFont(.largeTitle)
                 .foregroundColor(.onnaBackgroundBlack)
+                .frame(width: size.width * 0.7, height: size.height * 0.13, alignment: .leading)
                 .padding()
             Rectangle()
                 .fill(Color.onnaBackgroundBlack)
-                .frame(width: 165, height: 3, alignment: .center)
+                .frame(width: size.width * 0.7, height: 3, alignment: .center)
                 .padding(.top, -20)
         }
         .padding(.top, 20)
@@ -57,7 +59,7 @@ struct OnBoarding01View: View {
                 .onnaFont(.body)
                 .foregroundColor(.onnaBackgroundBlack)
                 .padding()
-                .frame(width: 250, height: 140, alignment: .center)
+                .frame(width: size.width * 0.75, height: 140, alignment: .center)
         }
         .padding(.top, -35)
     }
@@ -67,6 +69,7 @@ struct OnBoarding01View: View {
             Image("Bru")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: size.width, alignment: .trailing)
         }
         .ignoresSafeArea()
         .padding(.leading, 5)

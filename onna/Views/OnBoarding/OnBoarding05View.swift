@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnBoarding05View: View {
     @EnvironmentObject var viewRouter: ViewRouter
+    let size = UIScreen.main.bounds
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -51,16 +52,18 @@ struct OnBoarding05View: View {
             .onnaFont(.body, textSize: 18)
             .multilineTextAlignment(.center)
             .foregroundColor(.onnaBackgroundBlack)
-            .padding(.horizontal, 80)
-            .padding(.bottom, 40)
+            .frame(width: size.width * 0.8, height: size.height * 0.15, alignment: .center)
+            .padding(.bottom, size.height * 0.05)
     }
     
     var _buildImage: some View {
         ZStack {
             Image("Sthe")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: size.width, height: size.height * 0.5, alignment: .center)
                 .ignoresSafeArea()
+                .padding(.top, size.height * 0.2)
             
             NextRoundedButtonView(fieldName: "", action: {viewRouter.currentPage = .loginView}, hasError: .constant(false))
                 .padding(.trailing, 15).padding(.top, -100)

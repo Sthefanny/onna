@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnBoarding02View: View {
     @EnvironmentObject var viewRouter: ViewRouter
+    let size = UIScreen.main.bounds
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -30,15 +31,15 @@ struct OnBoarding02View: View {
         HStack {
             Rectangle()
                 .fill(Color.onnaBackgroundBlack)
-                .frame(width: 4, height: 137, alignment: .center)
-                .padding(.top, -20)
+                .frame(width: 4, height: size.height * 0.2, alignment: .center)
+                .padding(.top, size.height * -0.01)
             
             VStack (alignment: .leading) {
                 _buildTitle
                 _buildDescription
             }
         }
-        .padding(.leading, 70)
+        .padding(.leading, size.height *  0.1)
     }
     
     var _buildTitle: some View {
@@ -51,7 +52,7 @@ struct OnBoarding02View: View {
                 .foregroundColor(.onnaBackgroundBlack)
                 .padding(.top, -10)
         }
-        .padding(.top, 20)
+        .padding(.top, size.height * 0.01)
     }
     
     var _buildDescription: some View {
@@ -59,9 +60,9 @@ struct OnBoarding02View: View {
             Text("Gostariamos de saber como gostaria que referiamos a você.")
                 .onnaFont(.body)
                 .foregroundColor(.onnaBackgroundBlack)
-                .frame(width: 220, height: 140, alignment: .leading)
+                .frame(width: size.width * 0.6, height: size.height * 0.15, alignment: .leading)
         }
-        .padding(.top, -35)
+        .padding(.top, -10)
     }
     
     var _buildNameTextField: some View {
@@ -74,6 +75,7 @@ struct OnBoarding02View: View {
             Image("Deh")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: size.width, alignment: .leading)
         }
         .ignoresSafeArea()
     }
